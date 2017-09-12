@@ -1,7 +1,7 @@
 <?php namespace System\Twig;
 
 use Twig_Environment;
-use Illuminate\Contracts\View\Engine as EngineInterface;
+use Illuminate\View\Engines\EngineInterface;
 
 /**
  * View engine used by the system, used for converting .htm files to twig.

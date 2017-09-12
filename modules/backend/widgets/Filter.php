@@ -136,28 +136,6 @@ class Filter extends WidgetBase
                 }
 
                 break;
-            case 'number':
-                if (is_numeric($scope->value)) {
-                    $params['number'] = $scope->value;
-                }
-
-                break;
-            case 'numberrange':
-                if ($scope->value && is_array($scope->value) && count($scope->value) === 2 &&
-                    $scope->value[0] &&
-                    $scope->value[1]
-                ) {
-                    $min = $scope->value[0];
-                    $max = $scope->value[1];
-
-                    $params['minStr'] = $min ? $min : '';
-                    $params['min'] = $min ? $min : null;
-
-                    $params['maxStr'] = $max ? $max : '∞';
-                    $params['max'] = $max ? $max : null;
-                }
-
-                break;
         }
 
         return $this->makePartial('scope_'.$scope->type, $params);
@@ -223,34 +201,6 @@ class Filter extends WidgetBase
                 }
 
                 $this->setScopeValue($scope, $dates);
-                break;
-
-            case 'number':
-                $numbers = $this->numbersFromAjax(post('options.numbers'));
-
-                if (!empty($numbers)) {
-                    list($number) = $numbers;
-                }
-                else {
-                    $number = null;
-                }
-
-                $this->setScopeValue($scope, $number);
-                break;
-
-           	case 'numberrange':
-                $numbers = $this->numbersFromAjax(post('options.numbers'));
-
-                if (!empty($numbers)) {
-                    list($min, $max) = $numbers;
-
-                    $numbers = [$min, $max];
-                }
-                else {
-                    $numbers = null;
-                }
-
-                $this->setScopeValue($scope, $numbers);
                 break;
         }
 
@@ -513,34 +463,17 @@ class Filter extends WidgetBase
             }
 
             /*
-             * Ensure scope type options are set
+             * Ensure dates options are set
              */
-            $scopeProperties = [];
-            switch ($scopeObj->type) {
-                case 'date':
-                case 'daterange':
-                    $scopeProperties = [
-                        'minDate'   => '2000-01-01',
-                        'maxDate'   => '2099-12-31',
-                        'firstDay'  => 0,
-                        'yearRange' => 10,
-                    ];
-
-                    break;
-            }
-
-            foreach ($scopeProperties as $property => $value) {
-                if (isset($config[$property])) {
-                    $value = $config[$property];
-                }
-
-                $scopeObj->{$property} = $value;
+            if (!isset($config['minDate'])) {
+                $scopeObj->minDate = '2000-01-01';
+                $scopeObj->maxDate = '2099-12-31';
             }
 
             $this->allScopes[$name] = $scopeObj;
         }
     }
-
+    
     /**
      * Programatically remove a scope, used for extensibility.
      * @param string $scopeName Scope name
@@ -654,51 +587,6 @@ class Filter extends WidgetBase
                          */
                         elseif ($scopeMethod = $scope->scope) {
                             $query->$scopeMethod($after, $before);
-                        }
-                    }
-                }
-
-                break;
-
-            case 'number':
-                if (is_numeric($scope->value)) {
-                    /*
-                     * Condition
-                     */
-                    if ($scopeConditions = $scope->conditions) {
-                        $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
-                            ':filtered' => $scope->value,
-                        ])));
-                    }
-                    /*
-                     * Scope
-                     */
-                    elseif ($scopeMethod = $scope->scope) {
-                        $query->$scopeMethod($scope->value);
-                    }
-                }
-
-            case 'numberrange':
-                if (is_array($scope->value) && count($scope->value) > 1) {
-                    list($min, $max) = array_values($scope->value);
-
-                    if ($min && $max) {
-
-                        /*
-                         * Condition
-                         *
-                         */
-                        if ($scopeConditions = $scope->conditions) {
-                            $query->whereRaw(DbDongle::parse(strtr($scopeConditions, [
-                                ':min'  => $min,
-                                ':max'  => $max
-                            ])));
-                        }
-                        /*
-                         * Scope
-                         */
-                        elseif ($scopeMethod = $scope->scope) {
-                            $query->$scopeMethod($min, $max);
                         }
                     }
                 }
@@ -854,8 +742,7 @@ class Filter extends WidgetBase
         }
 
         foreach ($options as $option) {
-            $id = array_get($option, 'id');
-            if ($id === null) {
+            if (!$id = array_get($option, 'id')) {
                 continue;
             }
             $processed[$id] = array_get($option, 'name');
@@ -866,6 +753,7 @@ class Filter extends WidgetBase
     /**
      * Convert an array from the posted dates
      *
+     * @param  mixed $scope
      * @param  array $dates
      *
      * @return array
@@ -898,36 +786,6 @@ class Filter extends WidgetBase
             }
         }
         return $dates;
-    }
-
-    /**
-     * Convert an array from the posted numbers
-     *
-     * @param  array $dates
-     *
-     * @return array
-     */
-    protected function numbersFromAjax($ajaxNumbers)
-    {
-        $numbers = [];
-        $numberRegex = '/\d/';
-
-        if (!empty($ajaxNumbers)) {
-            if (!is_array($ajaxNumbers) && preg_match($numberRegex, $ajaxNumbers)) {
-                $numbers = [$ajaxNumbers];
-            } else {
-                foreach ($ajaxNumbers as $i => $number) {
-                    if (preg_match($numberRegex, $number)) {
-                        $numbers[] = $number;
-                    } else {
-                        $numbers = [];
-                        break;
-                    }
-                }
-            }
-        }
-
-        return $numbers;
     }
 
     /**

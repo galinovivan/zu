@@ -39,7 +39,6 @@
 =require js/toolbar.js
 =require js/filter.js
 =require js/filter.dates.js
-=require js/filter.numbers.js
 =require js/select.js
 =require js/loader.base.js
 =require js/loader.cursor.js

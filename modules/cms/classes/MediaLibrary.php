@@ -25,8 +25,6 @@ class MediaLibrary
     const SORT_BY_TITLE = 'title';
     const SORT_BY_SIZE = 'size';
     const SORT_BY_MODIFIED = 'modified';
-    const SORT_DIRECTION_ASC = 'asc';
-    const SORT_DIRECTION_DESC = 'desc';
 
     /**
      * @var string Relative or absolute URL of the Library root folder.
@@ -81,10 +79,9 @@ class MediaLibrary
 
     /**
      * Returns a list of folders and files in a Library folder.
-     *
      * @param string $folder Specifies the folder path relative the the Library root.
-     * @param mixed $sortBy Determines the sorting preference.
-     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants), FALSE (to disable sorting), or an associative array with a 'by' key and a 'direction' key: ['by' => SORT_BY_XXX, 'direction' => SORT_DIRECTION_XXX].
+     * @param string $sortBy Determines the sorting preference.
+     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants) and FALSE.
      * @param string $filter Determines the document type filtering preference.
      * Supported values are 'image', 'video', 'audio', 'document' (see FILE_TYPE_XXX constants of MediaLibraryItem class).
      * @param boolean $ignoreFolders Determines whether folders should be suppressed in the result list.
@@ -144,8 +141,8 @@ class MediaLibrary
     /**
      * Finds files in the Library.
      * @param string $searchTerm Specifies the search term.
-     * @param mixed $sortBy Determines the sorting preference.
-     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants), FALSE (to disable sorting), or an associative array with a 'by' key and a 'direction' key: ['by' => SORT_BY_XXX, 'direction' => SORT_DIRECTION_XXX].
+     * @param string $sortBy Determines the sorting preference.
+     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants).
      * @param string $filter Determines the document type filtering preference.
      * Supported values are 'image', 'video', 'audio', 'document' (see FILE_TYPE_XXX constants of MediaLibraryItem class).
      * @return array Returns an array of MediaLibraryItem objects.
@@ -159,25 +156,16 @@ class MediaLibrary
             $folderContents = $this->listFolderContents($folder, $sortBy, $filter);
 
             foreach ($folderContents as $item) {
-                if ($item->type == MediaLibraryItem::TYPE_FOLDER) {
+                if ($item->type == MediaLibraryItem::TYPE_FOLDER)
                     $findInFolder($item->path);
-                }
-                elseif ($this->pathMatchesSearch($item->path, $words)) {
-                    $result[] = $item;
-                }
+                elseif ($this->pathMatchesSearch($item->path, $words))
+                        $result[] = $item;
             }
         };
 
         $findInFolder('/');
 
-        /*
-         * Sort the result
-         */
-
-        if ($sortBy !== false) {
-            $this->sortItemList($result, $sortBy);
-        }
-
+        $this->sortItemList($result, $sortBy);
         return $result;
     }
 
@@ -236,9 +224,8 @@ class MediaLibrary
 
         $folders = $this->getStorageDisk()->directories($fullPath);
         foreach ($folders as $folder) {
-            if (basename($folder) == $folderName) {
+            if (basename($folder) == $folderName)
                 return true;
-            }
         }
 
         return false;
@@ -339,24 +326,21 @@ class MediaLibrary
             $destPath = self::validatePath($destPath);
             $fullDestPath = $this->getMediaPath($destPath);
 
-            if (!$disk->makeDirectory($fullDestPath)) {
+            if (!$disk->makeDirectory($fullDestPath))
                 return false;
-            }
 
             $folderContents = $this->scanFolderContents($fullSrcPath);
 
             foreach ($folderContents['folders'] as $dirInfo) {
-                if (!$copyDirectory($dirInfo->path, $destPath.'/'.basename($dirInfo->path))) {
+                if (!$copyDirectory($dirInfo->path, $destPath.'/'.basename($dirInfo->path)))
                     return false;
-                }
             }
 
             foreach ($folderContents['files'] as $fileInfo) {
                 $fullFileSrcPath = $this->getMediaPath($fileInfo->path);
 
-                if (!$disk->copy($fullFileSrcPath, $fullDestPath.'/'.basename($fileInfo->path))) {
+                if (!$disk->copy($fullFileSrcPath, $fullDestPath.'/'.basename($fileInfo->path)))
                     return false;
-                }
             }
 
             return true;
@@ -384,8 +368,7 @@ class MediaLibrary
             }
 
             $this->deleteFolder($originalPath);
-        }
-        else {
+        } else {
             // If there's a risk that the directory name was updated
             // by changing the letter case - swap source and destination
             // using a temporary directory with random name.
@@ -513,9 +496,8 @@ class MediaLibrary
     {
         $path = self::validatePath($path, true);
 
-        if (substr($path, 0, $this->storageFolderNameLength) == $this->storageFolder) {
+        if (substr($path, 0, $this->storageFolderNameLength) == $this->storageFolder)
             return substr($path, $this->storageFolderNameLength);
-        }
 
         throw new SystemException(sprintf('Cannot convert Media Library path "%s" to a path relative to the Library root.', $path));
     }
@@ -552,9 +534,8 @@ class MediaLibrary
     {
         $relativePath = $this->getMediaRelativePath($path);
 
-        if (!$this->isVisible($relativePath)) {
+        if (!$this->isVisible($relativePath))
             return;
-        }
 
         /*
          * S3 doesn't allow getting the last modified timestamp for folders,
@@ -615,16 +596,14 @@ class MediaLibrary
 
         $files = $this->getStorageDisk()->files($fullFolderPath);
         foreach ($files as $file) {
-            if ($libraryItem = $this->initLibraryItem($file, MediaLibraryItem::TYPE_FILE)) {
+            if ($libraryItem = $this->initLibraryItem($file, MediaLibraryItem::TYPE_FILE))
                 $result['files'][] = $libraryItem;
-            }
         }
 
         $folders = $this->getStorageDisk()->directories($fullFolderPath);
         foreach ($folders as $folder) {
-            if ($libraryItem = $this->initLibraryItem($folder, MediaLibraryItem::TYPE_FOLDER)) {
+            if ($libraryItem = $this->initLibraryItem($folder, MediaLibraryItem::TYPE_FOLDER))
                 $result['folders'][] = $libraryItem;
-            }
         }
 
         return $result;
@@ -633,51 +612,30 @@ class MediaLibrary
     /**
      * Sorts the item list by title, size or last modified date.
      * @param array $itemList Specifies the item list to sort.
-     * @param mixed $sortSettings Determines the sorting preference.
-     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants) or an associative array with a 'by' key and a 'direction' key: ['by' => SORT_BY_XXX, 'direction' => SORT_DIRECTION_XXX].
+     * @param string $sortBy Determines the sorting preference.
+     * Supported values are 'title', 'size', 'lastModified' (see SORT_BY_XXX class constants).
      */
-    protected function sortItemList(&$itemList, $sortSettings)
+    protected function sortItemList(&$itemList, $sortBy)
     {
         $files = [];
         $folders = [];
 
-        // Convert string $sortBy to array
-        if (is_string($sortSettings)) {
-            $sortSettings = [
-                'by' => $sortSettings,
-                'direction' => self::SORT_DIRECTION_ASC,
-            ];
-        }
-
-        usort($itemList, function ($a, $b) use ($sortSettings) {
-            $result = 0;
-
-            switch ($sortSettings['by']) {
-                case self::SORT_BY_TITLE:
-                    $result = strcasecmp($a->path, $b->path);
-                break;
+        usort($itemList, function ($a, $b) use ($sortBy) {
+            switch ($sortBy) {
+                case self::SORT_BY_TITLE: return strcasecmp($a->path, $b->path);
                 case self::SORT_BY_SIZE:
-                    if ($a->size < $b->size) {
-                        $result = -1;
-                    } else {
-                        $result = $a->size > $b->size ? 1 : 0;
-                    }
+                    if ($a->size > $b->size)
+                        return -1;
+
+                    return $a->size < $b->size ? 1 : 0;
                 break;
                 case self::SORT_BY_MODIFIED:
-                    if ($a->lastModified < $b->lastModified) {
-                        $result = -1;
-                    } else {
-                        $result = $a->lastModified > $b->lastModified ? 1 : 0;
-                    }
+                    if ($a->lastModified > $b->lastModified)
+                        return -1;
+
+                    return $a->lastModified < $b->lastModified ? 1 : 0;
                 break;
             }
-
-            // Reverse the polarity of the result to direct sorting in a descending order instead
-            if ($sortSettings['direction'] === self::SORT_DIRECTION_DESC) {
-                $result = 0 - $result;
-            }
-
-            return $result;
         });
     }
 
@@ -694,9 +652,8 @@ class MediaLibrary
 
         $result = [];
         foreach ($itemList as $item) {
-            if ($item->getFileType() == $filter) {
+            if ($item->getFileType() == $filter)
                 $result[] = $item;
-            }
         }
 
         $itemList = $result;
@@ -711,9 +668,8 @@ class MediaLibrary
      */
     protected function getStorageDisk()
     {
-        if ($this->storageDisk) {
+        if ($this->storageDisk)
             return $this->storageDisk;
-        }
 
         return $this->storageDisk = Storage::disk(
             Config::get('cms.storage.media.disk', 'local')
@@ -732,13 +688,11 @@ class MediaLibrary
 
         foreach ($words as $word) {
             $word = trim($word);
-            if (!strlen($word)) {
+            if (!strlen($word))
                 continue;
-            }
 
-            if (!Str::contains($path, $word)) {
+            if (!Str::contains($path, $word))
                 return false;
-            }
         }
 
         return true;

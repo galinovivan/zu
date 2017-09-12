@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Projects Controller
+
+# Model Form Field configuration
+form: $/akira/zu-concurs/models/projectscontroller/fields.yaml
+
+# Model Class name
+modelClass: Akira\ZuConcurs\Models\ProjectsController
+
+# Default redirect location
+defaultRedirect: akira/zu-concurs/projectscontroller
+
+# Create page
+create:
+    title: Create Projects Controller
+    redirect: akira/zu-concurs/projectscontroller/update/:id
+    redirectClose: akira/zu-concurs/projectscontroller
+
+# Update page
+update:
+    title: Edit Projects Controller
+    redirect: akira/zu-concurs/projectscontroller
+    redirectClose: akira/zu-concurs/projectscontroller
+
+# Preview page
+preview:
+    title: Preview Projects Controller

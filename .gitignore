@@ -18,3 +18,6 @@ composer.lock
 
 # for netbeans
 nbproject
+
+
+/node_modules

@@ -450,8 +450,7 @@ if(deltaY>=0){this.selectionMarker.style.height=deltaY+'px'
 this.selectionMarker.style.top=this.selectionStartPoint.y+'px'}
 else{this.selectionMarker.style.top=relativePosition.y+'px'
 this.selectionMarker.style.height=Math.abs(deltaY)+'px'}}}
-MediaManager.prototype.onSortingChanged=function(ev){var $target=$(ev.target),data={path:this.$el.find('[data-type="current-folder"]').val()}
-if($target.data('sort')=='by'){data.sortBy=$target.val();}else if($target.data('sort')=='direction'){data.sortDirection=$target.val()}
+MediaManager.prototype.onSortingChanged=function(ev){var data={sortBy:$(ev.target).val(),path:this.$el.find('[data-type="current-folder"]').val()}
 this.execNavigationRequest('onSetSorting',data)}
 MediaManager.prototype.onKeyDown=function(ev){var eventHandled=false
 switch(ev.which){case 13:var items=this.getSelectedItems(true,true)

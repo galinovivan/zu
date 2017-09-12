@@ -1,13 +1,13 @@
 title = "Demonstration"
 url = "/"
 layout = "default"
+is_hidden = 0
 ==
 <div class="jumbotron">
     <div class="container">
         {% content "welcome.htm" %}
     </div>
 </div>
-
 <div class="container">
 
     <div class="page-header">
@@ -111,8 +111,8 @@ layout = "default"
     </ul>
     <p>You might prefer to remove them for your website implementation.</p>
 
-    <br />
-
+   
+{% component 'menuUserWidget2' %}
     <div class="text-center">
         <p><a href="{{ 'ajax'|page }}" class="btn btn-lg btn-default">Continue to AJAX framework</a></p>
     </div>

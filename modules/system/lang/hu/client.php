@@ -71,13 +71,6 @@ return [
             'date_placeholder' => 'Dátum',
             'after_placeholder' => 'Kezdete',
             'before_placeholder' => 'Vége'
-        ],
-        'numbers' => [
-            'all' => 'összes',
-            'filter_button_text' => 'Szűrés',
-            'reset_button_text'  => 'Alaphelyzet',
-            'min_placeholder' => 'Minimum',
-            'max_placeholder' => 'Maximum'
         ]
     ],
 

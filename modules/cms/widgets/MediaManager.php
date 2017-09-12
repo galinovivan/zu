@@ -50,9 +50,6 @@ class MediaManager extends WidgetBase
      */
     public $cropAndInsertButton = false;
 
-    /**
-     * Constructor.
-     */
     public function __construct($controller, $alias)
     {
         $this->alias = $alias;
@@ -212,12 +209,10 @@ class MediaManager extends WidgetBase
 
     public function onSetSorting()
     {
-        $sortBy = Input::get('sortBy', $this->getSortBy());
-        $sortDirection = Input::get('sortDirection', $this->getSortDirection());
+        $sortBy = Input::get('sortBy');
         $path = Input::get('path');
 
         $this->setSortBy($sortBy);
-        $this->setSortDirection($sortDirection);
         $this->setCurrentFolder($path);
 
         $this->prepareVars();
@@ -600,15 +595,14 @@ class MediaManager extends WidgetBase
         $viewMode = $this->getViewMode();
         $filter = $this->getFilter();
         $sortBy = $this->getSortBy();
-        $sortDirection = $this->getSortDirection();
         $searchTerm = $this->getSearchTerm();
         $searchMode = strlen($searchTerm) > 0;
 
         if (!$searchMode) {
-            $this->vars['items'] = $this->listFolderItems($folder, $filter, ['by' => $sortBy, 'direction' => $sortDirection]);
+            $this->vars['items'] = $this->listFolderItems($folder, $filter, $sortBy);
         }
         else {
-            $this->vars['items'] = $this->findFiles($searchTerm, $filter, ['by' => $sortBy, 'direction' => $sortDirection]);
+            $this->vars['items'] = $this->findFiles($searchTerm, $filter, $sortBy);
         }
 
         $this->vars['currentFolder'] = $folder;
@@ -618,7 +612,6 @@ class MediaManager extends WidgetBase
         $this->vars['thumbnailParams'] = $this->getThumbnailParams($viewMode);
         $this->vars['currentFilter'] = $filter;
         $this->vars['sortBy'] = $sortBy;
-        $this->vars['sortDirection'] = $sortDirection;
         $this->vars['searchMode'] = $searchMode;
         $this->vars['searchTerm'] = $searchTerm;
         $this->vars['sidebarVisible'] = $this->getSidebarVisible();
@@ -664,7 +657,7 @@ class MediaManager extends WidgetBase
             throw new ApplicationException('Invalid input data');
         }
 
-        $this->putSession('media_filter', $filter);
+        return $this->putSession('media_filter', $filter);
     }
 
     protected function getFilter()
@@ -692,29 +685,12 @@ class MediaManager extends WidgetBase
             throw new ApplicationException('Invalid input data');
         }
 
-        $this->putSession('media_sort_by', $sortBy);
+        return $this->putSession('media_sort_by', $sortBy);
     }
 
     protected function getSortBy()
     {
         return $this->getSession('media_sort_by', MediaLibrary::SORT_BY_TITLE);
-    }
-
-    protected function setSortDirection($sortDirection)
-    {
-        if (!in_array($sortDirection, [
-            MediaLibrary::SORT_DIRECTION_ASC,
-            MediaLibrary::SORT_DIRECTION_DESC
-        ])) {
-            throw new ApplicationException('Invalid input data');
-        }
-
-        $this->putSession('media_sort_direction', $sortDirection);
-    }
-
-    protected function getSortDirection()
-    {
-        return $this->getSession('media_sort_direction', MediaLibrary::SORT_DIRECTION_ASC);
     }
 
     protected function getSelectionParams()
@@ -762,7 +738,7 @@ class MediaManager extends WidgetBase
             throw new ApplicationException('Invalid input data');
         }
 
-        $this->putSession('media_crop_selection_params', [
+        return $this->putSession('media_crop_selection_params', [
             'mode'   => $selectionMode,
             'width'  => $selectionWidth,
             'height' => $selectionHeight
@@ -771,12 +747,12 @@ class MediaManager extends WidgetBase
 
     protected function setSidebarVisible($visible)
     {
-        $this->putSession('sidebar_visible', !!$visible);
+        return $this->putSession('sideba_visible', !!$visible);
     }
 
     protected function getSidebarVisible()
     {
-        return $this->getSession('sidebar_visible', true);
+        return $this->getSession('sideba_visible', true);
     }
 
     protected function itemTypeToIconClass($item, $itemType)
@@ -808,7 +784,7 @@ class MediaManager extends WidgetBase
             }
         }
 
-        return array_reverse($result, true);
+        return array_reverse($result);
     }
 
     protected function setViewMode($viewMode)
@@ -821,7 +797,7 @@ class MediaManager extends WidgetBase
             throw new ApplicationException('Invalid input data');
         }
 
-        $this->putSession('view_mode', $viewMode);
+        return $this->putSession('view_mode', $viewMode);
     }
 
     protected function getViewMode()
