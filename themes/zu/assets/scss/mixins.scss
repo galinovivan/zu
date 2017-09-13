@@ -1,0 +1,13 @@
+@mixin webkitAppereance($prop) {
+  -webkit-appearance: $prop;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($prop: all 0.2s) {
+  transition: $prop;
+}

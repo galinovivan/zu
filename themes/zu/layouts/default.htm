@@ -10,9 +10,9 @@ description = "base layout"
     <meta name="description" content="{{ this.page.meta_description }}">
     <title>{{ this.page.title }}</title>
 
-    <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/css/common.css'|theme }}">
     {% styles %}
-    <script src="https://unpkg.com/vue"></script>
+    <!--<script src="https://unpkg.com/vue"></script>-->
 </head>
 <body>
 <header>
@@ -24,6 +24,9 @@ description = "base layout"
 <footer>
 {% partial 'app/footer' %}
 </footer>
+<script src="{{ 'node_modules/jquery/dist/jquery.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
 </body>
 </html>

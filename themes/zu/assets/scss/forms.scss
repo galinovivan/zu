@@ -1,0 +1,33 @@
+$radioSize: 15px;
+$radioMarkerSize: $radioSize * 0.5;
+.form {
+  * {
+    @include webkitAppereance(none);
+    background: $white;
+  }
+  .radio_group {
+    label {
+      display: block;
+      width: $radioSize;
+      height: $radioSize;
+      border: 1px solid $white;
+      background: $transparent;
+      @include flexCenter();
+      &::after {
+        content: '';
+        width: $radioMarkerSize;
+        height: $radioMarkerSize;
+        @include transition();
+      }
+    }
+    input[type="radio"] {
+      display: none;
+      &:checked + label {
+        &::after {
+          background: $white;
+        }
+      }
+    }
+
+  }
+}
