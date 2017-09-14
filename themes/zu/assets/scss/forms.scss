@@ -6,9 +6,10 @@ button {
   outline: none !important;
 }
 .form {
+  background: red;
   * {
     @include webkitAppereance(none);
-    background: $white;
+    background: $transparent;
   }
   .radio_group {
     label {

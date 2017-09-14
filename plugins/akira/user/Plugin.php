@@ -19,6 +19,7 @@ class Plugin extends PluginBase
 
     public $require = ['RainLab.User'];
 
+
     /**
      * @return array
      */
@@ -60,6 +61,13 @@ class Plugin extends PluginBase
             $widget->addFields($config);
         });
 
+    }
+
+    public function registerComponents()
+    {
+        return [
+          'Akira\User\Components\Registration' => 'registration'
+        ];
     }
 
 }

@@ -18,6 +18,11 @@ use Exception;
 
 class Account extends ComponentBase
 {
+
+    const SCHOOL_GROUP = 4;
+    const STUDENTS_GROUP = 3;
+
+
     public function componentDetails()
     {
         return [
@@ -79,6 +84,11 @@ class Account extends ComponentBase
         $this->page['user'] = $this->user();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
+
+        /** funcking monkey patching */
+        $this->page['school'] = self::SCHOOL_GROUP;
+        $this->page['student'] = self::STUDENTS_GROUP;
+        /** end patch */
     }
 
     /**
@@ -206,6 +216,14 @@ class Account extends ComponentBase
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
             $user = Auth::register($data, $automaticActivation);
+
+            /** fucking monkey patching */
+            if (isset($data['groups'])) {
+                $user->groups = $data['groups'];
+                $user->save();
+            }
+            /** end patch */
+
 
             /*
              * Activation is by the user, send the email
