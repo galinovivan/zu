@@ -12,7 +12,7 @@ class UserAddFields extends Migration
     public function up()
     {
 
-        if (Schema::hasColumns('users', ['date_of_bithday','city', 'phone', 'school'])) {
+        if (Schema::hasColumns('users', ['date_of_bithday', 'city', 'phone', 'school', 'city', 'lead'])) {
             return;
         }
 
@@ -21,6 +21,7 @@ class UserAddFields extends Migration
            $table->string('city')->nullable();
            $table->string('phone')->nullable();
            $table->string('school')->nullable();
+           $table->string('lead')->nullable();
         });
     }
 
@@ -28,7 +29,7 @@ class UserAddFields extends Migration
     {
         if (Schema::hasTable('users')) {
             Schema::table('users', function($table) {
-               $table->dropColumn(['date_of_bithday','city', 'phone', 'school']);
+               $table->dropColumn(['date_of_bithday', 'city', 'phone', 'school', 'city', 'lead']);
             });
         }
     }

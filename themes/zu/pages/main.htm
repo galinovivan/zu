@@ -7,13 +7,6 @@ is_hidden = 0
 paramCode = "code"
 forceSecure = 0
 ==
-<?php
-function onTest() {
-    $result = post('test');
-    $this['result'] = $result;
-}
-?>
-==
 {% partial 'user/reg-form' %}
 
 {% if not user %}

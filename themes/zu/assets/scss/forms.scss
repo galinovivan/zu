@@ -1,5 +1,10 @@
 $radioSize: 15px;
 $radioMarkerSize: $radioSize * 0.5;
+input,
+textarea,
+button {
+  outline: none !important;
+}
 .form {
   * {
     @include webkitAppereance(none);

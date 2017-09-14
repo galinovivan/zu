@@ -1,37 +1,26 @@
 phone:
-    label: hjjhjjhjh
+    label: phone
     tab: rainlab.userplus::lang.tab.profile
     span: left
+    type: number
 
-mobile:
-    label: rainlab.userplus::lang.user.mobile
-    tab: rainlab.userplus::lang.tab.profile
-    span: right
+date_of_bithday:
+              label: date of birt
+              tab: rainlab.userplus::lang.tab.profile
+              span: right
+              type: datepicker
 
-company:
-    label: rainlab.userplus::lang.user.company
+school:
+    label: school
     tab: rainlab.userplus::lang.tab.profile
     span: left
-
-street_addr:
-    label: rainlab.userplus::lang.user.street_addr
-    tab: rainlab.userplus::lang.tab.profile
 
 city:
-    label: rainlab.userplus::lang.user.city
+    label: city
     tab: rainlab.userplus::lang.tab.profile
     span: left
 
-zip:
-    label: rainlab.userplus::lang.user.zip
+lead:
+    label: lead
     tab: rainlab.userplus::lang.tab.profile
     span: right
-
-
-state:
-    label: rainlab.location::lang.state.label
-    placeholder: rainlab.location::lang.state.select
-    type: dropdown
-    tab: rainlab.userplus::lang.tab.profile
-    span: right
-    dependsOn: country
