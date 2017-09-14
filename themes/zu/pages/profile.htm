@@ -1,0 +1,16 @@
+title = "profile"
+url = "/profile"
+layout = "default"
+is_hidden = 1
+
+[account]
+paramCode = "code"
+forceSecure = 0
+==
+
+{% if user %}
+
+<p>name: {{ user.name }}</p>
+<p>id: {{ user.id }}</p>
+
+{% endif %}

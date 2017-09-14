@@ -1,0 +1,6 @@
+{% if user %}
+<p>{{ user.name }}</p>
+<button data-request="logout">logout</button>
+{% else %}
+<a>registration</a>
+{% endif %}

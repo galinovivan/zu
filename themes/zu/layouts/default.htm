@@ -1,5 +1,7 @@
+;;
 description = "base layout"
 ==
+{##}
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,6 +19,7 @@ description = "base layout"
 <body>
 <header>
 {% partial 'app/header' %}
+{% partial 'user/user-widget' user=user %}
 </header>
 <main>
     {% page %}

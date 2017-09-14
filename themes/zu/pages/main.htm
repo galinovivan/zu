@@ -6,13 +6,9 @@ is_hidden = 0
 [RainLab\User\Components\Account account]
 paramCode = "code"
 forceSecure = 0
-
-[registration]
 ==
-<p>{{ this.student_group }}</p>
+
 {% partial 'user/reg-form' student=student school=school %}
 {% if not user %}
 {% partial 'app/welcome' %}
 {% endif %}
-
-{{ this.userGroup }}
