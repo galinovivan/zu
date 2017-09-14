@@ -1,3 +1,6 @@
 1.0.0:
       - initial version
       - user_add_fields.php
+1.0.1:
+      - fix users table
+      - user_add_fields.php

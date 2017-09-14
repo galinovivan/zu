@@ -56,7 +56,7 @@ return [
             'driver'    => 'mysql',
             'host'      => 'localhost',
             'port'      => '3306',
-            'database'  => 'new_zu',
+            'database'  => 'new_zu_db',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',

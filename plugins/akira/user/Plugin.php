@@ -49,7 +49,6 @@ class Plugin extends PluginBase
                'lead'
            ]);
 
-        //   $model->implement[] = 'RainLab.Location.Behaviors.LocationModel';
         });
 
         UserController::extendFormFields(function($widget) {
