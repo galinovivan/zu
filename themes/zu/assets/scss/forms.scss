@@ -1,19 +1,44 @@
 $radioSize: 15px;
-$radioMarkerSize: $radioSize * 0.5;
+$radioMarkerSize: $radioSize * 0.6;
 input,
 textarea,
 button {
   outline: none !important;
 }
 .form {
-  background: red;
-  * {
+  background: $baseOverlayColor;
+  input, textarea {
     @include webkitAppereance(none);
     background: $transparent;
   }
+  .form-group {
+    margin-bottom: 30px;
+  }
+  input {
+    border: 1px solid $white;
+    background: $transparent;
+    padding: 0 20px;
+    color: $white;
+    @include mozPlaceholder();
+    @include webkitPlaceholder();
+    &:-webkit-autofill {
+      background: $transparent;
+    } 
+    &.medium {
+      width: 262px;
+      height: 32px;
+    }
+  }
+  input[type="submit"],
+  button {
+    margin-top: 35px;
+    @include formButton();
+  }
   .radio_group {
+    display: inline-flex;
+    margin-right: 20px;
+    margin-bottom: 35px;
     label {
-      display: block;
       width: $radioSize;
       height: $radioSize;
       border: 1px solid $white;
@@ -34,6 +59,9 @@ button {
         }
       }
     }
-
+    .label {
+      font-size: 1rem;
+      margin-left: 12px;
+    }
   }
 }
