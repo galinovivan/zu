@@ -1,0 +1,17 @@
+;;
+title = "welcome"
+url = "/welcome"
+layout = "default"
+is_hidden = 0
+
+[RainLab\User\Components\Account account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+{##}
+<div class="main_page page_column">
+    {% partial 'app/welcome' %}
+</div>

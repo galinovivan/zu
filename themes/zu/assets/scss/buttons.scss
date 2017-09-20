@@ -1,0 +1,10 @@
+.arrow_button {
+    @include formButton();
+    font-size: 1.15rem;
+    &.small {
+        width: 145px;
+    }
+    &.xl {
+        width: 300px;
+    }
+}

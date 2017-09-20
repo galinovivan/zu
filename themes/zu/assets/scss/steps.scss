@@ -1,0 +1,23 @@
+.steps_toggle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  li {
+    width: 8px;
+    height: 8px;
+    background: $white;
+    border-radius: 100%;
+    margin-right: 16px;
+    cursor: pointer;
+    @include transition();
+    &.active {
+      border: 1px solid $white;
+      background: $transparent;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  &.toggle_center {
+    justify-content: center;
+  }
+}

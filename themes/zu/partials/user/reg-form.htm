@@ -29,7 +29,8 @@
                 type="email"
                 class="form-control medium"
                 id="registerEmail"
-                placeholder="Email" />
+                placeholder="Email" data-toggle="tooltip" data-placement="right" title="Мы не будем забрасывать тебя письмами
+                 и адрес твоей почты никому-никому не скажем" />
     </div>
 
     <div class="form-group">
@@ -40,17 +41,16 @@
                 id="registerPassword"
                 placeholder="Passwword" />
     </div>
-    <div class="form-group">
-        <input
-                name="password_confirmation"
-                type="password"
-                class="form-control medium"
-                id="registerPassword"
-                placeholder="Passwword" />
-    </div>
+    <!--<div class="form-group">-->
+        <!--<input-->
+                <!--name="password_confirmation"-->
+                <!--type="password"-->
+                <!--class="form-control medium"-->
+                <!--id="registerPassword"-->
+                <!--placeholder="Passwword" />-->
+    <!--</div>-->
 
-    <button type="submit" class="">Отправить <i class="arrow_right"></i></button>
+    <button  data-toggle="tooltip"  data-placement="bottom" title="Если что-то пошло не так, сообщи
+нам о своей проблеме по этому адресу:
+help@zvezdaudachi.ru">Отправить <i class="arrow_right"></i></button>
 </form>
-{% flash %}
-{{ message }}
-{% endflash %}

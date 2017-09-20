@@ -13,7 +13,6 @@
 }
 
 @mixin formButton() {
-  display: block;
   border: none;
   background: $transparent;
   box-shadow: inset 0 1px 0 0 $white;
@@ -30,6 +29,8 @@
   display: flex;
   justify-content: space-between;
   padding-right: 0;
+  font-family: $lightFont;
+  text-decoration: none;
   @include buttonArrowHover();
 }
 
@@ -41,6 +42,17 @@
   &:hover {
     box-shadow: inset 0 2px 0 0 $white;
     text-shadow: 0.5px 0 0 $white;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+@mixin linkHover() {
+  @include transition(all .4s);
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    box-shadow: inset 0 -1px 0 0 $white;
   }
 }
 
@@ -48,6 +60,7 @@
     &::-webkit-input-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
 }
 
@@ -55,9 +68,11 @@
     &::-moz-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
     &:-moz-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
 }

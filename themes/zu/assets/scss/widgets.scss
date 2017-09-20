@@ -1,0 +1,30 @@
+.bottom_widgets_container {
+    position: fixed;
+    bottom: 105px;
+    left: $containerPadding;
+}
+
+.widget {
+    display: flex;
+    margin-bottom: 15px;
+    .swipe_info {
+        transform: scale(0);
+        opacity: 0;
+        margin-left: 55px;
+        display: flex;
+        @include transition(opacity .2s);
+        &.open {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .form_item {
+            margin-right: 60px;
+        }
+        .info_item {
+            margin-right: 60px;
+        }
+    }
+    .action_button {
+        cursor: pointer;
+    }
+}

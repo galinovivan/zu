@@ -8,6 +8,36 @@ body {
     color: $white;
 }
 
+a, p, span, li {
+    font-family: $baseFont;
+}
+
 button, input {
     font-family: $baseFont;
+}
+
+a {
+    outline: none !important;
+    color: $white;
+    text-decoration: underline;
+    &:hover {
+        color: $white;
+    }
+}
+
+.link {
+    font-family: $lightFont;
+    font-weight: 300;
+    color: $white;
+    @include linkHover();
+}
+.light_font {
+    font-family: $lightFont;
+    font-weight: 300;
+}
+
+h2 {
+    font-family: $lightFont;
+    font-size: 2.2rem;
+    color: $white;
 }

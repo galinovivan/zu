@@ -181,7 +181,7 @@ class Account extends ComponentBase
      */
     public function onRegister()
     {
-        //Flash::success('run ses');
+
         try {
             if (!UserSettings::get('allow_registration', true)) {
                 throw new ApplicationException(Lang::get('rainlab.user::lang.account.registration_disabled'));
@@ -224,7 +224,7 @@ class Account extends ComponentBase
                 $user->save();
             }
             /** end patch */
-
+            Flash::success('Вы успешно зарегистрировались');
 
             /*
              * Activation is by the user, send the email

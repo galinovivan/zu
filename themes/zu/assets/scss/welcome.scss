@@ -1,0 +1,21 @@
+
+#welcome {
+    .new_user_info {
+        max-width: 520px;
+        p {
+            font-size: 1.5rem;
+            line-height: 30px;
+        }
+        &.about_concurs {
+            max-width: 80%;
+          //  padding: 0 $containerPadding;
+        }
+    }
+    .steps_toggle {
+    }
+    .step_user_two {
+        & + .steps_toggle {
+            margin-top: 50px;
+        }
+    }
+}

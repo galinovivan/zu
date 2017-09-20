@@ -1,0 +1,21 @@
+$top: 100px;
+
+.main_logo {
+  position: fixed;
+  top: $top;
+  left: $containerPadding;
+  z-index: 1000;
+  img {
+    max-width: 180px;
+  }
+}
+
+.cds_logo {
+  position: fixed;
+  top: $top;
+  right: $containerPadding;
+  z-index: 1000;
+  img {
+    max-width: 155px;
+  }
+}

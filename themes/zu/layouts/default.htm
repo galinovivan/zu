@@ -17,17 +17,23 @@ description = "base layout"
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-<header>
+<header class="header">
 {% partial 'app/header' %}
-{% partial 'user/user-widget' user=user %}
 </header>
 <main>
     {% page %}
 </main>
+<div class="bottom_widgets_container">
+    {% partial 'app/contact-widget' %}
+    {% partial 'user/user-widget' user=user %}
+</div>
 <footer>
 {% partial 'app/footer' %}
+{% partial 'app/flash' %}
 </footer>
 <script src="{{ 'node_modules/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'node_modules/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}

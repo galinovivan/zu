@@ -6,7 +6,7 @@ button {
   outline: none !important;
 }
 .form {
-  background: $baseOverlayColor;
+  background: $transparent;
   input, textarea {
     @include webkitAppereance(none);
     background: $transparent;
@@ -19,6 +19,7 @@ button {
     background: $transparent;
     padding: 0 20px;
     color: $white;
+    border-radius: 0;
     @include mozPlaceholder();
     @include webkitPlaceholder();
     &:-webkit-autofill {
@@ -29,15 +30,22 @@ button {
       height: 32px;
     }
   }
+  input, textarea {
+    font-family: $lightFont;
+    &:focus {
+      background: $transparent;
+      color: $white;
+    }
+  }
   input[type="submit"],
   button {
-    margin-top: 35px;
+    margin-top: 40px;
     @include formButton();
   }
   .radio_group {
     display: inline-flex;
     margin-right: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     label {
       width: $radioSize;
       height: $radioSize;
@@ -65,3 +73,43 @@ button {
     }
   }
 }
+
+.material_form {
+  .form_item {
+    border: none;
+    border-bottom: 1px solid $white;
+    background: $transparent !important;
+    width: 180px;
+    color: $white;
+    padding-bottom: 10px;
+    font-family: $lightFont;
+    @include webkitAppereance(none);
+    @include webkitPlaceholder();
+    @include mozPlaceholder();
+    }
+  .icon_button {
+    background: $transparent;
+    border: none;
+  }
+  input[type="submit"], button {
+    cursor: pointer;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
+}
+
+

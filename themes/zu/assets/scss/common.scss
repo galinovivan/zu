@@ -1,6 +1,7 @@
 @import "reset";
-@import "../../node_modules/bootstrap/scss/bootstrap-grid";
 
+// пересобрать 
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import "variable";
 @import "mixins";
@@ -9,8 +10,21 @@
 @import "typhography";
 @import 'icons';
 
+@import 'sprites';
 @import "forms";
+@import 'buttons';
 @import "grid";
 @import "base";
+@import "dialog";
 
+@import 'tooltip';
+@import 'steps';
+@import "animation";
+@import 'logo';
+
+@import "widgets";
+@import 'user-widget';
+
+@import 'welcome';
+@import 'header';
 @import "page";

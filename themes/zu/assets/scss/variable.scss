@@ -3,11 +3,19 @@
 //colors
 $transparent: transparent;
 $white: #ffffff;
-$baseOverlayColor: rgba(40, 167, 214, .8);
+$baseOverlayColor: rgba(22, 127, 176, .9);
 
 
 // fonts
-$baseFont: 'Ubuntu';
+$baseFont: 'ubuntu';
+$lightFont: 'ubuntu-light';
+$italicFont: 'ubuntu-light-italic';
 
 // font-sezi
 $baseFontSize: 14px;
+
+//grid
+$containerPadding: 100px;
+
+//tooltip
+$tooltipBackground: #009fda; 
