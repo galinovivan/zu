@@ -76,3 +76,9 @@
       font-family: $lightFont;
     }
 }
+
+@mixin flashFadeAnimation() {
+   animation: flash-fade 1s ease-in-out;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}

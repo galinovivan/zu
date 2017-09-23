@@ -1,4 +1,5 @@
 import Cookie from '../../helpers/cookie';
+import Storage from '../../helpers/storage';
 
 export default new Vue({
    el: '#welcome',
@@ -10,6 +11,7 @@ export default new Vue({
         this.isNewUser();
         if (this.isRegister()) {
             this.step = 3;
+            Storage.remove('register');
         }
 
     },
@@ -31,7 +33,8 @@ export default new Vue({
            }
         },
         isRegister() {
-            return Cookie.get('user_auth');
+            console.log(Storage.get('register'));
+            return Storage.get('register');
         }
     }
 });

@@ -1,0 +1,12 @@
+.alert {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    background: $tooltipBackground;
+    @include flashFadeAnimation();
+    * {
+        color: $white;
+    }
+}
