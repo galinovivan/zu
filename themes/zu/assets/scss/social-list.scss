@@ -1,0 +1,30 @@
+.social_list {
+    li {
+        display: inline-block;
+        margin-right: 25px;
+        a {
+            i {
+                &.sprite_social-icon-vk {
+                     width: 36px;
+                     height: 22px;
+                }
+            }
+            &:hover {
+                i {
+                    &.sprite_social-icon_vk {
+                        background-position: -101px -45px;
+                    }
+                    &.sprite_social-icon_fb {
+                        background-position: -5px -5px;
+                    }
+                    &.sprite_social-icon_insta {
+                        background-position: -101px -5px;
+                    }
+                    &.sprite_social-icon_youtude {
+                        background-position: -46px -77px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.tiles_container {
+    background: red;
+    .tile {
+        box-shadow: inset 0 0 0 10px $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 15%;
+        text-decoration: none;
+        &.main_tile {
+            height: 100vh;
+            .tile_description {
+                span {
+                    font-size: 3.1rem;
+                    font-family: $altBoldItalic;
+                    @include linkHover(-2px);
+                    transition-duration: 0.1s;
+                }
+            }
+        }
+    }
+}
+
+
+.school_main {
+    .main_tile {
+        background: url('../images/school_main_bg.png') no-repeat;
+        background-size: cover;
+    }
+}

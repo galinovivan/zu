@@ -1,0 +1,72 @@
+description = "main layout"
+
+[staticPage]
+
+[staticMenu]
+code = "school"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+{##}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{{ staticPage.meta_description }}">
+    <title>{{ staticPage.title }}</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="{{ 'assets/css/common.css'|theme }}">
+    {% styles %}
+</head>
+<body>
+{% partial 'app/logo' %}
+{% partial 'app/cds-logo' %}
+<main class="main school_main clearfix">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className="school" %}
+    </div>
+    <div class="tiles_container">
+        <div class="contaner-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="tile main_tile" href="#">
+                        <div class="tile_title">
+                                <h3>НОВОСТИ</h3>
+                            </div>
+                            <div class="tile_description">
+                                <span>
+                                    ДОБАВЛЕНЫ
+НОВЫЕ
+НОМИНАЦИИ 
+ДЛЯ
+школьников
+                                </span>
+                            </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+{% partial 'app/flash' %}
+</footer>
+<script src="{{ 'node_modules/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'node_modules/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>
+</html>

@@ -2,3 +2,14 @@
     background: url('../images/bg_shared.png') no-repeat;
     background-size: cover;
 }
+
+.main {
+    .sidebar_container {
+        float: left;
+    }
+    .tiles_container {
+        float: left;
+        padding-left: $sidebarWidth;
+        width: 100%;
+    }
+}

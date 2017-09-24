@@ -1,0 +1,24 @@
+{##}
+<ul class="menu">
+    <li class="menu_item">
+        <a class="nav_close">
+            <img src="{{ 'assets/images/close.png'|theme }}">
+        </a>
+    </li>
+    {% for item in staticMenu.menuItems %}
+        <li class="menu_item">
+            <a href="{{ item.url }}" class="light_font">{{ item.title|upper }}</a>
+        </li>
+    {% endfor %}
+    <li class="bottom_items">
+        <div class="contact">
+            <span class="phone light_phone">{% content 'contact/phone' %}</span>
+            <a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">
+            {% content 'contact/email' %}
+            </a>
+        </div>
+        <div class="social">
+            {% partial 'app/social-list' %}
+        </div>
+    </li>
+</ul>

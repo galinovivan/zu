@@ -1,22 +1,33 @@
 
 
 //colors
+$black: #000000;
 $transparent: transparent;
 $white: #ffffff;
 $baseOverlayColor: rgba(22, 127, 176, .9);
+$baseColor: #009fda;
 
 
 // fonts
 $baseFont: 'ubuntu';
 $lightFont: 'ubuntu-light';
 $italicFont: 'ubuntu-light-italic';
+$altBoldItalic: 'pt-bold-italic';
 
-// font-sezi
+// font-size
 $baseFontSize: 14px;
 
 //grid
 $containerPadding: 100px;
-$minColumnHeight: 1000px;
+$minColumnHeight: 650px;
 
 //tooltip
-$tooltipBackground: #009fda; 
+$tooltipBackground: $baseColor;
+
+
+// nav width
+$navWidth: 27vw;
+
+
+//sidebar
+$sidebarWidth: 80px;

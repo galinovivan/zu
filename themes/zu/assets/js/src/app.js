@@ -4,3 +4,4 @@ import './widget';
 
 import './tooltip';
 
+import './nav';
