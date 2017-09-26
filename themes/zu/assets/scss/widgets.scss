@@ -12,6 +12,7 @@
         opacity: 0;
         margin-left: 55px;
         display: flex;
+        z-index: 1000;
         @include transition(opacity .2s);
         &.open {
             transform: scale(1);

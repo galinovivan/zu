@@ -1,7 +1,6 @@
 .tiles_container {
-    background: red;
     .tile {
-        box-shadow: inset 0 0 0 10px $black;
+        border: 10px solid $black;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -10,11 +9,28 @@
         &.main_tile {
             height: 100vh;
             .tile_description {
+                max-width: 410px;
                 span {
                     font-size: 3.1rem;
                     font-family: $altBoldItalic;
+                    text-transform: uppercase;
                     @include linkHover(-2px);
                     transition-duration: 0.1s;
+                }
+            }
+        }
+        &.small_tile {
+            height: 50vh;
+            .tile_description,
+            .tile_title {
+                z-index: 20;
+            }
+            .tile_description {
+                max-width: 265px;
+                span {
+                    font-size: 2.3rem;
+                    font-family: $altBoldItalic;
+                    text-transform: uppercase;
                 }
             }
         }
@@ -22,9 +38,53 @@
 }
 
 
+
+
+
+
 .school_main {
+    .school_about_tile {
+        background: url('../images/school_about.png') no-repeat;
+        border-left: 0;
+}
+    .school_timeline_tile {
+        background: url('../images/school_timeline.jpg') no-repeat;
+        border-left: 0;
+    }
+    .school_gallery_tile {
+        background: url('../images/school_gallery.jpg') no-repeat;
+        border: 0;
+        border-bottom: 10px solid $black;
+        border-right: 10px solid $black;
+    }
+    .school_partners_tile {
+        background: url('../images/school_partners.jpg') no-repeat;
+        border-top: 0;
+        border-left: 0;
+    }
     .main_tile {
         background: url('../images/school_main_bg.png') no-repeat;
         background-size: cover;
+    }
+    .small_tile {
+        position: relative;
+        &::after {
+            content: '';
+            width: 0;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: $baseColor;
+            opacity: 0;
+            z-index: 10;
+            @include transition(opacity .2s);
+        }
+        &:hover {
+            &::after {
+                width: 100%;
+                opacity: 1;
+            }
+        }
     }
 }
