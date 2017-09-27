@@ -19,4 +19,12 @@
            // background: $baseColor;
         }
     }
+    &.students {
+        background: $studentsBaseColor;
+        .navigation {
+            .menu {
+                background: $studentsBaseColor;
+            }
+        }
+    }
 }

@@ -67,24 +67,35 @@
         background-size: cover;
     }
     .small_tile {
-        position: relative;
-        &::after {
-            content: '';
-            width: 0;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: $baseColor;
-            opacity: 0;
-            z-index: 10;
-            @include transition(opacity .2s);
-        }
-        &:hover {
-            &::after {
-                width: 100%;
-                opacity: 1;
-            }
-        }
+        @include tilesFillingHover($baseOverlayColor);
+    }
+}
+
+.students_main {
+    .main_tile {
+        background: url('../images/students_main_bg.jpg') no-repeat;
+        background-size: cover;
+    }
+    .students_timeline_tile {
+        background: url('../images/students_timeline.jpg') no-repeat;
+        border-left: 0;
+    }
+    .students_gallery_tile {
+        background: url('../images/students_gallery.jpg') no-repeat;
+        border: 0;
+        border-bottom: 10px solid $black;
+        border-right: 10px solid $black;
+    }
+    .students_about_tile {
+        background: url('../images/students_about.jpg') no-repeat;
+        border-left: 0;
+    }
+    .students_partners_tile {
+        background: url('../images/students_partners.jpg') no-repeat;
+        border-top: 0;
+        border-left: 0;
+    }
+    .small_tile {
+        @include tilesFillingHover($baseOverlayStudents);
     }
 }

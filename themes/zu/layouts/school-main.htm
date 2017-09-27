@@ -16,15 +16,7 @@ security = "all"
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="{{ staticPage.meta_description }}">
-    <title>{{ staticPage.title }}</title>
-    <script src="https://unpkg.com/vue"></script>
-    <link rel="stylesheet" href="{{ 'assets/css/common.css'|theme }}">
-    {% styles %}
+   {% partial 'app/head' %}
 </head>
 <body>
 {% partial 'app/logo' %}
@@ -33,104 +25,15 @@ security = "all"
     <div class="sidebar_container">
         {% partial 'app/sidebar' className="school" %}
     </div>
-    <div class="tiles_container">
-        <div class="contaner-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <a class="tile main_tile" href="#">
-                        <div class="tile_title">
-                                <h3>НОВОСТИ</h3>
-                            </div>
-                            <div class="tile_description">
-                                <span>
-                                    ДОБАВЛЕНЫ
-НОВЫЕ
-НОМИНАЦИИ 
-ДЛЯ
-школьников
-                                </span>
-                            </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a class="tile small_tile school_about_tile" href="#">
-                                            <div class="tile_title">
-                                                    <h4>О ПРОЕКТЕ</h4>
-                                            </div>
-                                            <div class="tile_description">
-                                                <span>конкурс
-звезда удачи
-это шанс
-ощутить
-себя ...</span>
-                                            </div>
-                                    </a>                                
-                                </div>
-                                <div class="col-md-6">
-                                 <a class="tile small_tile school_timeline_tile" href="#">
-                                            <div class="tile_title">
-                                                    <h4>СРОКИ</h4>
-                                            </div>
-                                            <div class="tile_description">
-                                                <span>итак, До
-окончания
-приёма
-работ
-осталось ...</span>
-                                            </div>
-                                    </a>    
-                                    </div>
-                            </div>
-                        </div>    
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a class="tile small_tile school_gallery_tile" href="#">
-                                            <div class="tile_title">
-                                                    <h4>ГАЛЕРЕЯ</h4>
-                                            </div>
-                                            <div class="tile_description">
-                                                <span>количество
-загруженных
-работ
-на этой
-неделе ...</span>
-                                            </div>
-                                    </a>                                
-                                </div>
-                                <div class="col-md-6">
-                                 <a class="tile small_tile school_partners_tile" href="#">
-                                            <div class="tile_title">
-                                                    <h4>ПАРТНЁРЫ</h4>
-                                            </div>
-                                            <div class="tile_description">
-                                                <span>учредитель
-и организатор
-конкурса
-ГК «ЦДС»
-сообщает ...</span>
-                                            </div>
-                                    </a>    
-                                    </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% partial 'school/main-tiles' %}
 </main>
 
 <footer>
 {% partial 'app/flash' %}
 </footer>
-<script src="{{ 'node_modules/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
 <script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
-<script src="{{ 'node_modules/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}

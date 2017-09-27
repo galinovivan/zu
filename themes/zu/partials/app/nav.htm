@@ -10,6 +10,13 @@
             <a href="{{ item.url }}" class="light_font">{{ item.title|upper }}</a>
         </li>
     {% endfor %}
+    <li class="menu_item">
+        {% if user %}
+        <a href="{{ 'profile'|page }}" class="light_font">Личный кабинет</a>
+        {% else %}
+        <a href="#" class="light_font">Вход/Регистрацция</a>
+        {% endif %}
+    </li>
     <li class="bottom_items">
         <div class="contact">
             <span class="phone light_phone">{% content 'contact/phone' %}</span>

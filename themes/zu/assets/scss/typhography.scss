@@ -1,5 +1,8 @@
 html {
     font-size: $baseFontSize;
+    @media screen and (max-width: 1400px) {
+        font-size: $baseFontSize * 0.8;
+    }
 }
 
 body {
