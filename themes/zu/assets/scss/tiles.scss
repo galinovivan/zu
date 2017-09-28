@@ -1,10 +1,9 @@
 .tiles_container {
     .tile {
-        border: 10px solid $black;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-left: 15%;
+        padding-left: 20%;
         text-decoration: none;
         &.main_tile {
             height: 100vh;
@@ -45,22 +44,20 @@
 .school_main {
     .school_about_tile {
         background: url('../images/school_about.png') no-repeat;
-        border-left: 0;
+        background-size: cover;
 }
     .school_timeline_tile {
         background: url('../images/school_timeline.jpg') no-repeat;
-        border-left: 0;
+        background-size: cover;
     }
     .school_gallery_tile {
         background: url('../images/school_gallery.jpg') no-repeat;
-        border: 0;
-        border-bottom: 10px solid $black;
-        border-right: 10px solid $black;
+        background-size: cover;
     }
     .school_partners_tile {
         background: url('../images/school_partners.jpg') no-repeat;
-        border-top: 0;
-        border-left: 0;
+        background-size: cover;
+
     }
     .main_tile {
         background: url('../images/school_main_bg.png') no-repeat;
@@ -68,32 +65,25 @@
     }
     .small_tile {
         @include tilesFillingHover($baseOverlayColor);
+        background-size: cover;
     }
 }
 
 .students_main {
     .main_tile {
         background: url('../images/students_main_bg.jpg') no-repeat;
-        background-size: cover;
     }
     .students_timeline_tile {
         background: url('../images/students_timeline.jpg') no-repeat;
-        border-left: 0;
     }
     .students_gallery_tile {
         background: url('../images/students_gallery.jpg') no-repeat;
-        border: 0;
-        border-bottom: 10px solid $black;
-        border-right: 10px solid $black;
     }
     .students_about_tile {
         background: url('../images/students_about.jpg') no-repeat;
-        border-left: 0;
     }
     .students_partners_tile {
         background: url('../images/students_partners.jpg') no-repeat;
-        border-top: 0;
-        border-left: 0;
     }
     .small_tile {
         @include tilesFillingHover($baseOverlayStudents);

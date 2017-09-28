@@ -6,7 +6,7 @@
 }
 .sidebar {
     padding: 70px 0;
-    background: $baseColor;
+    background: $baseOverlayColor;
     height: 100vh;
     min-height: $minColumnHeight;
     display: flex;
@@ -20,7 +20,7 @@
         }
     }
     &.students {
-        background: $studentsBaseColor;
+        background: $baseOverlayStudents;
         .navigation {
             .menu {
                 background: $studentsBaseColor;

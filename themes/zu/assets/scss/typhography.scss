@@ -56,3 +56,16 @@ h4 {
     letter-spacing: 2px;
     font-family: $lightFont;
 }
+
+.gray {
+    color: $gray;
+}
+
+.page_heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $gray;
+    h2 {
+        font-family: $altBoldItalic;
+        color: $gray;
+    }
+}

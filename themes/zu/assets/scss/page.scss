@@ -5,11 +5,12 @@
 
 .main {
     .sidebar_container {
-        float: left;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
     }
     .tiles_container {
-        float: left;
-        padding-left: $sidebarWidth;
         width: 100%;
     }
 }

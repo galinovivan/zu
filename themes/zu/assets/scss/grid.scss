@@ -33,3 +33,7 @@
 .clearfix {
     @include clearfix();
 }
+
+.top_lg_marg {
+    padding-top: 145px;
+}
