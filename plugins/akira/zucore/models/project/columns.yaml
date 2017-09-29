@@ -1,0 +1,28 @@
+columns:
+    name:
+        label: Name
+        type: text
+    id:
+        label: id
+        type: number
+    lead:
+        label: lead
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    user_id:
+        label: user_id
+        type: number
+    nomination:
+        label: nomination
+        type: text
+    moderation:
+        label: moderation
+        type: number
+    project_file:
+        label: file
+        type: switch

@@ -47,7 +47,8 @@ class Plugin extends PluginBase
                'phone',
                'school',
                'city',
-               'lead'
+               'lead',
+               'exists_profile'
            ]);
 
         });

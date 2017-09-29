@@ -1,0 +1,11 @@
+plugin:
+    name: 'akira.zucore::lang.plugin.name'
+    description: 'akira.zucore::lang.plugin.description'
+    author: akira
+    icon: oc-icon-bomb
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Projects
+        url: akira/zucore/zucontroller
+        icon: icon-child
