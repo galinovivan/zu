@@ -9,6 +9,6 @@
      remove(key) {
          this.repo.removeItem(key);   
      }
- }
+ };
 
 export default Storage;

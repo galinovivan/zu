@@ -1,4 +1,5 @@
-import './components/welcome/welcome';
+//import './components/welcome/welcome';
+import  './components';
 
 import './widget';
 
