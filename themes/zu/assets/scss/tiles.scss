@@ -30,6 +30,9 @@
                     font-size: 2.3rem;
                     font-family: $altBoldItalic;
                     text-transform: uppercase;
+                    @media screen and (max-width: 1400px){
+                        font-size: 2rem;
+                    }
                 }
             }
         }
