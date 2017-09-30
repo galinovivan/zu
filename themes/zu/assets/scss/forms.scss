@@ -74,6 +74,22 @@ button {
   }
 }
 
+.form_gray {
+  input,
+  textarea {
+    border: 1px solid $grayForm;
+    box-shadow: none;
+    color: $gray;
+    width: 262px;
+    height: 32px;
+    background: $transparent;
+    padding-left: 20px;
+    @include webkitAppereance(none);
+    @include mozPlaceholder($gray, 1rem);
+    @include webkitPlaceholder($gray, 1rem);
+  }
+}
+
 .material_form {
   .form_item {
     border: none;

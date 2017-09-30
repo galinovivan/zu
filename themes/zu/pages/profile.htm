@@ -3,9 +3,4 @@ url = "/profile"
 layout = "static-llight"
 is_hidden = 1
 ==
-{% if user %}
-
-<p>name: {{ user.name }}</p>
-<p>id: {{ user.id }}</p>
-
-{% endif %}
+{% partial 'user/profile-form' %}}

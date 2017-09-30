@@ -12,10 +12,10 @@ security = "all"
 <head>
     {% partial 'app/head' %}
 </head>
-<body>
+<body class="light_background">
 {% partial 'app/logo-red' %}
 {% partial 'app/cds-logo' %}
-<main class="main clearfix">
+<main class="main clearfix black_text">
     <div class="sidebar_container">
         {% if user.group == school %}
         {% partial 'app/sidebar' className="school" %}
@@ -29,6 +29,9 @@ security = "all"
             <div class="page_heading">
                 <h2>{{ this.page.title|upper }}</h2>
             </div>
+        </div>
+        <div class="content mr_top_80">
+        {% page %}
         </div>
     </div>
 
