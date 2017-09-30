@@ -3,4 +3,7 @@
     width: 35px;
     height: 13px;
     background: url('../images/arrow_right.png') no-repeat;
+    &.gray {
+        background: url('../images/arrow_right_gray.png') no-repeat;
+    }
 }

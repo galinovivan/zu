@@ -5,3 +5,10 @@
 .light_background {
     background: $lightBackground;
 }
+
+.separate {
+    display: block;
+    min-height: 1px;
+    border-bottom: 1px solid $graySeparate;
+    margin: 45px 0;
+}

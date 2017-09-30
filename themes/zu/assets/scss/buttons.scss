@@ -7,4 +7,12 @@
     &.xl {
         width: 300px;
     }
+    &.medium {
+        width: 262px;
+    }
+    &.gray {
+        color: $grayForm;
+        box-shadow: inset 0 1px 0 0 $grayForm;
+        @include buttonArrowHover($grayForm);
+    }
 }

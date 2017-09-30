@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Input as InputData;
 class Account extends ComponentBase
 {
 
-    const SCHOOL_GROUP = 4;
-    const STUDENTS_GROUP = 3;
+    const SCHOOL_GROUP = 1;
+    const STUDENTS_GROUP = 2;
 
 
     public function componentDetails()
@@ -317,6 +317,7 @@ class Account extends ComponentBase
 
             $user->avatar = InputData::file('avatar');
         }
+        $user->is_profile_exists = true;
         $user->save();
 
         /*

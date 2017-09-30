@@ -15,8 +15,16 @@ class Project extends Model
     public $rules = [
     ];
 
+    /**
+     * @var array fillable fields
+     */
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'lead',
+        'nomination',
+        'contributers',
+        'project_uri',
+        'name'
     ];
 
     public $attachOne = ['project_file' => ['System\Models\File']];

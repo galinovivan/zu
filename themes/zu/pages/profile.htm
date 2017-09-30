@@ -2,5 +2,15 @@ title = "Личный кабинет"
 url = "/profile"
 layout = "static-llight"
 is_hidden = 1
+[Project]
 ==
-{% partial 'user/profile-form' %}}
+<div class="profile">
+    {% if user.is_profile_exists %}
+    {% partial 'user/profile' %}
+    {% else %}
+{% partial 'user/profile-form' %}
+    {% endif %}
+</div>
+<div class="project_form">
+{% partial 'project/upload-form' %}
+</div>

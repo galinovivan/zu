@@ -1,8 +1,58 @@
 $radioSize: 15px;
 $radioMarkerSize: $radioSize * 0.6;
+
+
+
+
+form {
+  .radio_group {
+    display: inline-flex;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    label {
+      width: $radioSize;
+      height: $radioSize;
+      border: 1px solid $white;
+      background: $transparent;
+      @include flexCenter();
+      &::after {
+        content: '';
+        width: $radioMarkerSize;
+        height: $radioMarkerSize;
+        @include transition();
+      }
+    }
+    input[type="radio"] {
+      display: none;
+      &:checked + label {
+        &::after {
+          background: $white;
+        }
+      }
+    }
+    .label {
+      font-size: 1rem;
+      margin-left: 12px;
+    }
+  }
+  .select_base {
+    background: $transparent;
+    border: 1px solid $grayForm;
+    height: 32px;
+    width: 262px;
+    color: $gray;
+    padding-left: 20px;
+    option {
+      background: $transparent;
+    }
+  }
+}
+
+
 input,
 textarea,
-button {
+button,
+select {
   outline: none !important;
 }
 .form {
@@ -42,40 +92,10 @@ button {
     margin-top: 40px;
     @include formButton();
   }
-  .radio_group {
-    display: inline-flex;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    label {
-      width: $radioSize;
-      height: $radioSize;
-      border: 1px solid $white;
-      background: $transparent;
-      @include flexCenter();
-      &::after {
-        content: '';
-        width: $radioMarkerSize;
-        height: $radioMarkerSize;
-        @include transition();
-      }
-    }
-    input[type="radio"] {
-      display: none;
-      &:checked + label {
-        &::after {
-          background: $white;
-        }
-      }
-    }
-    .label {
-      font-size: 1rem;
-      margin-left: 12px;
-    }
-  }
 }
 
 .form_gray {
-  input,
+  input:not([type="file"]),
   textarea {
     border: 1px solid $grayForm;
     box-shadow: none;
@@ -84,9 +104,64 @@ button {
     height: 32px;
     background: $transparent;
     padding-left: 20px;
+    font-size: 1.2rem;
     @include webkitAppereance(none);
-    @include mozPlaceholder($gray, 1rem);
-    @include webkitPlaceholder($gray, 1rem);
+    @include mozPlaceholder($gray, 1.2rem);
+    @include webkitPlaceholder($gray, 1.2rem);
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $gray;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);
+  }
+  .upload_file {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    background-color: $lightGray;
+    text-align: center;
+    input[type="file"] {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+      font-size: 1.7rem;
+      color: $white;
+      letter-spacing: 4px;
+      font-weight: 500;
+    }
+  }
+  .form-group {
+    margin-top: 25px;
+    margin-bottom: 0;
+  }
+  .radio_group {
+    label {
+      border-color: $grayForm;
+    }
+    input[type="radio"] {
+      &:checked + label {
+        &::after {
+          background: $grayForm;
+        }
+      }
+    }
+    .label {
+      color: $gray;
+    }
   }
 }
 
@@ -127,5 +202,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
 }
+
+
 
 

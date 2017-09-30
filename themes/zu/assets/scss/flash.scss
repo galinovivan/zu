@@ -6,7 +6,11 @@
     text-align: center;
     background: $tooltipBackground;
     @include flashFadeAnimation();
+    z-index: 10000;
     * {
         color: $white;
+    }
+    &.alert-error {
+        background: $alertError;
     }
 }
