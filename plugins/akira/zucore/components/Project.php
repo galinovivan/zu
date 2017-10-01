@@ -48,8 +48,28 @@ class Project extends ComponentBase
 
     }
 
+
+
     /**
-     * @throws Exception
+     * @param $key
+     * @return string
+     */
+    public function getModerationLabel($key)
+    {
+        $st = $this->getModerationStatus();
+        return $st[$key];
+    }
+    public function getModerationStatus()
+    {
+        return [
+            0 => 'На модерации',
+            1 => 'Опубликован',
+            -1 => 'Отклонена'
+        ];
+    }
+
+    /**
+     *
      */
     public function onProjectUpload()
     {
@@ -72,15 +92,16 @@ class Project extends ComponentBase
             }
 
             $file = Input::file('project_file');
-            if (!$this->getAllowFileExtension($file)) {
+            if (!$this->checkFileExtension($file)) {
                 throw new Exception('Неверный формат файла');
             }
+
+
             $project = ProjectModel::create($data);
             $project->project_file = $file;
             $project->save();
 
             Flash::success('Ваш проект успешно добавлен!');
-
 
         } catch (Exception $e) {
             Flash::error($e->getMessage());
@@ -99,7 +120,7 @@ class Project extends ComponentBase
     {
         $allowExtension = $this->getAllowFileExtension();
 
-        return in_array($allowExtension, $file->extension());
+        return in_array($file->extension(), $allowExtension );
 
     }
 
@@ -111,7 +132,34 @@ class Project extends ComponentBase
         return $this->allowFileExtension;
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
+    public function getNominationLabel($key)
+    {
+        $nominations = $this->nominationOnAllowFormat();
 
+        return $nominations[$key];
+    }
+
+    /**
+     * @return array
+     */
+    private function nominationOnAllowFormat()
+    {
+        return [
+          'dance' => 'Танец',
+          'vocal' => 'Вокал',
+          'music' => 'Музыка',
+          'art' => 'ИЗО/ДПИ',
+          'photo' => 'Фотография',
+          'theart' => 'Театр',
+          'video' => 'Видеотворчество',
+          'original' => 'Оригинальный жанр',
+          'child' => 'Дошкольники'
+        ];
+    }
     /**
      * @return array
      */

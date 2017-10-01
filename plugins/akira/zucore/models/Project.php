@@ -24,7 +24,8 @@ class Project extends Model
         'nomination',
         'contributers',
         'project_uri',
-        'name'
+        'name',
+        'like_count'
     ];
 
     public $attachOne = ['project_file' => ['System\Models\File']];

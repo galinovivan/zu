@@ -104,3 +104,11 @@
     }
   }
 }
+
+@mixin squareHover($color) {
+  padding: 8px;
+  @include transition();
+  &:hover {
+    background: $color;
+  }
+}

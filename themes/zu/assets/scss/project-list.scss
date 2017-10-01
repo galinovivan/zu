@@ -1,0 +1,43 @@
+.project_item {
+  width: 250px;
+  span {
+    color: $gray;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .project_file_preview {
+    * {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .project_header {
+    height: 35px;
+  }
+  .project_name {
+
+  }
+  .project_file_preview {
+    background: $lightGray;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    img {
+      width: 100%;
+    }
+  }
+  .moderation_status {
+    span {
+      font-family: $altBoldItalic;
+    }
+  }
+  .nomination {
+    span {
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      font-weight: $lightFont;
+      color: $lightTextGray;
+    }
+  }
+}

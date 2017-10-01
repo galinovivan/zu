@@ -8,9 +8,35 @@ is_hidden = 1
     {% if user.is_profile_exists %}
     {% partial 'user/profile' %}
     {% else %}
-{% partial 'user/profile-form' %}
+    {% partial 'user/profile-form' %}
     {% endif %}
 </div>
+    {% if user.projects|length == 0 %}
+
 <div class="project_form">
-{% partial 'project/upload-form' %}
+    {% partial 'project/upload-form' %}
 </div>
+    {% else %}
+<div class="container">
+<div class="profile_project_list">
+    <div class="row">
+{% for project in user.projects %}
+    <div class="col-4">
+{% partial 'project/project-profile-list' project=project %}
+    </div>
+{% endfor %}
+        <div class="project_item">
+            <div class="project_header">
+            </div>
+            <div class="project_file_preview">
+                Загрузить еще работу
+            </div>
+            <div class="moderation_status">
+            </div>
+            <div class="nomination">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}

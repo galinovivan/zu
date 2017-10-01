@@ -12,3 +12,6 @@
 1.0.5:
     - 'Updated table akira_zucore_projects'
     - builder_table_update_akira_zucore_projects_3.php
+1.0.6:
+    - 'Updated table akira_zucore_projects'
+    - builder_table_update_akira_zucore_projects_4.php

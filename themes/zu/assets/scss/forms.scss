@@ -133,6 +133,8 @@ select {
     padding: 0 50px;
     background-color: $lightGray;
     text-align: center;
+    overflow: hidden;
+    @include squareHover($baseOverlayStudents);
     input[type="file"] {
       display: none;
     }
