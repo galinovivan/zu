@@ -18,18 +18,18 @@ is_hidden = 1
 </div>
     {% else %}
 <div class="container">
-<div class="profile_project_list">
+<div class="profile_project_list" id="profileProjectList">
     <div class="row">
 {% for project in user.projects %}
     <div class="col-4">
 {% partial 'project/project-profile-list' project=project %}
     </div>
 {% endfor %}
-        <div class="project_item">
+        <div class="project_item upload_more" id="projectUploadMore">
             <div class="project_header">
             </div>
             <div class="project_file_preview">
-                Загрузить еще работу
+                <span>Загрузить еще работу</span>
             </div>
             <div class="moderation_status">
             </div>
@@ -38,5 +38,8 @@ is_hidden = 1
         </div>
     </div>
 </div>
+    <div id="profileHideProjectForm" style="display: none;">
+        {% partial 'project/upload-form' %}
+    </div>
 </div>
 {% endif %}

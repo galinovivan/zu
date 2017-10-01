@@ -1,0 +1,51 @@
+description = "Шаблон для жюри"
+
+[staticMenu]
+
+[staticPage]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[session session2]
+security = "all"
+==
+{% component 'session' %}
+<!doctype html>
+<html lang="en">
+<head>
+    {% partial 'app/head' %}
+</head>
+<body class="light_background {{ user.group == school ? school : students }}">
+{% partial 'app/logo-red' %}
+{% partial 'app/cds-logo' %}
+{% partial 'app/floating-title' %}
+<main class="main clearfix black_text">
+    <div class="sidebar_container">
+        {% if user.group == school %}
+        {% partial 'app/sidebar' className="school" %}
+        {% elseif user.group == students %}
+        {% partial 'app/sidebar' className="students" %}
+        {% endif %}
+    </div>
+
+        <div>
+            {% partial 'app/judge' %}
+        </div>
+
+</main>
+
+<footer>
+    {% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>

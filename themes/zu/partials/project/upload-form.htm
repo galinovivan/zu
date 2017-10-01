@@ -50,7 +50,12 @@
                 </div>
                 <div class="col-md-4">
                     <div class="button_container">
-                        <button type="submit" class="arrow_button gray medium">Отправить работу<i class="arrow_right gray"></i></button>
+                        {% if user.is_profile_exists %}
+                        <button type="submit" class="arrow_button gray medium">
+                            Отправить работу<i class="arrow_right gray"></i></button>
+                        {% else %}
+                        Пожайста заполни свой профиль
+                        {% endif %}
                     </div>
                 </div>
             </div>

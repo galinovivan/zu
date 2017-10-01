@@ -10,6 +10,16 @@
         });
 
 
+        const projectUploadMore = $('#projectUploadMore');
+        const projectList = $('#profileProjectList');
+        const hideProjectForm = $('#profileHideProjectForm');
+
+        projectUploadMore.click((e) => {
+            projectList.slideToggle('fast');
+            hideProjectForm.slideToggle('fast');
+        })
+
+
     });
 
 })(jQuery);

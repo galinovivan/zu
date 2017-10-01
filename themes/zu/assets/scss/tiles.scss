@@ -92,3 +92,46 @@
         @include tilesFillingHover($baseOverlayStudents);
     }
 }
+
+
+.full_tiles {
+    height: 100vh;
+    .tile {
+        position: relative;
+        .description {
+            display: none;
+            position: absolute;
+            right: -100%;
+            top: 0;
+            width: 100%;
+            height: 50vh;
+            background: $baseOverlayStudents;
+            z-index: 10000;
+            padding: 35px;
+            * {
+                color: $white;
+            }
+            &.big {
+                width: 200%;
+                right: -200%;
+            }
+            &.left {
+                right: auto;
+                left: -100%;
+            }
+        }
+        .image {
+            height: 50vh;
+            overflow: hidden;
+            img {
+                height: auto;
+                width: 100%;
+            }
+        }
+        &:hover {
+            .description {
+                display: block;
+            }
+        }
+    }
+}

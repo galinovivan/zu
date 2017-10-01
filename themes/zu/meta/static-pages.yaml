@@ -4,4 +4,5 @@ static-pages:
         school-about: {  }
         school-partners: {  }
         school-judge: {  }
-    students: {  }
+    students:
+        students-judge: {  }
