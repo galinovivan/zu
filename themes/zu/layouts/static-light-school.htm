@@ -1,4 +1,4 @@
-description = "static-llight"
+description = "static-llightschool"
 
 [account]
 paramCode = "code"
@@ -8,7 +8,7 @@ forceSecure = 0
 security = "all"
 
 [staticMenu]
-code = "students"
+code = "school"
 ==
 <!doctype html>
 <html lang="en">
@@ -21,11 +21,7 @@ code = "students"
 {% partial 'app/cds-logo' %}
 <main class="main clearfix black_text">
     <div class="sidebar_container">
-        {% if user.group == school %}
         {% partial 'app/sidebar' className="school" %}
-        {% elseif user.group == students %}
-        {% partial 'app/sidebar' className="students" %}
-        {% endif %}
     </div>
 
     <div class="profile_page top_lg_marg">
@@ -35,7 +31,7 @@ code = "students"
             </div>
         </div>
         <div class="content mr_top_80">
-        {% page %}
+            {% page %}
         </div>
     </div>
 

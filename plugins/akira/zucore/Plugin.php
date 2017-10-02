@@ -10,7 +10,7 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return ['Akira\Zucore\Components\Project' => 'Project'];
+        return ['Akira\Zucore\Components\Project' => 'Project', 'Akira\Zucore\Components\SingleComponent' => 'SingleProject'];
     }
 
     public function registerSettings()

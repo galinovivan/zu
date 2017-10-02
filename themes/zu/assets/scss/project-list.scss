@@ -2,7 +2,7 @@
   width: 250px;
   span {
     color: $gray;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
   }
   .project_file_preview {
@@ -40,6 +40,43 @@
       color: $lightTextGray;
     }
   }
+  .user_name {
+    span {
+      font-family: $altBoldItalic;
+      font-size: 1.5rem;
+    }
+  }
+  &.single {
+    width: auto;
+    height: auto;
+    .project_file_preview {
+      background: $transparent;
+      width: auto;
+      height: auto;
+      overflow: hidden;
+      * {
+        max-width: 90%;
+        height: auto;
+      }
+    }
+  }
+}
+.project_about {
+ // padding-left: 50px;
+  padding-top: 17px;
+  .label {
+    color: $gray;
+    font-size: 1.4rem;
+    padding-right: 30px;
+  }
+  strong {
+    color: $gray;
+    font-family: $altBoldItalic;
+    font-size: 1.4rem;
+  }
+}
+.back_link {
+  margin-top: 50px;
 }
 .upload_more {
   cursor: pointer;

@@ -4,6 +4,7 @@
         <div class="col-md-3">
             <div class="upload_file">
                 <input type="hidden" name="user_id" value="{{ user.id }}">
+                <input type="hidden" name="group" value="{{ current_group }}">
                 <label for="projectFile">ЗАГРУЗИТЬ РАБОТУ</label>
                 <input type="file" name="project_file" id="projectFile" accept="audio/*|video/*|image/*|text/*" required>
             </div>

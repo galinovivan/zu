@@ -80,7 +80,9 @@ class Project extends ComponentBase
                 'name' => 'required|between:1, 255',
                 'nomination' => 'required',
             ];
-
+            if (isset($data['group'])) {
+                $data['group'] = (int) $data['group'];
+            }
             $validation = Validator::make($data, $rules);
 
             if ($validation->fails()) {
@@ -100,7 +102,6 @@ class Project extends ComponentBase
             $project = ProjectModel::create($data);
             $project->project_file = $file;
             $project->save();
-
             Flash::success('Ваш проект успешно добавлен!');
 
         } catch (Exception $e) {
@@ -112,6 +113,26 @@ class Project extends ComponentBase
     }
 
 
+    public function getSchoolProject()
+    {
+       return $projects =  ProjectModel::where('group', 1)
+            ->orderBy('created_at', 'desc')->simplePaginate(10);
+    }
+
+    public function getStudentsProject()
+    {
+        return $projects =  ProjectModel::where('group', 2)
+            ->orderBy('created_at', 'desc')->simplePaginate(10);
+    }
+
+    /**
+     * @param $filePath
+     * @return string
+     */
+    public function getFileType($filePath)
+    {
+        return filetype($filePath);
+    }
     /**
      * @param $file
      * @return bool

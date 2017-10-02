@@ -1,0 +1,19 @@
+title = "Работы"
+url = "/school/gallery"
+layout = "static-light-school"
+is_hidden = 0
+
+[Project]
+==
+<div class="container">
+    <div class="row">
+ {% for project in Project.getSchoolProject() %}
+        <div class="col-md-4">
+{% partial 'project/project-item' project=project %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {{ project.render|raw }}
+    </div>
+</div>

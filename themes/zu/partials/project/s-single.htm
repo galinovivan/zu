@@ -1,15 +1,8 @@
-
-<div class="project_item">
-<div class="project_header">
-<div class="project_name">
-    <span>{{ project.name|capitalize }}</span>
-</div>
-    <div class="project_likes_count">
-        {{ project.like_count }}
-    </div>
-</div>
-<div class="project_file_preview">
-    <a href="/school/gallery/{{project.id}}">
+<div class="col-md-6">
+    <div class="project_item single">
+        <div class="project_name">
+            <span>{{ Project.getNominationLabel(project.nomination) }}</span>
+        </div>
         <div class="project_file_preview">
             {% set file = project.project_file %}
             {% if file.content_type == 'image/jpeg' %}
@@ -29,13 +22,15 @@
             {{ file.content_type }}
             {% endif  %}
         </div>
-    </a>
-
+    </div>
 </div>
-<div class="moderation_status">
-    <span>{{ Project.getModerationLabel(project.moderation) }}</span>
-</div>
-<div class="nomination">
-    <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
-</div>
+<div class="col-md-6">
+    <div class="project_about">
+        <div><span class="label">Название:</span><strong>{{ project.name }}</strong></div>
+        <div><span class="label">Город:</span><strong>{{ project.user.city|upper|capitalize }}</strong></div>
+        <div><span class="label">Учебное</span></div>
+        <div><span class="label">Заведение:</span><strong>{{ project.user.school }}</strong></div>
+        <div><span class="label">Педагог:</span><strong>{{ project.user.lead|capitalize }}</strong></div>
+    </div>
+    <a href="/students/gallery" class="arrow_button back_link medium gray">К другим работам <i class="arrow_right gray"></i></a>
 </div>

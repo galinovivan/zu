@@ -1,0 +1,37 @@
+<div class="project_item">
+    <div class="project_header">
+        <div class="project_name">
+            <span>{{ project.name|capitalize }}</span>
+        </div>
+        <div class="project_likes_count">
+            {{ project.like_count }}
+        </div>
+    </div>
+    <div class="project_file_preview">
+        <a href="/students/gallery/{{project.id}}">
+    {% set file = project.project_file %}
+        {% if file.content_type == 'image/jpeg' %}
+        <img src="{{ file.path }}" class="img-responsive">
+        {% elseif file.content_type == 'image/png' %}
+        <img src="{{ file.path }}" class="img-responsive">
+        {% elseif file.content_type == 'audio/mp4' %}
+        <audio src="{{ file.path }}"></audio>
+        {% elseif file.content_type == 'video/mpeg' %}
+        <video src="{{ file.path }}"></video>
+        {% elseif file.content_type == 'video/mp4' %}
+        <video src="{{ file.path }}"></video>
+        {% elseif file.content_type == 'video/3gpp' %}
+        <video src="{{ file.path }}"></video>
+        {% else %}
+        <a href="{{ file.path }}">file.name</a>
+        {% endif  %}
+        </a>
+        <img src="{{ project.project_file.path }}" class="img-responsive">
+    </div>
+    <div class="user_name">
+        <span>{{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}</span>
+    </div>
+    <div class="nomination">
+        <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
+    </div>
+</div>
