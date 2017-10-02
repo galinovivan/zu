@@ -23,8 +23,15 @@
     height: 250px;
     overflow: hidden;
     margin-bottom: 25px;
+    a {
+      display: block;
+      overflow: hidden;
+      width: 250px;
+      height: 250px;
+    }
     img {
-      width: 100%;
+      width: auto;
+      min-height: 100%;
     }
   }
   .moderation_status {
