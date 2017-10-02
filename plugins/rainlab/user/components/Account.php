@@ -89,7 +89,11 @@ class Account extends ComponentBase
         /** funcking monkey patching */
         $this->page['school'] = self::SCHOOL_GROUP;
         $this->page['student'] = self::STUDENTS_GROUP;
+        if ($this->user() != false || $this->user() != null || $this->user() != '') {
+            $groups = $this->user()->groups[0];
+        $this->page['current_group'] = $groups->pivot->user_group_id;
         /** end patch */
+    }
     }
 
     /**
@@ -217,6 +221,9 @@ class Account extends ComponentBase
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
+            if (!isset($data['groups'])) {
+                throw new Exception('Пожалуйста выберите школьник вы или студент');
+            }
             $user = Auth::register($data, $automaticActivation);
 
             /** fucking monkey patching */

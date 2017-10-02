@@ -1,0 +1,49 @@
+title = "Личный кабинет"
+url = "/profile-school"
+layout = "static-llight"
+is_hidden = 1
+
+[Project]
+
+[staticMenu]
+code = "school"
+==
+<div class="profile">
+    {% if user.is_profile_exists %}
+    {% partial 'user/profile' %}
+    {% else %}
+    {% partial 'user/profile-form' %}
+    {% endif %}
+</div>
+{% if user.projects|length == 0 %}
+
+<div class="project_form school_color_schema">
+    {% partial 'project/upload-form' %}
+</div>
+{% else %}
+<div class="container">
+    <div class="profile_project_list" id="profileProjectList">
+        <div class="row">
+            {% for project in user.projects %}
+            <div class="col-4">
+                {% partial 'project/project-profile-list' project=project %}
+            </div>
+            {% endfor %}
+            <div class="project_item upload_more" id="projectUploadMore">
+                <div class="project_header">
+                </div>
+                <div class="project_file_preview">
+                    <span>Загрузить еще работу</span>
+                </div>
+                <div class="moderation_status">
+                </div>
+                <div class="nomination">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="profileHideProjectForm" style="display: none;">
+        {% partial 'project/upload-form' %}
+    </div>
+</div>
+{% endif %}

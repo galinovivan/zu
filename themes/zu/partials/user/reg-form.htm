@@ -1,14 +1,15 @@
 {##}
+{% if not user %}
 <form class="form"
         data-request="onRegister" data-request-success="window.localStorage.setItem('register', '1')">
     <div class="form-group radio_group">
-        <input name="groups" type="radio" id="registerSchoolsGroup" value="{{ school }}">
+        <input name="groups" type="radio" id="registerSchoolsGroup" value="{{ school }}" required>
         <label for="registerSchoolsGroup"></label>
         <span class="label">Я школьник</span>
 
     </div>
     <div class="form-group radio_group">
-        <input name="groups" type="radio" id="registerStudentsGroup" value="{{ student }}">
+        <input name="groups" type="radio" id="registerStudentsGroup" value="{{ student }}" required>
         <label for="registerStudentsGroup"></label>
         <span class="label">Я студент</span>
 
@@ -39,7 +40,7 @@
                 type="password"
                 class="form-control medium"
                 id="registerPassword"
-                placeholder="Passwword" />
+                placeholder="Password" />
     </div>
     <!--<div class="form-group">-->
         <!--<input-->
@@ -54,3 +55,6 @@
 нам о своей проблеме по этому адресу:
 help@zvezdaudachi.ru">Отправить <i class="arrow_right"></i></button>
 </form>
+{% else %}
+<button data-request="onLogout">Выйти</button>
+{% endif %}

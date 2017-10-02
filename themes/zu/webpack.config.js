@@ -22,7 +22,6 @@ module.exports = {
         color: true
     },
 
-    devtool: 'source-map'
 
 };
 

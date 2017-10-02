@@ -2,6 +2,9 @@
     position: fixed;
     bottom: 105px;
     left: $containerPadding;
+    @media screen and (max-height: 850px) {
+        bottom: 10px;
+    }
 }
 
 .widget {
@@ -23,6 +26,9 @@
         }
         .info_item {
             margin-right: 60px;
+        }
+        * {
+            color: $white !important;
         }
     }
     .action_button {

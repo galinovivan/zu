@@ -2,9 +2,13 @@ title = "Личный кабинет"
 url = "/profile"
 layout = "static-llight"
 is_hidden = 1
+
 [Project]
+
+[staticMenu]
+code = "students"
 ==
-<div class="profile">
+<div class="profile students_color_schema">
     {% if user.is_profile_exists %}
     {% partial 'user/profile' %}
     {% else %}

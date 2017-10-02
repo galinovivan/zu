@@ -1,6 +1,7 @@
 description = "main students"
 
 [staticMenu]
+code = "students"
 
 [staticPage]
 
@@ -11,7 +12,6 @@ forceSecure = 0
 [session]
 security = "all"
 ==
-
 {##}
 <!doctype html>
 <html lang="en">
@@ -19,6 +19,7 @@ security = "all"
     {% partial 'app/head' %}
 </head>
 <body>
+{% partial 'user/reg-modal' %}
 {% partial 'app/logo' %}
 {% partial 'app/cds-logo' %}
 <main class="main students_main clearfix">

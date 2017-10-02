@@ -1,0 +1,53 @@
+description = "Шаблон статики студенты"
+
+[staticMenu]
+code = "students"
+
+[staticPage]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+<!doctype html>
+<html lang="en">
+<head>
+    {% partial 'app/head' %}
+</head>
+<body class="light_background">
+{% partial 'user/reg-modal' %}
+{% partial 'app/logo-red' %}
+{% partial 'app/cds-logo' %}
+<main class="main clearfix black_text">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className="students" %}
+    </div>
+
+
+    <div class="static_content top_lg_marg">
+        <div class="container">
+            <div class="page_heading">
+                <h2>{{ this.page.title|upper }}</h2>
+            </div>
+        </div>
+        <div class="content mr_top_80">
+            <div class="container">
+            {% page %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    {% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}

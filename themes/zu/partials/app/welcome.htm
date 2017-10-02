@@ -12,7 +12,7 @@
 Если ты уже знаешь о нас предостаточно, тогда выбирай раздел для школьников или студентов, а если хочешь узнать больше, листай дальше.</p>
 <div class="action_buttons row mr_top_50">
     <div class="col-md-6">
-    <a class="arrow_button" href="{{ 'school'|page }}">Я школьник <i class="arrow_right"></i></a>
+    <a class="arrow_button" href="/school">Я школьник <i class="arrow_right"></i></a>
     </div>
     <div class="col-md-6">
     <button class="arrow_button">Я студент <i class="arrow_right"></i></button>
@@ -97,10 +97,10 @@
                             Это ни к чему тебя не обяжет, а взаимодействовать с сайтом будет удобнее.</p>
                         <div class="action_buttons row mr_top_50">
                             <div class="col-md-6">
-                               <a class="arrow_button" href="{{ 'school'|page }}">Я школьник <i class="arrow_right"></i></a>
+                               <a class="arrow_button" href="/school">Я школьник <i class="arrow_right"></i></a>
                             </div>
                             <div class="col-md-6">
-                                <button class="arrow_button">Я студент <i class="arrow_right"></i></button>
+                                <a class="arrow_button" href="/students">Я студент <i class="arrow_right"></i></a>
                             </div>
                         </div>
                         </div>
@@ -118,7 +118,8 @@
                                 не забудь добавить немного информации о себе в личном кабинете.</p>
                             <div class="action_buttons row mr_top_50">
                                 <div class="col-md-12">
-                                    <a class="arrow_button small">Перейти <i class="arrow_right"></i></a>
+                                    <a class="arrow_button small" href="{{ current_group == school ? '/school' : '/students' }}">
+                                        Перейти <i class="arrow_right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +127,7 @@
                         <ul class="steps_toggle mr_top_120">
                             <li v-on:click="toggleClick(1, $event)" v-bind:class="[step === 1 ? 'active' : '']"></li>
                             <li v-on:click="toggleClick(2, $event)" v-bind:class="[step === 2 ? 'active' : '']"></li>
-                            <li v-on:click="toggleClick(3, $event)" v-bind:class="[step === 3 ? 'active' : '']"></li>
+                            <li v-bind:class="[step === 3 ? 'active' : '']"></li>
                         </ul>
                     </div>
                 </div>
