@@ -1,0 +1,67 @@
+.menu {
+    background: $transparent;
+    margin-bottom: 0;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    .nav_toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 37px;
+        height: 32px;
+        cursor: pointer;
+        span {
+            display: block;
+            height: 2px;
+            background: $white;
+        }
+    }
+    .menu {
+        display: block;
+        width: $navWidth;
+        left: - $navWidth;
+        padding: 65px;
+        padding-left: 5%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        height: 100vh;
+        overflow-y: scroll;
+        background: $baseColor;
+        @include transition();
+        &.open {
+            left: 0;
+        }
+        .menu_item {
+            margin-bottom: 40px;
+            a {
+                font-size: 1.8rem;
+                text-decoration: none;
+                font-family: $lightFont;
+                text-transform: uppercase;
+                @include linkHover();
+            } 
+        }
+        .bottom_items {
+            margin-top: 230px;
+            .contact {
+                margin-bottom: 35px;
+                * {
+                    display: block;
+                    font-size: 1.5rem;
+                    color: $white;
+                }
+                .email {
+                    text-decoration: none;
+                    @include linkHover();
+                }
+            }
+        }
+        .nav_close {
+            cursor: pointer;
+        }
+    }
+}

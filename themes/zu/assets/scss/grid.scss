@@ -1,0 +1,46 @@
+.page_column {
+    height: 100vh;
+   // min-height: $minColumnHeight;
+}
+.container-fluid {
+    padding: 0 0;
+}
+
+.mr_top_50 {
+    margin-top: 50px;
+}
+
+.mr_top_120 {
+    margin-top: 120px;
+}
+
+.mr_top_40 {
+    margin-top: 40px;
+}
+
+.mr_bott_40 {
+    margin-bottom: 40px;
+}
+.mr_bott_30 {
+    margin-bottom: 30px;
+}
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mr_top_80 {
+    margin-top: 80px;
+}
+
+.clearfix {
+    @include clearfix();
+}
+
+.top_lg_marg {
+    padding-top: 145px;
+}
+
+.container {
+    padding: 0 1.5%;
+}

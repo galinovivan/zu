@@ -1,0 +1,42 @@
+description = "main layout"
+
+[staticPage]
+
+[staticMenu]
+code = "school"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+{##}
+<!doctype html>
+<html lang="en">
+<head>
+   {% partial 'app/head' %}
+</head>
+<body>
+{% partial 'user/reg-modal' %}
+{% partial 'app/logo' %}
+{% partial 'app/cds-logo' %}
+<main class="main school_main clearfix">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className="school" %}
+    </div>
+    {% partial 'school/main-tiles' %}
+</main>
+
+<footer>
+{% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>
+</html>

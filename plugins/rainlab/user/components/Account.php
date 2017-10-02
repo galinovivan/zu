@@ -15,12 +15,13 @@ use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
 use Exception;
+use Illuminate\Support\Facades\Input as InputData;
 
 class Account extends ComponentBase
 {
 
-    const SCHOOL_GROUP = 4;
-    const STUDENTS_GROUP = 3;
+    const SCHOOL_GROUP = 1;
+    const STUDENTS_GROUP = 2;
 
 
     public function componentDetails()
@@ -88,6 +89,12 @@ class Account extends ComponentBase
         /** funcking monkey patching */
         $this->page['school'] = self::SCHOOL_GROUP;
         $this->page['student'] = self::STUDENTS_GROUP;
+
+       if ($this->user() != false || $this->user() != null || $this->user() != '') {
+            $groups = $this->user()->groups[0];
+        $this->page['current_group'] = $groups->pivot->user_group_id;
+        /** end patch */
+    }
         /** end patch */
     }
 
@@ -181,7 +188,7 @@ class Account extends ComponentBase
      */
     public function onRegister()
     {
-        //Flash::success('run ses');
+
         try {
             if (!UserSettings::get('allow_registration', true)) {
                 throw new ApplicationException(Lang::get('rainlab.user::lang.account.registration_disabled'));
@@ -216,6 +223,9 @@ class Account extends ComponentBase
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
+            if (!isset($data['groups'])) {
+                throw new Exception('Пожалуйста выберите школьник вы или студент');
+            }
             $user = Auth::register($data, $automaticActivation);
 
             /** fucking monkey patching */
@@ -224,7 +234,7 @@ class Account extends ComponentBase
                 $user->save();
             }
             /** end patch */
-
+            Flash::success('Вы успешно зарегистрировались');
 
             /*
              * Activation is by the user, send the email
@@ -257,6 +267,7 @@ class Account extends ComponentBase
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
+        
     }
 
     /**
@@ -310,6 +321,12 @@ class Account extends ComponentBase
         }
 
         $user->fill(post());
+
+        if (InputData::hasFile('avatar')) {
+
+            $user->avatar = InputData::file('avatar');
+        }
+        $user->is_profile_exists = true;
         $user->save();
 
         /*
@@ -319,7 +336,7 @@ class Account extends ComponentBase
             Auth::login($user->reload(), true);
         }
 
-        Flash::success(post('flash', Lang::get('rainlab.user::lang.account.success_saved')));
+        Flash::success('Данные успешно обновлены');
 
         /*
          * Redirect

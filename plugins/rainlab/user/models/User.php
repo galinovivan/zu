@@ -37,6 +37,10 @@ class User extends UserBase
         'avatar' => ['System\Models\File']
     ];
 
+    public $hasMany = [
+        'projects' => ['Akira\Zucore\Models\Project', 'primaryKey' => 'id']
+    ];
+
     /**
      * @var array The attributes that are mass assignable.
      */
@@ -47,7 +51,7 @@ class User extends UserBase
         'username',
         'email',
         'password',
-        'password_confirmation'
+        'password_confirmation',
     ];
 
     /**

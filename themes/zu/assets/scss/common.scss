@@ -1,6 +1,7 @@
 @import "reset";
-@import "../../node_modules/bootstrap/scss/bootstrap-grid";
 
+// пересобрать 
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import "variable";
 @import "mixins";
@@ -9,8 +10,30 @@
 @import "typhography";
 @import 'icons';
 
+@import 'sprites';
 @import "forms";
+@import 'buttons';
 @import "grid";
 @import "base";
+@import "dialog";
 
+@import "flash";
+@import 'tooltip';
+@import 'steps';
+@import "animation";
+@import 'logo';
+
+@import 'nav';
+@import 'sidebar';
+@import "widgets";
+@import 'user-widget';
+@import 'profile';
+@import "project-upload";
+@import "project-list";
+@import 'social-list';
+@import 'tiles';
+@import "judge";
+
+@import 'welcome';
+@import 'header';
 @import "page";

@@ -1,5 +1,8 @@
 html {
     font-size: $baseFontSize;
+    @media screen and (max-width: 1400px) {
+        font-size: $baseFontSize * 0.8;
+    }
 }
 
 body {
@@ -8,6 +11,64 @@ body {
     color: $white;
 }
 
+a, p, span, li {
+    font-family: $baseFont;
+}
+
 button, input {
     font-family: $baseFont;
+}
+
+a {
+    outline: none !important;
+    color: $white;
+    text-decoration: underline;
+    &:hover {
+        color: $white;
+    }
+}
+
+.link {
+    font-family: $lightFont;
+    font-weight: 300;
+    color: $white;
+    @include linkHover();
+}
+.light_font {
+    font-family: $lightFont;
+    font-weight: 300;
+}
+
+h2 {
+    font-family: $lightFont;
+    font-size: 2.2rem;
+    color: $white;
+}
+h3 {
+    font-family: $lightFont;
+    font-size: 2.1rem;
+    font-weight: 100;
+    letter-spacing: 3px;
+}
+
+h4 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    font-family: $lightFont;
+}
+
+.gray {
+    color: $gray;
+}
+
+.page_heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $gray;
+    h2 {
+        font-family: $altBoldItalic;
+        color: $gray;
+    }
+}
+.black_text {
+    color: $black;
 }

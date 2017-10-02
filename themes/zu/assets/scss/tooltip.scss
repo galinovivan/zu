@@ -1,0 +1,72 @@
+.tooltip {
+    opacity: 1 !important;
+    &.bs-tooltip-top {
+        .arrow {
+            &::before {
+                border-top-color: $tooltipBackground !important;
+                border-width: 10px 10px 0;
+                opacity: 1 !important;
+            }
+        }
+    }
+    &.bs-tooltip-bottom {
+        .arrow {
+            &::before {
+                border-bottom-color: $tooltipBackground !important;
+                border-width: 0 10px 10px;
+                opacity: 1 !important;
+            }
+        }
+    }
+    &.bs-tooltip-right {
+        .arrow {
+            &::before {
+                border-right-color: $tooltipBackground !important;
+
+            }
+        }
+    }
+    .tooltip-inner {
+        background: $tooltipBackground;
+        font-family: $italicFont;
+        padding: 10px 15px;
+        opacity: 1;
+    }
+}
+
+.students_color_schema {
+    & + .tooltip {
+        &.bs-tooltip-top {
+            .arrow {
+                &::before {
+                    border-top-color: $baseOverlayStudents !important;
+                    border-width: 10px 10px 0;
+                    opacity: 1 !important;
+                }
+            }
+        }
+        &.bs-tooltip-bottom {
+            .arrow {
+                &::before {
+                    border-bottom-color: $baseOverlayStudents !important;
+                    border-width: 0 10px 10px;
+                    opacity: 1 !important;
+                }
+            }
+        }
+        &.bs-tooltip-right {
+            .arrow {
+                &::before {
+                    border-right-color: $baseOverlayStudents !important;
+
+                }
+            }
+        }
+        .tooltip-inner {
+            background: $baseOverlayStudents;
+            font-family: $italicFont;
+            padding: 10px 15px;
+            opacity: 1;
+        }
+    }
+}

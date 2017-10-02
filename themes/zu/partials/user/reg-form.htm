@@ -1,14 +1,15 @@
 {##}
+{% if not user %}
 <form class="form"
-        data-request="onRegister">
+        data-request="onRegister" data-request-success="window.localStorage.setItem('register', '1')">
     <div class="form-group radio_group">
-        <input name="groups" type="radio" id="registerSchoolsGroup" value="{{ school }}">
+        <input name="groups" type="radio" id="registerSchoolsGroup" value="{{ school }}" required>
         <label for="registerSchoolsGroup"></label>
         <span class="label">Я школьник</span>
 
     </div>
     <div class="form-group radio_group">
-        <input name="groups" type="radio" id="registerStudentsGroup" value="{{ student }}">
+        <input name="groups" type="radio" id="registerStudentsGroup" value="{{ student }}" required>
         <label for="registerStudentsGroup"></label>
         <span class="label">Я студент</span>
 
@@ -20,7 +21,7 @@
                 type="text"
                 class="form-control medium"
                 id="registerName"
-                placeholder="Введите ваше имя" />
+                placeholder="Введите ваше имя" autocomplete="off" />
     </div>
 
     <div class="form-group">
@@ -29,7 +30,8 @@
                 type="email"
                 class="form-control medium"
                 id="registerEmail"
-                placeholder="Email" />
+                placeholder="Email" data-toggle="tooltip" data-placement="right" title="Мы не будем забрасывать тебя письмами
+                 и адрес твоей почты никому-никому не скажем" readonly onfocus="this.removeAttribute('readonly')" />
     </div>
 
     <div class="form-group">
@@ -38,19 +40,19 @@
                 type="password"
                 class="form-control medium"
                 id="registerPassword"
-                placeholder="Passwword" />
+                placeholder="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')" />
     </div>
-    <div class="form-group">
-        <input
-                name="password_confirmation"
-                type="password"
-                class="form-control medium"
-                id="registerPassword"
-                placeholder="Passwword" />
-    </div>
+    <!--<div class="form-group">-->
+        <!--<input-->
+                <!--name="password_confirmation"-->
+                <!--type="password"-->
+                <!--class="form-control medium"-->
+                <!--id="registerPassword"-->
+                <!--placeholder="Passwword" />-->
+    <!--</div>-->
 
-    <button type="submit" class="">Отправить <i class="arrow_right"></i></button>
+    <button  data-toggle="tooltip"  data-placement="bottom" title="Если что-то пошло не так, сообщи
+нам о своей проблеме по этому адресу:
+help@zvezdaudachi.ru">Отправить <i class="arrow_right"></i></button>
 </form>
-{% flash %}
-{{ message }}
-{% endflash %}
+{% endif %}

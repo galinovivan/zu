@@ -1,0 +1,56 @@
+{{ form_open({ files: true, request: 'onUpdate', class: 'form_gray' }) }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="upload_file">
+                <input type="hidden" name="is_profile_exists">
+                <label for="userAvatar" id="userAvatarLabel">ЗАГРУЗИТЬ ФОТО</label>
+                <input type="file" name="avatar" id="userAvatar" accept="image/*">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile_welcome_text gray">
+                        <strong class="heading">Привет {{ user.name }},</strong>
+                        <p class="text">
+                            {% content 'profile/welcome' %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <input type="text" name="name" placeholder="Имя|" required value="{{ user.name }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="surname" placeholder="Фамилия|" required value="{{ user.surname }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" name="date_of_bithday" placeholder="Дата рождения|"
+                               required value="{{ user.user.date_of_bithday|date('Y-m-d') }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="city" placeholder="Город|" required value="{{ user.city }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="phone" name="phone" placeholder="Телефон|" required value="{{ user.phone }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="school" placeholder="Учебное заведение|" required value="{{ user.school }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="button_container">
+                <button type="submit" class="arrow_button gray medium">Сохранить данные <i class="arrow_right gray"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="separate"></div>
+        </div>
+    </div>
+</div>
+{{ form_close() }}

@@ -1,7 +1,17 @@
 {##}
+<div class="user_widget widget">
+<a class="action_button" data-toggle="tooltip" data-placement="top" title="Войти в личный кабинет">
+<i class="sprite_icons sprite_icons-profile_icon"></i>
+</a>
 {% if user %}
-<p>{{ user.name }}</p>
-<button data-request="logout">logout</button>
+<div class="swipe_info">
+<button data-request="onLogout" class="arrow_button">Выйти</button>
+</div>
 {% else %}
-<a>registration</a>
+<div class="swipe_info">
+<div class="signin">
+{% partial 'user/signin' className="material_form" %}
+</div>
+</div>
 {% endif %}
+</div>

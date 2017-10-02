@@ -1,0 +1,16 @@
+{##}
+<div class="{{ className }} sidebar {{ className == 'school' ? 'school_color_schema' : 'students_color_schema' }}">
+<div class="navigation">
+<div class="nav_toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+    {% partial 'app/nav' %}
+</div>
+<div class="widgets">
+    {% partial 'app/contact-widget' %}
+    {% partial 'user/user-widget' user=user %}
+</div>
+</div>

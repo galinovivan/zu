@@ -1,0 +1,19 @@
+.main_page {
+    background: url('../images/bg_shared.png') no-repeat;
+    background-size: cover;
+}
+
+.main {
+    .sidebar_container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+    .tiles_container {
+        width: 100%;
+    }
+    .static_content {
+        color: $gray;
+    }
+}

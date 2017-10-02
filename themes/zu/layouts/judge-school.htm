@@ -1,0 +1,47 @@
+description = "Жюри школьники"
+
+[staticPage]
+
+[staticMenu]
+code = "school"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+
+{% component 'session' %}
+<!doctype html>
+<html lang="en">
+<head>
+    {% partial 'app/head' %}
+</head>
+<body class="light_background {{ user.group == school ? school : students }}">
+{% partial 'user/reg-modal' %}
+{% partial 'app/logo-red' %}
+{% partial 'app/cds-logo' %}
+{% partial 'app/floating-title' %}
+<main class="main clearfix black_text school_color_schema">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className="school" %}
+    </div>
+
+    <div>
+        {% partial 'app/judge' %}
+    </div>
+
+</main>
+
+<footer>
+    {% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>

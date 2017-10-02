@@ -1,0 +1,11 @@
+static-pages:
+    school:
+        school-nomination: {  }
+        school-about: {  }
+        school-partners: {  }
+        school-judge: {  }
+    students:
+        students-judge: {  }
+        students-partners: {  }
+        students-about: {  }
+        students-nomination: {  }

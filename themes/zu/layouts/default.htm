@@ -6,8 +6,7 @@ description = "base layout"
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=1280">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="{{ this.page.meta_description }}">
     <title>{{ this.page.title }}</title>
@@ -17,17 +16,23 @@ description = "base layout"
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-<header>
+<header class="header">
 {% partial 'app/header' %}
-{% partial 'user/user-widget' user=user %}
 </header>
 <main>
     {% page %}
 </main>
+<div class="bottom_widgets_container">
+    {% partial 'app/contact-widget' %}
+    {% partial 'user/user-widget' user=user %}
+</div>
 <footer>
 {% partial 'app/footer' %}
+{% partial 'app/flash' %}
 </footer>
-<script src="{{ 'node_modules/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}

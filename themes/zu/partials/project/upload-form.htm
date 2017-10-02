@@ -1,0 +1,66 @@
+{{ form_open({ files: true, request: 'onProjectUpload',redirect: 'profile', class: 'form_gray upload_project' }) }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="upload_file">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <label for="projectFile">ЗАГРУЗИТЬ РАБОТУ</label>
+                <input type="file" name="project_file" id="projectFile" accept="audio/*|video/*|image/*|text/*" required>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                       <select name="nomination" class="select_base">
+                           {% for nomination in Project.getNomination %}
+                              <option name="nomination" value="{{ nomination.value }}">{{ nomination.label }}</option>
+                           {% endfor %}
+                       </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Название работы|" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lead" placeholder="Руководитель|" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group radio_group">
+                                <input name="isMultiple" type="radio" id="single" value="0" checked class="multiple_radio">
+                                <label for="single"></label>
+                                <span class="label">Я один</span>
+
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                            <div class="form-group radio_group">
+                                <input name="isMultiple" type="radio" id="multiple" value="1" class="multiple_radio">
+                                <label for="multiple"></label>
+                                <span class="label">Нас много</span>
+                            </div>
+                            </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                    <div class="form-item" style="display: none;" id="contributeInput">
+                        <input type="text" name="contributers" placeholder="Участники|">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="button_container">
+                        {% if user.is_profile_exists %}
+                        <button type="submit" class="arrow_button gray medium">
+                            Отправить работу<i class="arrow_right gray"></i></button>
+                        {% else %}
+                        Пожайста заполни свой профиль
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="separate"></div>
+        </div>
+    </div>
+</div>
+{{ form_close() }}

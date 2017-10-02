@@ -1,16 +1,48 @@
-title = "profile"
+title = "Личный кабинет"
 url = "/profile"
-layout = "default"
-is_hidden = 1
+layout = "static-llight"
 
-[account]
-paramCode = "code"
-forceSecure = 0
+[Project]
+
+[staticMenu]
+code = "students"
 ==
+<div class="profile students_color_schema">
+    {% if user.is_profile_exists %}
+    {% partial 'user/profile' %}
+    {% else %}
+    {% partial 'user/profile-form' %}
+    {% endif %}
+</div>
+    {% if user.projects|length == 0 %}
 
-{% if user %}
-
-<p>name: {{ user.name }}</p>
-<p>id: {{ user.id }}</p>
-
+<div class="project_form">
+    {% partial 'project/upload-form' %}
+</div>
+    {% else %}
+<div class="container">
+<div class="profile_project_list" id="profileProjectList">
+    <div class="row">
+{% for project in user.projects %}
+    <div class="col-4">
+{% partial 'project/project-profile-list' project=project %}
+    </div>
+{% endfor %}
+        <div class="project_item upload_more" id="projectUploadMore">
+            <div class="project_header">
+            </div>
+            <div class="project_file_preview">
+                <span>Загрузить еще работу</span>
+            </div>
+            <div class="moderation_status">
+            </div>
+            <div class="nomination">
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="profileHideProjectForm" style="display: none;">
+        {% partial 'project/upload-form' %}
+    </div>
+</div>
 {% endif %}

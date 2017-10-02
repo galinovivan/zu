@@ -1,0 +1,10 @@
+.user_widget {
+    .signin {
+        form {
+            display: flex;
+            button[type="submit"] {
+                margin-top: -40px;
+            }
+        }
+    }
+}

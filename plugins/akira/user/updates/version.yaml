@@ -4,3 +4,6 @@
 1.0.1:
       - fix users table
       - user_add_fields.php
+1.0.2:
+      - fix users
+      - user_add_profile_is_exists_field.php

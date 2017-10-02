@@ -13,7 +13,6 @@
 }
 
 @mixin formButton() {
-  display: block;
   border: none;
   background: $transparent;
   box-shadow: inset 0 1px 0 0 $white;
@@ -30,17 +29,30 @@
   display: flex;
   justify-content: space-between;
   padding-right: 0;
+  font-family: $lightFont;
+  text-decoration: none;
   @include buttonArrowHover();
 }
 
-@mixin buttonArrowHover() {
+@mixin buttonArrowHover($col: $white) {
   @include transition(all .4s);
   * {
     @include transition(all .4s);
   }
   &:hover {
-    box-shadow: inset 0 2px 0 0 $white;
-    text-shadow: 0.5px 0 0 $white;
+    box-shadow: inset 0 2px 0 0 $col;
+    text-shadow: 0.5px 0 0 $col;
+    color: $col;
+    text-decoration: none;
+  }
+}
+
+@mixin linkHover($lineWidth: -1px) {
+  @include transition(all .4s);
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    box-shadow: inset 0 $lineWidth 0 0 $white;
   }
 }
 
@@ -48,6 +60,7 @@
     &::-webkit-input-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
 }
 
@@ -55,9 +68,47 @@
     &::-moz-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
     &:-moz-placeholder {
       color: $color;
       font-size: $fontSize;
+      font-family: $lightFont;
     }
+}
+
+@mixin flashFadeAnimation() {
+   animation: flash-fade 1s ease-in-out;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+@mixin tilesFillingHover($color) {
+  position: relative;
+  &::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $color;
+    opacity: 0;
+    z-index: 10;
+    @include transition(opacity .2s);
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+@mixin squareHover($color) {
+  padding: 8px;
+  @include transition();
+  &:hover {
+    background: $color;
+  }
 }

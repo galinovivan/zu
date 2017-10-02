@@ -1,0 +1,39 @@
+$top: 80px;
+$xsScreenTop: $top * 0.35;
+
+.main_logo {
+  position: absolute;
+  top: $top;
+  left: $containerPadding;
+  z-index: 1000;
+  @media screen and (max-width: 1400px) {
+    top: $xsScreenTop;
+  }
+  img {
+    max-width: 180px;
+  }
+}
+
+.cds_logo {
+  position: absolute;
+  top: $top;
+  right: $containerPadding;
+  z-index: 1000;
+  @media screen and (max-width: 1400px) {
+    top: $xsScreenTop;
+  }
+  img {
+    max-width: 155px;
+  }
+}
+
+.floating_title {
+  position: absolute;
+  top: $top + 60;
+  left: $containerPadding + 30;
+  z-index: 1000;
+  color: $studentsBaseColor;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  font-family: $lightFont;
+}

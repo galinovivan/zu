@@ -1,0 +1,48 @@
+name: school
+items:
+    -
+        title: Номинации
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: school-nomination
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'О конкурсе'
+        nesting: '1'
+        type: static-page
+        code: ''
+        reference: school-about
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Партнеры
+        nesting: '1'
+        type: static-page
+        code: ''
+        reference: school-partners
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Жюри
+        nesting: '1'
+        type: static-page
+        code: ''
+        reference: school-judge
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

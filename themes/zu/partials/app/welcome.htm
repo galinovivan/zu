@@ -1,8 +1,139 @@
-<div id="welcome">
-<div class="new_user" v-if="newUser">
-    <div>new user</div>
-</div>
-    <div v-else>
-        old user
+{##}
+<div class="container-fluid">
+    <div id="welcome">
+<div class="row" v-if="newUser">
+    <transition name="fade" appear mode="out-in">
+<div class="col-md-6" v-if="step === 1" key="stepOne">
+
+<div class="base_overlay dialog_column flex_center">
+<div class="new_user_info">
+    <p class="light_font">
+    Привет, ты находишься на сайте Всероссийского творческого конкурса «Звезда удачи».
+Если ты уже знаешь о нас предостаточно, тогда выбирай раздел для школьников или студентов, а если хочешь узнать больше, листай дальше.</p>
+<div class="action_buttons row mr_top_50">
+    <div class="col-md-6">
+    <a class="arrow_button" href="/school">Я школьник <i class="arrow_right"></i></a>
     </div>
+    <div class="col-md-6">
+    <a class="arrow_button" href="/students">Я студент <i class="arrow_right"></i></button>
+    </div>
+</div>
+    <ul class="steps_toggle mr_top_120">
+        <li v-on:click="toggleClick(1, $event)" v-bind:class="[step === 1 ? 'active' : '']"></li>
+        <li v-on:click="toggleClick(2, $event)" v-bind:class="[step === 2 ? 'active' : '']"></li>
+        <li v-on:click="toggleClick(3, $event)" v-bind:class="[step === 3 ? 'active' : '']"></li>
+    </ul>
+</div>
+</div>
+</div>
+
+    <div v-else-if="step === 2" class="col-md-12" key="stepTwo">
+        <div class="base_overlay dialog_column flex_center">
+            <div class="new_user_info about_concurs text-center">
+                <h2 class="mr_bott_30">ВСЕРОССИЙСКИЙ ТВОРЧЕСКИЙ КОНКУРС «ЗВЕЗДА УДАЧИ»</h2>
+                <p class="light_font">проводится при поддержке компании ЦДС уже 100 лет. С каждым годом он делается всё великолепнее и
+                    великолепнее, о чём мы раскажем здесь буквально в трёх-четырёх строчках. Больше не надо. Но кратко
+                    пусть будет всё же здесь, а не в отдельном окне или разделе, так удобнее чем переходить куда-то.
+                    А на следующем экране про ЦДС будет, как-никак первая страница, а не где-то на задворках.
+                    И лепить все эти логотипы друг на друга не надо будет, как на предыдущих версиях.</p>
+                <div class="action_buttons row mr_top_50">
+                    <div class="col-md-12 flex_center">
+                        <button class="arrow_button xl">СПАСИБО, ДОСТАТОЧНО <i class="arrow_right"></i></button>
+                    </div>
+                </div>
+                <ul class="steps_toggle mr_top_120 toggle_center">
+                    <li v-on:click="toggleClick(1, $event)" v-bind:class="[step === 1 ? 'active' : '']"></li>
+                    <li v-on:click="toggleClick(2, $event)" v-bind:class="[step === 2 ? 'active' : '']"></li>
+                    <li v-on:click="toggleClick(3, $event)" v-bind:class="[step === 3 ? 'active' : '']"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div v-else-if="step === 3" key="stepThree" class="col-md-12">
+        <div class="base_overlay dialog_column flex_center">
+            <div class="new_user_info about_concurs text-center">
+                <h2 class="mr_bott_30">УЧРЕДИТЕЛЬ И ОРГАНИЗАТОР КОНКУРСА ГК «ЦДС»</h2>
+                <p class="light_font">Всероссийский творческий конкурс для школьников и студентов проводится при
+                    поддержке компании ЦДС уже 100 лет. Одна из крупнейших строительных компаний в Северо-Западном
+                    федеральном округе. ГК «ЦДС» на протяжении 17 лет успешно работает в сфере жилищного строительства.
+                    На счету компании более 40 завершенных проектов в регионах округа. Основная задача компании— сделать
+                    покупку квартиры максимально доступной для широкого круга людей.</p>
+                <div class="action_buttons row mr_top_50">
+                    <div class="col-md-12 flex_center">
+                        <a href="https://www.cds.spb.ru/" target="_blank" class="arrow_button xl">ПЕРЕЙТИ НА САЙТ ЦДС <i class="arrow_right"></i></a>
+                    </div>
+                </div>
+                <ul class="steps_toggle mr_top_120 toggle_center">
+                    <li v-on:click="toggleClick(1, $event)" v-bind:class="[step === 1 ? 'active' : '']"></li>
+                    <li v-on:click="toggleClick(2, $event)" v-bind:class="[step === 2 ? 'active' : '']"></li>
+                    <li v-on:click="toggleClick(3, $event)" v-bind:class="[step === 3 ? 'active' : '']"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </transition>
+</div>
+
+
+
+
+
+
+    <div class="row" v-else>
+
+            <div class="col-md-6">
+
+                <div class="base_overlay dialog_column flex_center">
+                    <div class="new_user_info">
+                        <transition name="fade" appear mode="out-in" appear>
+                        <div v-if="step === 1" key="stepUserOne">
+                        <p class="light_font">
+                            Привет, мы рады, что ты снова на сайте
+                            Всероссийского творческого конкурса «Звезда удачи».
+                            Хотим напомнить, что для участия в конкурсе
+                            тебе необходимо <a href="#" v-on:click="toggleClick(2, $event)">зарегистрироваться</a>.
+                            Это ни к чему тебя не обяжет, а взаимодействовать с сайтом будет удобнее.</p>
+                        <div class="action_buttons row mr_top_50">
+                            <div class="col-md-6">
+                               <a class="arrow_button" href="/school">Я школьник <i class="arrow_right"></i></a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="arrow_button" href="/students">Я студент <i class="arrow_right"></i></a>
+                            </div>
+                        </div>
+                        </div>
+                        <div v-if="step === 2" key="stepUserTwo" class="step_user_two">
+                            <p class="light_font">
+                                Заполни краткую форму регистрации и ты сможешь воспользоваться всеми преимуществами владельца личного кабинета и участника конкурса.
+                            </p>
+                            {% partial 'user/reg-form' school=school student=student %}
+
+                        </div>
+                        <div v-if="step === 3" key="stepUserThree">
+                            <p class="light_font">
+                                Ура! Отныне ты обладатель личного кабинета на сайте Всероссийского творческого конкурса «Звезда удачи».
+                                Отправляйся в раздел Школьники/Студенты, знакомься с правилами номинациями и другими участниками, и
+                                не забудь добавить немного информации о себе в личном кабинете.</p>
+                            <div class="action_buttons row mr_top_50">
+                                <div class="col-md-12">
+                                    <a class="arrow_button small" href="{{ current_group == school ? '/school' : '/students' }}">
+                                        Перейти <i class="arrow_right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        </transition>
+                        <ul class="steps_toggle mr_top_120">
+                            <li v-on:click="toggleClick(1, $event)" v-bind:class="[step === 1 ? 'active' : '']"></li>
+                            <li v-on:click="toggleClick(2, $event)" v-bind:class="[step === 2 ? 'active' : '']"></li>
+                            <li v-bind:class="[step === 3 ? 'active' : '']"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+</div>
 </div>

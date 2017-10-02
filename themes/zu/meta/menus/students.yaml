@@ -1,0 +1,50 @@
+name: students
+items:
+    -
+        title: Жюри
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: students-judge
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Партнеры
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: students-partners
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Номинации
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: students-nomination
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'О конкурсе'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: students-about
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

@@ -1,0 +1,10 @@
+name: ZuController
+form: $/akira/zucore/models/project/fields.yaml
+modelClass: Akira\Zucore\Models\Project
+defaultRedirect: akira/zucore/zucontroller
+create:
+    redirect: 'akira/zucore/zucontroller/update/:id'
+    redirectClose: akira/zucore/zucontroller
+update:
+    redirect: akira/zucore/zucontroller
+    redirectClose: akira/zucore/zucontroller
