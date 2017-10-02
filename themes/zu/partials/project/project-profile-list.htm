@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="project_file_preview">
-    <a href="/school/gallery/{{project.id}}">
+    <a href="{{ current_group == 1 ? '/school/gallery/'project.id : '/students/gallery/'project.id}}">
         <div class="project_file_preview">
             {% set file = project.project_file %}
             {% if file.content_type == 'image/jpeg' %}
