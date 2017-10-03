@@ -1,11 +1,16 @@
 title = "Личный кабинет"
 url = "/profile"
 layout = "static-llight"
+is_hidden = 0
 
 [Project]
 
 [staticMenu]
 code = "students"
+
+[session]
+security = "user"
+redirect = "welcome"
 ==
 <div class="profile students_color_schema">
     {% if user.is_profile_exists %}

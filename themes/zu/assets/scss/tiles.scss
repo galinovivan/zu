@@ -139,6 +139,18 @@
             }
         }
     }
+    &.lot_tiles {
+        .tile {
+            .image {
+                img {
+                    width: 110%;
+                }
+            }
+        }
+        .description {
+            padding: 10px 20px;
+        }
+    }
 }
 
 .school_color_schema {
