@@ -11,3 +11,5 @@ import './file-upload';
 import './profile';
 
 import './upload-project';
+
+import './preloader';
