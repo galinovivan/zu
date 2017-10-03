@@ -1,0 +1,22 @@
+{% set file = project.project_file %}
+{% if file.content_type == 'image/jpeg' %}
+<img src="{{ file.path }}" class="img-responsive">
+{% elseif file.content_type == 'image/png' %}
+<img src="{{ file.path }}" class="img-responsive">
+{% elseif file.content_type == 'audio/mp4' %}
+<audio src="{{ file.path }}"></audio>
+{% elseif file.content_type == 'video/mpeg' %}
+<video controls="" autoplay="" name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% elseif file.content_type == 'video/mp4' %}
+<video controls="" autoplay="" name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% elseif file.content_type == 'video/3gpp' %}
+<video controls="" autoplay="" name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% else %}
+<a href="{{ file.path }}">file.name</a>
+{% endif  %}

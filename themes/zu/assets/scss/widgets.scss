@@ -10,12 +10,15 @@
 .widget {
     display: flex;
     margin-bottom: 15px;
+    position: relative;
     .swipe_info {
         transform: scale(0);
         opacity: 0;
         margin-left: 55px;
         display: flex;
         z-index: 1000;
+        position: absolute;
+        left: 30px;
         @include transition(opacity .2s);
         &.open {
             transform: scale(1);
@@ -33,5 +36,40 @@
     }
     .action_button {
         cursor: pointer;
+    }
+    &.contact_widget {
+        .swipe_info {
+            position: absolute;
+            background: $baseOverlayColor;
+            padding: 5px;
+            top: 0;
+        }
+    }
+    &.user_widget {
+        .swipe_info {
+            bottom: -12px;
+        }
+    }
+}
+
+.students_color_schema {
+    .contact_widget.widget {
+        .swipe_info {
+            background: $baseOverlayStudents;
+        }
+    }
+}
+
+.welcome_page {
+    .widget {
+        .swipe_info {
+            background: $transparent !important;
+            position: relative;
+            padding: 0;
+            bottom: auto;
+            left: auto;
+            right: auto;
+            top: auto;
+        }
     }
 }

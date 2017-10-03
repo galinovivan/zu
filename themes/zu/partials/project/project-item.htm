@@ -9,22 +9,7 @@
     </div>
     <div class="project_file_preview">
         <a href="/school/gallery/{{project.id}}">
-    {% set file = project.project_file %}
-        {% if file.content_type == 'image/jpeg' %}
-        <img src="{{ file.path }}" class="img-responsive">
-        {% elseif file.content_type == 'image/png' %}
-        <img src="{{ file.path }}" class="img-responsive">
-        {% elseif file.content_type == 'audio/mp4' %}
-        <audio src="{{ file.path }}"></audio>
-        {% elseif file.content_type == 'video/mpeg' %}
-        <video src="{{ file.path }}"></video>
-        {% elseif file.content_type == 'video/mp4' %}
-        <video src="{{ file.path }}"></video>
-        {% elseif file.content_type == 'video/3gpp' %}
-        <video src="{{ file.path }}"></video>
-        {% else %}
-        <a href="{{ file.path }}">file.name</a>
-        {% endif  %}
+    {% partial 'project/file-preview' %}
         </a>
 
     </div>
