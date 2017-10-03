@@ -7,6 +7,7 @@ use Exception;
 use Flash;
 use Validator;
 use ValidationException;
+use RainLab\User\Components\Account;
 
 class Project extends ComponentBase
 {
@@ -184,9 +185,9 @@ class Project extends ComponentBase
     /**
      * @return array
      */
-    public function getNomination()
+    public function getNomination($group)
     {
-        return [
+        $schoolNom = [
             [
                 'label' => 'Танец',
                 'value' => 'dance'
@@ -220,10 +221,47 @@ class Project extends ComponentBase
                 'value' => 'original'
             ],
             [
-                'label' => 'Дошкольники',
+                'label' => 'Дошколята',
                 'value' => 'child'
             ]
         ];
+
+        $studentNom = [
+            [
+                'label' => 'Танец',
+                'value' => 'dance'
+            ],
+            [
+                'label' => 'Вокал',
+                'value' => 'vocal'
+            ],
+            [
+                'label' => 'Музыка',
+                'value' => 'music'
+            ],
+            [
+                'label' => 'ИЗО/ДПИ',
+                'value' => 'art'
+            ],
+            [
+                'label' => 'Фотография',
+                'value' => 'photo'
+            ],
+            [
+                'label' => 'Театр',
+                'value' => 'theart'
+            ],
+            [
+                'label' => 'Видеотворчество',
+                'value' => 'video'
+            ],
+            [
+                'label' => 'Оригинальный жанр',
+                'value' => 'original'
+            ]
+        ];
+
+        return $group == Account::SCHOOL_GROUP ? $schoolNom : $studentNom;
     }
 
 
