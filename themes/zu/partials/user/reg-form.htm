@@ -1,7 +1,7 @@
 {##}
 {% if not user %}
 <form class="form"
-        data-request="onRegister" data-request-success="window.localStorage.setItem('register', '1')">
+        data-request="onRegister" data-request-redirect="/profile" data-request-success="window.localStorage.setItem('register', '1')">
     <div class="form-group radio_group">
         <input name="groups" type="radio" id="registerSchoolsGroup" value="{{ school }}" required>
         <label for="registerSchoolsGroup"></label>

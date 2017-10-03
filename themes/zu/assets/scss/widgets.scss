@@ -1,9 +1,9 @@
 .bottom_widgets_container {
     position: fixed;
     bottom: 105px;
-    left: $containerPadding;
+    left: 57px;
     @media screen and (max-height: 850px) {
-        bottom: 10px;
+        bottom: 0;
     }
 }
 
