@@ -46,3 +46,11 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
+    group:
+        label: Группа
+        oc.commentPosition: ''
+        options:
+            1: sclool
+            2: student
+        span: auto
+        type: dropdown
