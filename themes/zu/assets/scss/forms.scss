@@ -165,6 +165,15 @@ select {
       color: $gray;
     }
   }
+  .form-group {
+    position: relative;
+  }
+  .form_label {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-size: 0.9rem;
+  }
 }
 
 .material_form {
