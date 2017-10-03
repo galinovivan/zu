@@ -214,7 +214,7 @@ class Account extends ComponentBase
 
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
-                throw new ValidationException($validation);
+                throw new ValidationException('Неккоректно заполнены поля');
             }
 
             /*
@@ -242,7 +242,7 @@ class Account extends ComponentBase
             if ($userActivation) {
                 $this->sendActivationEmail($user);
 
-                Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
+                Flash::success('Ваша учетная запись успешно активировалась');
             }
 
             /*
