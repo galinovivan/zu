@@ -5,15 +5,7 @@ description = "base layout"
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=1280">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="{{ this.page.meta_description }}">
-    <title>{{ this.page.title }}</title>
-
-    <link rel="stylesheet" href="{{ 'assets/css/common.css'|theme }}">
-    {% styles %}
-    <script src="https://unpkg.com/vue"></script>
+    {% partial 'app/head' %}
 </head>
 <body>
 <header class="header">

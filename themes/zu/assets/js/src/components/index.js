@@ -6,7 +6,7 @@ import fragment from '../helpers/url';
 const url = fragment();
 
 switch (url) {
-    case '/welcome':
+    case '/':
         require('./welcome/welcome');
         break;
 }

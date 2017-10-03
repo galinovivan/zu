@@ -92,7 +92,7 @@ class Account extends ComponentBase
 
        if ($this->user() != false || $this->user() != null || $this->user() != '') {
             $groups = $this->user()->groups[0];
-        $this->page['current_group'] = $groups->pivot->user_group_id;
+            $this->page['current_group'] = $groups->pivot->user_group_id;
         /** end patch */
     }
         /** end patch */
