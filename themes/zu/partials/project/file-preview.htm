@@ -6,15 +6,15 @@
 {% elseif file.content_type == 'audio/mp4' %}
 <audio src="{{ file.path }}"></audio>
 {% elseif file.content_type == 'video/mpeg' %}
-<video controls="" autoplay="" name="media">
+<video controls=""  name="media">
     <source src="{{ file.path }}" type="video/mp4">
 </video>
 {% elseif file.content_type == 'video/mp4' %}
-<video controls="" autoplay="" name="media">
+<video controls=""  name="media">
     <source src="{{ file.path }}" type="video/mp4">
 </video>
 {% elseif file.content_type == 'video/3gpp' %}
-<video controls="" autoplay="" name="media">
+<video controls=""  name="media">
     <source src="{{ file.path }}" type="video/mp4">
 </video>
 {% else %}
