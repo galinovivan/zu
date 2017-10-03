@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                        <select name="nomination" class="select_base">
-                           {% for nomination in Project.getNomination %}
+                           {% for nomination in Project.getNomination(current_group) %}
                               <option name="nomination" value="{{ nomination.value }}">{{ nomination.label }}</option>
                            {% endfor %}
                        </select>
