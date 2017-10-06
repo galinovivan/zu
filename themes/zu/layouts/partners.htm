@@ -24,9 +24,9 @@ security = "all"
 <body class="light_background {{ user.group == school ? school : students }}">
 {% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
-{% partial 'app/logo-red' %}
+{% partial 'app/logo-red' className="small" %}
 {% partial 'app/cds-logo' %}
-{% partial 'app/floating-title' %}
+
 <main class="main clearfix black_text">
     <div class="sidebar_container">
         {% if user.group == school %}

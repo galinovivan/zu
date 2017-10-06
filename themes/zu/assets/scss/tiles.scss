@@ -128,9 +128,19 @@
         .image {
             height: 50vh;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img {
                 height: auto;
                 width: 100%;
+            }
+            &.svg {
+                background: $grayTiles;
+                img {
+                    max-width: 50%;
+                    height: auto;
+                }
             }
         }
         &:hover {

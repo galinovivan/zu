@@ -1,0 +1,20 @@
+.pagination {
+    margin-top: 50px;
+    width: 100%;
+    justify-content: center;
+    li {
+       span,
+       a {
+            color: $gray;
+            margin-right: 20px;
+            font-size: 1.4rem;
+            text-decoration: none;
+       }
+        &.active {
+        span,
+        a {
+            text-decoration: underline;
+        }
+    }
+    }
+}

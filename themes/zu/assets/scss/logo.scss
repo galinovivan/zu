@@ -6,6 +6,11 @@ $xsScreenTop: $top * 0.35;
   top: $top;
   left: $containerPadding;
   z-index: 1000;
+  &.small {
+    img {
+      max-width: 100px;
+    }
+  }
   @media screen and (max-width: 1400px) {
     top: $xsScreenTop;
   }
