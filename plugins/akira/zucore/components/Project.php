@@ -19,7 +19,9 @@ class Project extends ComponentBase
         'jpg',
         'png',
         'jpeg',
-        'gif'
+        'gif',
+        'mpeg',
+        '3gpp'
     ];
     public function componentDetails()
     {
@@ -117,13 +119,13 @@ class Project extends ComponentBase
     public function getSchoolProject()
     {
        return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->simplePaginate(10);
+            ->orderBy('created_at', 'desc')->paginate(10);
     }
 
     public function getStudentsProject()
     {
         return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->simplePaginate(10);
+            ->orderBy('created_at', 'desc')->paginate(10);
     }
 
     /**
