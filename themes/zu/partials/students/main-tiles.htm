@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 {% set posts = blogPosts.posts %}
-                {% if posts %}
+                {% if posts|length > 0 %}
                 <a href="/students/news" class="tile main_tile">
                     <div class="tile_title">
                         <h3>НОВОСТИ</h3>
