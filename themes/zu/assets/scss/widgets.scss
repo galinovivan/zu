@@ -37,12 +37,20 @@
     .action_button {
         cursor: pointer;
     }
-    &.contact_widget {
+    &.contact_widget,
+    &.user_widget {
         .swipe_info {
             position: absolute;
-            background: $baseOverlayColor;
+            background: $hightOverlay;
             padding: 5px;
             top: 0;
+        }
+    }
+    &.contact_widget {
+        top: -10px;
+    }
+    &.user_widget {
+        .swipe_info {
         }
     }
     &.user_widget {
@@ -53,10 +61,13 @@
 }
 
 .students_color_schema {
-    .contact_widget.widget {
+    .contact_widget.widget,
+    .user_widget.widget {
         .swipe_info {
-            background: $baseOverlayStudents;
+            background: $hightStudentsOverlay;
         }
+    }
+    .user_widget.widget {
     }
 }
 
@@ -70,6 +81,25 @@
             left: auto;
             right: auto;
             top: auto;
+            form {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.swipe_info {
+    .user_action {
+        display: flex;
+        width: 200px;
+        padding: 10px;
+        a {
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        a, button {
+            cursor: pointer;
+            @include linkHover();
         }
     }
 }
