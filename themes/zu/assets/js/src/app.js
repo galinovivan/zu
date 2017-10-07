@@ -13,3 +13,5 @@ import './profile';
 import './upload-project';
 
 import './preloader';
+
+import './news';

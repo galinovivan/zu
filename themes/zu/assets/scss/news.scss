@@ -1,0 +1,37 @@
+.news_item {
+  padding-bottom: 75px;
+  @include clearfix();
+  .post_title {
+    margin-bottom: 20px;
+      * {
+        color: $gray;
+        font-family: $altBoldItalic;
+      }
+  }
+  .more {
+      text-decoration: none;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+     // font-family: $lightFont;
+      display: inline-block;
+      margin-top: 20px;
+     // width: 100%;
+      color: $gray;
+      @include linkHover(-1px , $gray);
+  }
+  .post_thumb {
+    float: left;
+    width: 40%;
+    margin-bottom: 25px;
+  }
+  p {
+    color: $gray;
+    font-size: 1.2rem;
+    line-height: 24px;
+    //font-family: $lightFont;
+    font-weight: 300;
+  }
+  .post_content {
+    display: none;
+  }
+}

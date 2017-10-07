@@ -2,20 +2,42 @@
     <div class="contaner-fluid">
         <div class="row">
             <div class="col-md-6">
-                <a class="tile main_tile">
+                {% set posts = blogPosts.posts %}
+                {% if posts %}
+                <a href="/students/news" class="tile main_tile">
                     <div class="tile_title">
-                        <!--<h3>НОВОСТИ</h3>-->
+                        <h3>НОВОСТИ</h3>
                     </div>
                     <div class="tile_description">
-                                <!--<span>-->
-                                    <!--ДОБАВЛЕНЫ-->
-<!--НОВЫЕ-->
-<!--НОМИНАЦИИ-->
-<!--ДЛЯ-->
-<!--школьников-->
-                                <!--</span>-->
+                        <div class="carousel slide" id="newsCarousel" data-interval="7000" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for post in posts %}
+                                {% set i = loop.index0 %}
+                                {% if i < 3 %}
+                                <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
+                                    <span>{{ post.title }}</span>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% if post|length > 0 %}
+                            <ol class="carousel-indicators steps_toggle">
+                                {% for post in posts %}
+                                {% set j = loop.index0 %}
+                                {% if j < 3 %}
+                                <li class="{{ j == 0 ? 'active' : '' }}" data-target="#newsCarousel"
+                                    data-slide-to="{{j}}">
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
+                {% else %}
+                <a class="tile main_tile"></a>
+                {% endif %}
             </div>
             <div class="col-md-6">
                 <div class="row">

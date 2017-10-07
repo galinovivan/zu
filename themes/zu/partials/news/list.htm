@@ -1,0 +1,27 @@
+{% set posts = blogPosts.posts %}
+{% for post in posts %}
+<div class="col-12">
+    <div class="news_item">
+        <div class="post_title">
+            <h3>{{ post.title|upper }}</h3>
+        </div>
+                <div class="post_thumb">
+                    {% for img in post.featured_images %}
+                    {% if loop.index0 == 0 %}
+                    <img src="{{ img.path }}" alt="{{ image.description }}" class="img-responsive">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            <span class="post_summary">
+                {{ post.summary|raw }}
+            <a href="#" class="more postMore">ЧИТАТЬ ДАЛЕЕ</a>
+            </span>
+
+                <span class="post_content">
+                    {{ post.content_html|raw }} <br>
+                    <a href="#" class="more postRmore">СВЕРНУТЬ</a>
+                </span>
+    </div>
+</div>
+{% endfor %}

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_url__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_url__ = __webpack_require__(13);
 /**
  * Created by 91178 on 30.09.2017.
  */
@@ -82,7 +82,7 @@ console.log(url);
 
 switch (url) {
   case '/':
-    __webpack_require__(9);
+    __webpack_require__(10);
     break;
 }
 
@@ -134,6 +134,33 @@ fileInput.on('change', function (e) {
 /* 3 */
 /***/ (function(module, exports) {
 
+(function ($) {
+
+    $(document).ready(() => {
+        const postItem = $('.news_item');
+
+        postItem.each(function () {
+            const content = $(this).find('.post_content'),
+                  summary = $(this).find('.post_summary');
+
+            $(this).find('.postMore').click(e => {
+                e.preventDefault();
+                summary.hide();
+                content.show();
+            });
+            $(this).find('.postRmore').click(e => {
+                e.preventDefault();
+                content.hide();
+                summary.show();
+            });
+        });
+    });
+})(jQuery);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
 /**
  * Created by master on 04.04.2017.
  */
@@ -155,7 +182,7 @@ fileInput.on('change', function (e) {
 })(jQuery);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -181,7 +208,7 @@ fileInput.on('change', function (e) {
 })(jQuery);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 
@@ -190,7 +217,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -206,7 +233,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 (function ($) {
@@ -220,26 +247,30 @@ $(document).ready(function () {
 })(jQuery);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__widget__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__widget__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__widget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__widget__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__tooltip__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__nav__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__file_upload__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__file_upload__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__upload_project__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__upload_project__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__upload_project___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__upload_project__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__preloader__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__preloader__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__preloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__preloader__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__news__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__news___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__news__);
+
+
 
 
 
@@ -257,13 +288,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_cookie__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_storage__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_cookie__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_storage__ = __webpack_require__(12);
 
 
 
@@ -305,7 +336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 }));
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -367,7 +398,7 @@ class Cookie {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -387,7 +418,7 @@ const Storage = {
 /* harmony default export */ __webpack_exports__["a"] = (Storage);
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
