@@ -6,16 +6,27 @@ $xsScreenTop: $top * 0.35;
   top: $top;
   left: $containerPadding;
   z-index: 1000;
-  &.small {
-    img {
-      max-width: 100px;
-    }
-  }
+  width: 180px;
+  height: 98px;
   @media screen and (max-width: 1400px) {
     top: $xsScreenTop;
   }
   img {
     max-width: 180px;
+  }
+  &.blue {
+    background: url('../images/logo_zu_blue.png') no-repeat;
+  }
+  &.red {
+    background: url('../images/logo_zu_red.png') no-repeat;
+  }
+  &.small {
+    max-width: 110px;
+    height: 60px;
+    background-size: cover;
+    img {
+      max-width: 100px;
+    }
   }
 }
 

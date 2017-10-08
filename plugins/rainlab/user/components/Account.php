@@ -110,6 +110,13 @@ class Account extends ComponentBase
         return Auth::getUser();
     }
 
+    public function getAge()
+    {
+        $user = $this->user();
+        $age = Date::now() - $user->date_of_bithday;
+        return $age;
+    }
+
     /**
      * Returns the login model attribute.
      */

@@ -12,7 +12,7 @@ forceSecure = 0
 [session]
 security = "all"
 ==
-
+{##}
 {% component 'session' %}
 <!doctype html>
 <html lang="en">
@@ -22,7 +22,7 @@ security = "all"
 <body class="light_background {{ user.group == school ? school : students }}">
 {% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
-{% partial 'app/logo-red' %}
+{% partial 'app/logo-base' className="blue" %}
 {% partial 'app/cds-logo' %}
 {% partial 'app/floating-title' %}
 <main class="main clearfix black_text school_color_schema">

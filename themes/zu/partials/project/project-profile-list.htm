@@ -1,5 +1,6 @@
 [viewBag]
 ==
+{##}
 <div class="project_item">
 <div class="project_header">
 <div class="project_name">
@@ -11,7 +12,11 @@
 </div>
 <div class="project_file_preview">
         <div class="project_file_preview">
+        <a href="{{ current_group == school ? '/school/gallery/' ~ project.id : 
+        '/students/gallery/' ~ project.id 
+        }}">
            {% partial 'project/file-preview' %}
+           </a>
         </div>
 
 </div>
