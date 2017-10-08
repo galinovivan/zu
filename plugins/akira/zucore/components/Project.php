@@ -119,13 +119,13 @@ class Project extends ComponentBase
     public function getSchoolProject()
     {
        return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->paginate(10);
+            ->orderBy('created_at', 'desc')->paginate(12);
     }
 
     public function getStudentsProject()
     {
         return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->paginate(10);
+            ->orderBy('created_at', 'desc')->paginate(12);
     }
 
     /**
