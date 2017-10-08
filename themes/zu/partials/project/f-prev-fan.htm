@@ -1,11 +1,11 @@
 {##}
 {% set file = project.project_file %}
 {% if file.content_type == 'image/jpeg' %}
-<a href="{{ file.path }}" data-fancybox>
+<a href="{{ file.path }}" data-fancybox class="fanc">
 <img src="{{ file.path }}" class="img-responsive">
 </a>
 {% elseif file.content_type == 'image/png' %}
-<a href="{{ file.path }}" data-fancybox>
+<a href="{{ file.path }}" data-fancybox class="fanc">
 <img src="{{ file.path }}" class="img-responsive">
 </a>
 {% elseif file.content_type == 'audio/mp4' %}

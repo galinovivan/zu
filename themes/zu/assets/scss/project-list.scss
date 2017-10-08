@@ -24,7 +24,7 @@
     height: 250px;
     overflow: hidden;
     margin-bottom: 25px;
-    a {
+    a:not(.fanc) {
       display: block;
       overflow: hidden;
       width: 250px;
