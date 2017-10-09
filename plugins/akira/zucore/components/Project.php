@@ -177,6 +177,7 @@ class Project extends ComponentBase
           'vocal' => 'Вокал',
           'music' => 'Музыка',
           'art' => 'ИЗО/ДПИ',
+          'litres' => 'Литература',
           'photo' => 'Фотография',
           'theart' => 'Театр',
           'video' => 'Видеотворчество',
@@ -205,6 +206,10 @@ class Project extends ComponentBase
             [
                 'label' => 'ИЗО/ДПИ',
                 'value' => 'art'
+            ],
+            [
+            	'label' => 'Литература',
+            	'value' => 'litres'
             ],
             [
                 'label' => 'Фотография',
@@ -244,6 +249,10 @@ class Project extends ComponentBase
             [
                 'label' => 'ИЗО/ДПИ',
                 'value' => 'art'
+            ],
+            [
+            	'label' => 'Литература',
+            	'value' => 'litres'
             ],
             [
                 'label' => 'Фотография',
