@@ -12,7 +12,6 @@ use RainLab\User\Components\Account;
 class Project extends ComponentBase
 {
     private $allowFileExtension = [
-        'doc',
         'docx',
         'mp3',
         'mp4',
@@ -151,7 +150,7 @@ class Project extends ComponentBase
     /**
      * @return mixed
      */
-    private function getAllowFileExtension()
+    public function getAllowFileExtension()
     {
         return $this->allowFileExtension;
     }

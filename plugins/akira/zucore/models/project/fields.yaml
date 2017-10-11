@@ -17,7 +17,8 @@ fields:
             theart: Театр
             video: Видеотворчество
             original: 'Оригинальный жанр'
-            child: 'Оригинальный жанр'
+            child: Дошколята
+            litres: Литература
         span: auto
         type: dropdown
     moderation:
