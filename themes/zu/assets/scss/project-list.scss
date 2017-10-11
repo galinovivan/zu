@@ -16,7 +16,9 @@
     height: 35px;
   }
   .project_name {
-
+    a {
+      text-decoration: none;
+    }
   }
   .project_file_preview {
     background: $lightGray;
