@@ -4,7 +4,11 @@
             <span>{{ Project.getNominationLabel(project.nomination) }}</span>
         </div>
         <div class="project_file_preview">
+         {% if project.project_uri %}
+        {% partial 'project/iframe-file' height="315" width="500" %}
+        {% else %}
             {% partial 'project/f-prev-fan' %}
+            {% endif %}
         </div>
     </div>
 </div>

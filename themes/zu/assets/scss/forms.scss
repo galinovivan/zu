@@ -167,6 +167,12 @@ select {
   }
   .form-group {
     position: relative;
+    a {
+      color: $gray;
+    }
+    .hide_field {
+      display: none;
+    }
   }
   .form_label {
     position: absolute;

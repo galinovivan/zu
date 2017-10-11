@@ -7,7 +7,7 @@
     font-weight: 500;
   }
   .project_file_preview {
-    * {
+    *:not(iframe) {
       max-width: 100%;
       height: auto;
     }
@@ -31,7 +31,7 @@
       height: 250px;
       color: $gray;
     }
-    img {
+    img, video {
       width: auto;
       min-height: 100%;
     }
@@ -63,7 +63,7 @@
       width: auto;
       height: auto;
       overflow: hidden;
-      * {
+      *:not(iframe) {
         max-width: 90%;
         height: auto;
       }

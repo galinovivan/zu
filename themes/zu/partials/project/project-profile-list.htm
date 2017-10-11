@@ -4,7 +4,11 @@
 <div class="project_item">
 <div class="project_header">
 <div class="project_name">
+<a href="{{ current_group == school ? '/school/gallery/' ~ project.id : 
+        '/students/gallery/' ~ project.id 
+        }}">
     <span>{{ project.name|capitalize }}</span>
+    </a>
 </div>
     <div class="project_likes_count">
         {{ project.like_count }}
@@ -15,7 +19,11 @@
         <a href="{{ current_group == school ? '/school/gallery/' ~ project.id : 
         '/students/gallery/' ~ project.id 
         }}">
-           {% partial 'project/file-preview' %}
+        {% if project.project_uri %}
+        {% partial 'project/iframe-file' height="250" width="250" %}
+        {% else %}
+        {% partial 'project/file-preview' %}
+        {% endif %}
            </a>
         </div>
 

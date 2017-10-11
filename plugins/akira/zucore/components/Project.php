@@ -22,6 +22,10 @@ class Project extends ComponentBase
         'mpeg',
         '3gpp'
     ];
+
+    const YOUTUBE_URI = 'youtube.com';
+    const ALTERNATIVE_YOUTUBE_URI = 'youtu.be';
+
     public function componentDetails()
     {
         return [
@@ -90,22 +94,25 @@ class Project extends ComponentBase
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
-
-            if (!Input::hasFile('project_file')) {
+           
+            if (!Input::hasFile('project_file') && $data['project_uri'] == '') {
                 throw new Exception('Пожалуйста загрузите вашу работу');
             }
 
             $file = Input::file('project_file');
-            if (!$this->checkFileExtension($file)) {
+            if ($data['project_uri'] == '' && !$this->checkFileExtension($file)) {
                 throw new Exception('Неверный формат файла');
             }
 
-
+            if ($data['project_uri'] !== '') {
+                $data['project_uri'] = $this->getValidVideoIdFromLink($data['project_uri']);
+            }
             $project = ProjectModel::create($data);
+            if (Input::hasFile('project_file')) {
             $project->project_file = $file;
             $project->save();
+            }
             Flash::success('Ваш проект успешно добавлен!');
-
         } catch (Exception $e) {
             Flash::error($e->getMessage());
         }
@@ -272,6 +279,27 @@ class Project extends ComponentBase
         ];
 
         return $group == Account::SCHOOL_GROUP ? $schoolNom : $studentNom;
+    }
+
+        
+    private function getValidVideoIdFromLink($uri)
+    {
+        if (stripos($uri, self::YOUTUBE_URI) !== false || stripos($uri, self::ALTERNATIVE_YOUTUBE_URI)) {
+            return $this->getYoutubeVideoLink($uri);
+        } else {
+            
+        }
+    }
+
+    private function getYoutubeVideoLink($uri)
+    {
+        $regex = '/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/';
+        preg_match($regex, $uri, $id);
+        if (count($id) > 0) {
+            return 'https://www.' . SELF::YOUTUBE_URI . '/embed/' . $id[1];
+        } else {
+            throw new Exception('Неверный формат ссылки');
+        }
     }
 
 

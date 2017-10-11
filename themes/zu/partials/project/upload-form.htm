@@ -1,3 +1,4 @@
+{##}
 {{ form_open({ files: true, request: 'onProjectUpload',redirect: 'profile', class: 'form_gray upload_project' }) }}
 <div class="container">
     <div class="row">
@@ -15,7 +16,7 @@
                 		<span style="font-size: 10px; letter-spacing: 1px;">(Максимальный размер загружаемого файла 200MB)</span>
                 </label>
                 
-                <input type="file" name="project_file" id="projectFile" accept="audio/*|video/*|image/*|text/*" required>
+                <input type="file" name="project_file" id="projectFile" accept="audio/*|video/*|image/*|text/*">
             </div>
         </div>
         <div class="col-md-9">
@@ -33,6 +34,10 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="lead" placeholder="Руководитель|">
+                    </div>
+                    <div class="form-group">
+                    <a href="#" class="project_uri" id="projectUriBtn">Прикрепить ссылку на видео</a>
+                    <input type="text" class="hide_field" name="project_uri" placeholder="ссылка|" id="projectUriField"/>
                     </div>
                 </div>
                 <div class="col-md-4">
