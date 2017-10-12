@@ -287,7 +287,7 @@ class Project extends ComponentBase
         if (stripos($uri, self::YOUTUBE_URI) !== false || stripos($uri, self::ALTERNATIVE_YOUTUBE_URI)) {
             return $this->getYoutubeVideoLink($uri);
         } else {
-            
+            throw new Exception('Неверный формат ссылки');
         }
     }
 
