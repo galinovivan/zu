@@ -1,3 +1,5 @@
+[viewBag]
+==
 {% set posts = blogPosts.posts %}
 {% for post in posts %}
 <div class="col-12">
@@ -8,7 +10,7 @@
                 <div class="post_thumb">
                     {% for img in post.featured_images %}
                     {% if loop.index0 == 0 %}
-                    <img src="{{ img.path }}" alt="{{ image.description }}" class="img-responsive">
+                    <img src="{{ img.path }}" alt="{{ image.description }}" class="img-responsive" style="max-width: 90%;">
                     {% endif %}
                     {% endfor %}
                 </div>

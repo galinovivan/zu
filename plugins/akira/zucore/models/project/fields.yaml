@@ -55,3 +55,8 @@ fields:
             2: student
         span: auto
         type: dropdown
+    project_uri:
+        label: link
+        oc.commentPosition: ''
+        span: auto
+        type: text
