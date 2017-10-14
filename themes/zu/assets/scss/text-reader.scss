@@ -9,6 +9,9 @@
         }
     }
     &.single {
+        background: $lightBackground;
+        height: 500px;
+        overflow-y: scroll;
         .p {
             span {
                 font-size: 1.3rem !important;
