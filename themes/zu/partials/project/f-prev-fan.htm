@@ -22,6 +22,8 @@
 <video controls=""  name="media">
     <source src="{{ file.path }}" type="video/mp4">
 </video>
+{% elseif file.content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %}
+<div class="doc_prev single" data-src="{{file.path}}"></div>
 {% else %}
 <a href="{{ file.path }}">Скачать работу</a>
 {% endif  %}

@@ -1,0 +1,18 @@
+.doc_prev {
+    background: $lightBackground;
+    width: 70%;
+    margin: auto;
+    padding: 20px 10px 0 10px;
+    .p {
+        span {
+            font-size: 10px !important;
+        }
+    }
+    &.single {
+        .p {
+            span {
+                font-size: 1.3rem !important;
+            }
+        }
+    }
+}

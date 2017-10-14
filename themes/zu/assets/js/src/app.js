@@ -15,3 +15,5 @@ import './upload-project';
 import './preloader';
 
 import './news';
+
+import './custom-helpers';
