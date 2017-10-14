@@ -10208,18 +10208,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-// var blob;
-// getFileAsBuffer('http://localhost/storage/app/uploads/public/59e/106/b4b/59e106b4b28d6190446036.docx')
-//     .then( fileData => {
-//         transformFileToHtml(fileData)
-//         .then(data => {
-//             console.log(data);
-//         });
-//     })
-//     .catch( e => {
-//         console.log(e);
-//     });
-
 const textContainer = $('.doc_prev');
 makeTextPresentation(textContainer);
 
@@ -10228,7 +10216,6 @@ function makeTextPresentation($el) {
         const filePath = $(this).attr('data-src');
         Object(__WEBPACK_IMPORTED_MODULE_0__helpers_file__["a" /* default */])(filePath).then(fileData => {
             Object(__WEBPACK_IMPORTED_MODULE_1__textreader_textreader__["a" /* default */])(fileData).then(data => {
-                console.log(data);
                 $(this).html(data);
             });
         });
