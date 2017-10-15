@@ -111,7 +111,7 @@ class Project extends ComponentBase
 
     public function getSchoolProject()
     {
-        if ($_GET['filter'] == 'true') {
+        if (isset ($_GET_['filter']) && $_GET['filter'] == 'true') {
             return $this->filterProject();
         }
        return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
@@ -120,7 +120,7 @@ class Project extends ComponentBase
 
     public function getStudentsProject()
     {
-        if ($_GET['filter'] == 'true') {
+        if (isset ($_GET_['filter']) && $_GET['filter'] == 'true') {
             return $this->filterProject();
         }
         return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
