@@ -22532,12 +22532,17 @@ exports.default = parseDocumentRelations;
     $(document).ready(() => {
         const url = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_url__["a" /* default */])();
         const projectFilterItems = $('.project_filter').find('a');
-        projectFilterItems.each(function (key, value) {
-            const currNom = $(this).attr('data-filter');
-            if (url.indexOf(currNom) != -1) {
-                $(this).toggleClass('active');
-            }
-        });
+        const defaultFilter = $('.default_filter');
+        if (url.indexOf('filter') != -1) {
+            defaultFilter.toggleClass('active');
+        } else {
+            projectFilterItems.each(function (key, value) {
+                const currNom = $(this).attr('data-filter');
+                if (url.indexOf(currNom) != -1) {
+                    $(this).toggleClass('active');
+                }
+            });
+        };
     });
 })(jQuery);
 

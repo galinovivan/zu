@@ -1,7 +1,9 @@
 {##}
 <ul class="project_filter">
 <li>
-
+<a href="{{ group == school ? '/school/gallery' : '/students/gallery' }}" data-filter="all" class="default_filter">
+ВСЕ РАБОТЫ
+<a>
 </li>
 {% for nomination in Project.getNomination(group) %}
 <li>
