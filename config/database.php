@@ -58,7 +58,7 @@ return [
             'port'      => '3306',
             'database'  => 'zu_future',
             'username'  => 'zu_future',
-            'password'  => '',
+            'password'  => 'e24c2a16',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
