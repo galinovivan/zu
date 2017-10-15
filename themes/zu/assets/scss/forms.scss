@@ -62,7 +62,7 @@ select {
     background: $transparent;
   }
   .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   input {
     border: 1px solid $white;
@@ -89,8 +89,33 @@ select {
   }
   input[type="submit"],
   button {
-    margin-top: 40px;
+    //margin-top: 40px;
     @include formButton();
+    width: 195px;
+  }
+  input[type="checkbox"] {
+    width: $radioSize;
+    min-width: $radioSize;
+    height: $radioSize;
+    margin-right: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+      content: '';
+      width: $radioMarkerSize;
+      height: $radioMarkerSize;
+      @include transition();
+    }
+    &:checked {
+      &::after {
+        background: $white;
+      }
+    }
+  }
+  .small_label {
+    font-size: 0.9rem;
   }
 }
 

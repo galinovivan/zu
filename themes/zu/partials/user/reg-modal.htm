@@ -1,3 +1,4 @@
+{##}
 <div id="myModalBox" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -8,7 +9,10 @@
             </div>
             <!-- Основное содержимое модального окна -->
             <div class="modal-body">
+            <h4>Регистрация</h4>
               {% partial 'user/reg-form' %}
+              <h4>Вход</h4>
+              {% partial 'user/login-form' %}
             </div>
             <!-- Футер модального окна -->
         </div>
