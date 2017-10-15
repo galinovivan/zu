@@ -39,20 +39,7 @@ class Project extends ComponentBase
         return [];
     }
 
-    public function projects()
-    {
-
-    }
-
-    public function projectsByNomination($nomination)
-    {
-
-    }
-
-    public function getById($id)
-    {
-
-    }
+   
 
 
 
@@ -124,14 +111,34 @@ class Project extends ComponentBase
 
     public function getSchoolProject()
     {
+        if (isset($_GET['filter'])) {
+            return $this->filterProject();
+        }
        return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
             ->orderBy('created_at', 'desc')->paginate(12);
     }
 
     public function getStudentsProject()
     {
+        if (isset($_GET['filter'])) {
+            return $this->filterProject();
+        }
         return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
             ->orderBy('created_at', 'desc')->paginate(12);
+    }
+
+    public function filterProject()
+    {
+        $group = $_GET['group'];
+        $nomination = $_GET['nomination'];
+        $order = isset($_GET['order']) ? $_GET['order'] : 'desc';
+        return ProjectModel::where('group', $group)->where('moderation', 1)
+        ->where('nomination', $nomination)->orderBy('created_at', $order)->paginate(12)
+        ->appends([
+            'group' => $group,
+            'nomination' => $nomination,
+            'order' => $order
+        ]);
     }
 
     /**

@@ -1,0 +1,11 @@
+{##}
+<ul class="project_filter">
+{% for nomination in Project.getNomination(group) %}
+<li>
+<a href="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?nomination={{ nomination.value }}
+&group={{ group }}&filter=true&order" data-filter="{{ nomination.value }}">
+{{ nomination.label|upper }}
+</a>
+</li>
+{% endfor %}
+</ul>

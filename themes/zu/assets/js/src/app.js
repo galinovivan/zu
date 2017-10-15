@@ -17,3 +17,5 @@ import './preloader';
 import './news';
 
 import './custom-helpers';
+
+import './project-filter';

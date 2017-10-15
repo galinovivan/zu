@@ -7,7 +7,12 @@ is_hidden = 0
 
 
 <div class="container">
-    <div class="row">
+<div class="row">
+    <div class="col-md-12">
+    {% partial 'project/filter' group=student %}
+    </div>
+</div>
+    <div class="row mr_top_50">
         {% for project in Project.getStudentsProject() %}
         <div class="col-md-4">
             {% partial 'project/st-project-item' project=project %}
