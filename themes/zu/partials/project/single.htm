@@ -17,7 +17,11 @@
     <div class="project_about">
         <div><span class="label">Название:</span><strong>{{ project.name }}</strong></div>
         <div><span class="label">Автор:</span><strong>
+        	{% if project.contributers %}
+    	{{ project.contributers }}
+    	{% else %}
         {{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}
+        {% endif %}
         </strong></div>
         <div><span class="label">Возраст:</span><strong>
         {{ author_age }} лет

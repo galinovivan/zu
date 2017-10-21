@@ -21,7 +21,11 @@
 
     </div>
     <div class="user_name">
+        {% if project.contributers %}
+        <span>{{ project.contributers }}</span>
+        {% else %}
         <span>{{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}</span>
+        {% endif %}
     </div>
     <div class="nomination">
         <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
