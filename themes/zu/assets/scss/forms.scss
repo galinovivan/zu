@@ -45,6 +45,10 @@ form {
     option {
       background: $transparent;
     }
+    &.white {
+      border: 1px solid $white;
+      color: $white;
+    }
   }
 }
 
@@ -249,6 +253,11 @@ select:-webkit-autofill:focus {
   background: $transparent;
 }
 
-
+select {
+  outline: none !important;
+  option {
+    outline: none !important;
+  }
+}
 
 
