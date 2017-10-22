@@ -1,0 +1,44 @@
+description = "Статическая общая"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+==
+{##}
+<!doctype html>
+<html lang="en">
+<head>
+    {% partial 'app/head' %}
+</head>
+<body class="{{ current_group == school ? school : students }}">
+{% partial 'app/preloader' %}
+{% partial 'user/reg-modal' %}
+{% partial 'app/doc/subscribe' %}
+{% partial 'app/doc/policy' %}
+{% partial 'app/logo-base' className=current_group == school ? 'blue' : 'red' %}
+{% partial 'app/cds-logo' %}
+<main class="main clearfix black_text school_color_schema">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className=current_group == school ? 'school' : 'students' %}
+    </div>
+
+    <div>
+        {% page %}
+    </div>
+
+</main>
+
+<footer>
+    {% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>

@@ -1,0 +1,56 @@
+.casting_page {
+    background: url('../images/casting-bg.jpg') no-repeat;
+    background-size: cover;
+    height: 100vh;
+    .casting_layout {
+        height: 100vh;
+        &.students {
+            background: $baseOverlayStudents;
+            .form {
+                select {
+                    option {
+                        background: $baseOverlayStudents;
+                    }
+                }
+            }
+        }
+        &.school {
+            background: $baseOverlayColor;
+            .form {
+                select {
+                    option {
+                        background: $baseOverlayColor;
+                    }
+                }
+            }
+        }
+        .casting_form {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            .form {
+                width: 420px;
+                .title {
+                    margin-bottom: 20px;
+                    h3 {
+                        font-family: $altBoldItalic;
+                    }
+                }
+                .description {
+                    margin-bottom: 20px;
+                    p {
+                        font-size: 1.2rem;
+                    }
+                }
+                select {
+                    padding-left: 15px !important;
+                }
+                .form-group {
+                    padding-bottom: 5px;
+                }
+            }
+        }
+    }
+}
