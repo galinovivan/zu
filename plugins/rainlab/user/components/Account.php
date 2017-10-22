@@ -471,7 +471,7 @@ class Account extends ComponentBase
     {
         $data = post();
 
-        $emailTo = $data['group'] == self::STUDENTS_GROUP ? 'students@zvezdaudachi.com' : 'zvezda@zvezdaudachi.com';
+        $mailTo = $data['group'] == self::STUDENTS_GROUP ? 'students@zvezdaudachi.com' : 'zvezda@zvezdaudachi.com';
 
         if (Mail::send('casting', [
             'nomination' => $data['nomination'],
