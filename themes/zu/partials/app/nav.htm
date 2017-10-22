@@ -24,9 +24,13 @@
     <li class="bottom_items">
         <div class="contact">
             <span class="phone light_phone">{% content 'contact/phone' %}</span>
-            <a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">
-            {% content 'contact/email' %}
-            </a>
+             {% if current_group == school %}
+<a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">{% content 'contact/email' %}</a>
+{% elseif current_group == student %}
+<a href="mailto:{% content 'contact/s-email' %}" target="_blank" class="light_font email">{% content 'contact/s-email' %}</a>
+{% else %}
+<a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">{% content 'contact/email' %}</a>
+{% endif %}
         </div>
         <div class="social">
             {% partial 'app/social-list' %}

@@ -54,9 +54,22 @@ items:
             isExternal: '0'
     -
         title: Галерея
+        nesting: ''
         type: cms-page
+        url: ''
         code: ''
         reference: gallery_students
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Кастинги
+        type: cms-page
+        code: ''
+        reference: s-casting
         viewBag:
             isHidden: '0'
             cssClass: ''

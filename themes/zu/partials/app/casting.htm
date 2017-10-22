@@ -3,7 +3,7 @@
 <div class="container-fluid">
 <div class="row">
 <div class="col-6"></div>
-<div class="col-6 casting_layout {{ current_group == students ? 'students' : 'school' }}">
+<div class="col-6 casting_layout {{ current_group == student ? 'students' : 'school' }}">
 <div class="casting_form">
 <form class="form" data-request="onCastingFormHandler" data-request-redirect="{{ current_group == school ?
                     '/school/casting' : '/students/casting'}}">
