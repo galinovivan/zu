@@ -134,13 +134,20 @@
             img {
                 height: auto;
                 width: 100%;
+                min-height: 50vh;
             }
-            &.svg {
-                background: $grayTiles;
-                img {
-                    max-width: 50%;
-                    height: auto;
-                }
+            
+        }
+        .svg {
+            background: $grayTiles;
+            height: 50vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                max-width: 50%;
+                height: auto;
             }
         }
         &:hover {
