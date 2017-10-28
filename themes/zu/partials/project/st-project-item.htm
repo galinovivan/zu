@@ -6,9 +6,6 @@
             <span>{{ project.name|capitalize }}</span>
             </a>
         </div>
-        <div class="project_likes_count">
-            {{ project.like_count }}
-        </div>
     </div>
     <div class="project_file_preview">
         <a href="/students/gallery/{{project.id}}">
@@ -27,7 +24,11 @@
         <span>{{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}</span>
     	{% endif %}
     </div>
+    <div class="project_footer">
     <div class="nomination">
         <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
+    </div>
+    <div class="project_likes_count" id="{{project.id}}">
+    </div>
     </div>
 </div>

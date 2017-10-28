@@ -9836,6 +9836,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__news___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__news__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__custom_helpers__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__project_filter__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vk_vk__ = __webpack_require__(188);
+
+
 
 
 
@@ -22546,6 +22549,43 @@ exports.default = parseDocumentRelations;
         }
     });
 })(jQuery);
+
+/***/ }),
+/* 188 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__like__ = __webpack_require__(189);
+/**
+ * Created by 91178 on 28.10.2017.
+ */
+
+
+VK.init({
+    apiId: 6237768,
+    onlyWidgets: true
+});
+
+window.onload = () => {
+    const likeElems = $('.project_likes_count');
+    if (likeElems) {
+        likeElems.each(function () {
+            Object(__WEBPACK_IMPORTED_MODULE_0__like__["a" /* default */])($(this));
+        });
+    }
+};
+
+/***/ }),
+/* 189 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function likeInit(el) {
+    const id = el.attr('id');
+    VK.Widgets.Like(id, { type: 'mini', width: 85, height: 18 }, id);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (likeInit);
 
 /***/ })
 /******/ ]);

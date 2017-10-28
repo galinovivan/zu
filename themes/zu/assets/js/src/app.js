@@ -19,3 +19,5 @@ import './news';
 import './custom-helpers';
 
 import './project-filter';
+
+import './vk/vk';
