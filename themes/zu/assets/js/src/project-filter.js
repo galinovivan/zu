@@ -1,20 +1,25 @@
 import fragment from './helpers/url';
+import SessionStorage from './helpers/session';
+
 (function ( $ ) {
 
     $(document).ready(() => {
         const url = fragment();
         const projectFilterItems = $('.project_filter').find('a');
         const defaultFilter = $('.default_filter');
-        if (url.indexOf('filter') != -1) {
-           
         projectFilterItems.each(function(key, value) {
-            const currNom = $(this).attr('data-filter');
-            if (url.indexOf(currNom) != -1) {
-                $(this).toggleClass('active');
+            const currFilter = $(this).attr('data-filter');
+            $(this).click( function() {
+                SessionStorage.set('active_filter', currFilter);
+            })
+        });
+        if (url.indexOf('filter') != -1) {
+            const activeFilter = SessionStorage.get('active_filter');
+            if (activeFilter) {
+                $('[data-filter='+activeFilter+']').toggleClass('active');
             }
-        })
-    } else {
-        defaultFilter.toggleClass('active');
-    }
+        } else {
+            defaultFilter.toggleClass('active');
+        }
     })
 })(jQuery);

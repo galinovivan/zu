@@ -24,5 +24,5 @@ file2html.read({
 })
 })
 
-} 
+};
 export default transformFileToHtml;
