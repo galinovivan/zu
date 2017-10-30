@@ -1,5 +1,6 @@
 <?php namespace Akira\Zucore\Components;
 
+use Backend\Models\User;
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Input;
 use Akira\Zucore\Models\Project as ProjectModel;
@@ -8,6 +9,7 @@ use Flash;
 use Validator;
 use ValidationException;
 use RainLab\User\Components\Account;
+use RainLab\User\Models\User as UserModel;
 
 class Project extends ComponentBase
 {
@@ -309,6 +311,24 @@ class Project extends ComponentBase
         } else {
             throw new Exception('Неверный формат ссылки');
         }
+    }
+
+    public function cityStat()
+    {
+        $arr = [];
+        $users = UserModel::all()->toArray();
+        foreach ($users as $user) {
+            $city = strtolower($user['city']);
+
+            if (array_key_exists($city, $arr)) {
+                $oldCount = $arr[$city];
+                $arr[$city] = $oldCount + 1;
+            } else {
+                $arr[$city] = 1;
+            }
+        }
+        dd($arr);
+
     }
 
 
