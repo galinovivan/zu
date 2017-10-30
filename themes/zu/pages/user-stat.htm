@@ -1,0 +1,17 @@
+title = "user-stat"
+url = "/user-stat"
+layout = "static-llight"
+is_hidden = 0
+
+[user-stat]
+
+[resetPassword]
+paramCode = "code"
+
+[Project]
+==
+{% set stats = Project.cityStat %}
+
+{% for stat in stats %}
+{{ stat.city }}
+{% endfor %}
