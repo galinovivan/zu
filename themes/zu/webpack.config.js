@@ -18,11 +18,7 @@ module.exports = {
             },
         ],
     },
-    stats: {
-        color: true
-    },
 
     devtool: 'source-map'
 
 };
-

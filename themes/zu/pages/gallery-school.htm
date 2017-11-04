@@ -5,14 +5,14 @@ is_hidden = 0
 
 [Project]
 ==
-<div class="container">
+<div class="container workGallery">
 <div class="row">
     <div class="col-md-12">
     {% partial 'project/filter' group=school %}
     </div>
 </div>
     <div class="row mr_top_50">
-    	
+
  {% for project in Project.getSchoolProject() %}
         <div class="col-md-4">
 {% partial 'project/project-item' project=project %}

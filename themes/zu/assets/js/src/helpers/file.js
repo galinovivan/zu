@@ -17,7 +17,7 @@ const getFileAsBuffer = filePath => {
         reject(this.status);
       }
       oReq.send();
-  })  
+  })
 };
 
 

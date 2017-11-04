@@ -274,7 +274,7 @@ class Account extends ComponentBase
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
-        
+
     }
 
     /**

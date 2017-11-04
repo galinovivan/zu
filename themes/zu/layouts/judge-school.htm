@@ -19,7 +19,7 @@ security = "all"
 <head>
     {% partial 'app/head' %}
 </head>
-<body class="light_background {{ user.group == school ? school : students }}">
+<body class="pageJudge light_background {{ user.group == school ? school : students }}">
 {% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
 {% partial 'app/doc/subscribe' %}

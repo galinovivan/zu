@@ -1,0 +1,218 @@
+.light_background {
+    background-color: $lightBackground;
+}
+
+.main_logo {
+    padding: 0 20px;
+    display: flex;
+    z-index: 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    &.red {
+        position: relative!important;
+        height: 77px;
+        width: 120px;
+        background-size: contain;
+        margin-top: 23px;
+        margin-left: 20px;
+    }
+    &.blue {
+        position: relative!important;
+        height: 77px;
+        width: 120px;
+        background-size: contain;
+        margin-top: 23px;
+        margin-left: 20px;
+    }
+    img {
+        max-width: 120px;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+.cds_logo {
+    display: none;
+}
+
+.main {
+    &.black_text {
+        .nav_toggle {
+            span {
+                background: $baseColor !important;
+            }
+        }
+    }
+    &.school_main {
+        .menu {
+            background: $baseColor;
+        }
+    }
+    &.students_main {
+        .menu {
+            background: $studentsBaseColor;
+        }
+    }
+
+    .sidebar_container {
+        left: auto;
+        right: 0;
+        .sidebar {
+            &.students {
+                .nav_toggle {
+                    span {
+                        background: $baseOverlayStudents !important;
+                    }
+                }
+                .menu {
+                    background: $baseOverlayStudents;
+                }
+            }
+            .widgets {
+                display: none;
+            }
+            .nav_toggle {
+                margin-right: 30px;
+                margin-top: 60%;
+                span {
+                    display: block;
+                    width: 30px;
+                    height: 2px;
+                    margin: 5px 0;
+                    background: $white;
+                }
+            }
+            .menu {
+                &.open {
+                    display: flex;
+                    &+.nav_toggle {
+                        display: none;
+                    }
+
+                }
+                padding: 5%;
+                display: none;
+                flex-direction: column;
+                background: $baseOverlayColor;
+                height: 100vh;
+                width: 100vw;
+                .menu_item {
+                    &:not(:first-child) {
+                        padding: 20px;
+                    }
+                    &:first-child {
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                    a {
+                        font-family: ubuntu-light;
+                        font-size: 15px;
+                        text-decoration: none;
+                        letter-spacing: 3px;
+                        text-transform: uppercase;
+                    }
+                }
+                .bottom_items {
+                    padding: 20px;
+
+                    .contact {
+                        .light_phone, .light_font.email {
+                            color: $white;
+                            font-family: ubuntu-light;
+                            font-size: 14px;
+                            display: block;
+                        }
+                    }
+                    .social {
+                        margin: 10px 0;
+                        .social_list {
+                            li {
+                                display: inline-flex;
+                            }
+                        }
+                    }
+                    .policy {
+                        a {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tiles_container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        .news_con {
+            height: 50vh;
+            .main_tile {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                padding: 20px;
+                align-items: flex-start;
+                background-size: cover;
+                background-image: url("../images/school_main_bg.png");
+                background-repeat: no-repeat;
+            }
+        }
+        .block_con {
+            height: 50vh;
+            &.studentsBlockCon {
+                .tile_title {
+                    background: $baseOverlayStudents !important;
+                }
+            }
+            .small_tile {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                .tile_title {
+                    width: 100%;
+                    text-decoration: none;
+                    height: 35px;
+                    background: $baseOverlayColor;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    h4 {
+                        margin-bottom: 0;
+                        font-size: 1.1rem;
+                    }
+                }
+                .tile_description {
+                    display: none;
+                    .carousel-indicators {
+                        display: none;
+                    }
+                }
+            }
+            .col-md-12 {
+                height: 25vh;
+                .col-md-6 {
+                    width: 50%;
+                    height: 25vh;
+                    a {
+                        height: 100%;
+                        width: 100%;
+                        background: url("../images/school_about.png") no-repeat center;
+                        background-size: cover;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+        }
+    }
+}

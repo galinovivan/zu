@@ -11,11 +11,16 @@ description = "base layout"
 {% partial 'app/preloader' %}
 <header class="header">
 {% partial 'app/header' %}
+    <div class="mobileHeader displayMobile">
+        {% partial 'user/user-widget' user=user %}
+        {% partial 'app/contact-widget' %}
+    </div>
+
 </header>
 <main>
     {% page %}
 </main>
-<div class="bottom_widgets_container">
+<div class="bottom_widgets_container noDisplay">
     {% partial 'app/contact-widget' %}
     {% partial 'user/user-widget' user=user %}
 </div>
