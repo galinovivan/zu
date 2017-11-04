@@ -60,3 +60,8 @@ fields:
         oc.commentPosition: ''
         span: auto
         type: text
+    contributers:
+        label: Псевдоним
+        oc.commentPosition: ''
+        span: auto
+        type: text
