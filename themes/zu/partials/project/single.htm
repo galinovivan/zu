@@ -17,15 +17,22 @@
     <div class="project_about">
         <div><span class="label">Название:</span><strong>{{ project.name }}</strong></div>
         <div><span class="label">Автор:</span><strong>
+        	{% if project.contributers %}
+    	{{ project.contributers }}
+    	{% else %}
         {{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}
+        {% endif %}
         </strong></div>
+        {% if author_age > 0 %}
         <div><span class="label">Возраст:</span><strong>
         {{ author_age }} лет
         </strong></div>
+        {% endif %}
         <div><span class="label">Город:</span><strong>{{ project.user.city|upper|capitalize }}</strong></div>
         <div><span class="label">Учебное</span></div>
         <div><span class="label">Заведение:</span><strong>{{ project.user.school }}</strong></div>
-        <div><span class="label">Педагог:</span><strong>{{ project.user.lead|capitalize }}</strong></div>
+        <div><span class="label">Педагог:</span><strong>{{ project.lead }}</strong></div>
+        <div><div class="project_likes_count" id="{{project.id}}"></div></div>
     </div>
     <a href="/school/gallery" class="arrow_button back_link medium gray">К другим работам <i class="arrow_right gray"></i></a>
 </div>

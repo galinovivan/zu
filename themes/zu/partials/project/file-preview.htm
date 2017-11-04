@@ -1,10 +1,10 @@
 {##}
 {% set file = project.project_file %}
 {% if file.content_type == 'image/jpeg' %}
-<img src="{{ file.getThumb(250, 250) }}" class="img-responsive">
+<img src="{{ file.getThumb(250, 250) }}" class="img-responsive" style="margin: 0 auto; display: block; object-fit: cover; height: 100%; width: 100%;">
 
 {% elseif file.content_type == 'image/png' %}
-<img src="{{ file.getThumb(250, 250) }}" class="img-responsive">
+<img src="{{ file.getThumb(250, 250) }}" class="img-responsive" style="margin: 0 auto; display: block; object-fit: cover; height: 100%; width: 100%;">
 {% elseif file.content_type == 'audio/mp4' %}
 <audio src="{{ file.path }}"></audio>
 {% elseif file.content_type == 'video/mpeg' %}

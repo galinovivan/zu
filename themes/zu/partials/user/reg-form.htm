@@ -30,7 +30,7 @@
                 type="email"
                 class="form-control medium"
                 id="registerEmail"
-                placeholder="Email" data-toggle="tooltip" data-placement="right" title="Мы не будем забрасывать тебя письмами
+                placeholder="E-mail" data-toggle="tooltip" data-placement="right" title="Мы не будем забрасывать тебя письмами
                  и адрес твоей почты никому-никому не скажем" readonly onfocus="this.removeAttribute('readonly')" />
     </div>
 
@@ -40,7 +40,7 @@
                 type="password"
                 class="form-control medium"
                 id="registerPassword"
-                placeholder="Password" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')" />
+                placeholder="Придумайте пароль" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')" />
     </div>
     <!--<div class="form-group">-->
         <!--<input-->
@@ -50,9 +50,14 @@
                 <!--id="registerPassword"-->
                 <!--placeholder="Passwword" />-->
     <!--</div>-->
+<div class="form-group radio_group">
+        <input name="subs" type="checkbox" id="subs" required>
+      
+        <span class="small_label">Нажимая на кнопку “зарегистрироваться”, я соглашаюсь на <a href="#subscribeModal" data-toggle="modal">обработку персональных данных</a> и принимаю условия <a href="#policyModal" data-toggle="modal">политики конфиденциальности</a></span>
 
+    </div>
     <button  data-toggle="tooltip"  data-placement="bottom" title="Если что-то пошло не так, сообщи
 нам о своей проблеме по этому адресу:
-help@zvezdaudachi.ru">Отправить <i class="arrow_right"></i></button>
+zvezda@zvezdaudachi.com">Зарегистрироваться <i class="arrow_right"></i></button>
 </form>
 {% endif %}

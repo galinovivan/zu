@@ -1,0 +1,53 @@
+[viewBag]
+==
+{##}
+<div class="casting_page">
+<div class="container-fluid">
+<div class="row">
+<div class="col-6"></div>
+<div class="col-6 casting_layout {{ current_group == student ? 'students' : 'school' }}">
+<div class="casting_form">
+<form class="form" data-request="onCastingFormHandler" data-request-redirect="{{ current_group == school ?
+                    '/school/casting' : '/students/casting'}}">
+<div class="title">
+<h3>{{ this.page.title|upper }}</h3>
+</div>
+<div class="description">
+<p>
+Если вы из Санкт-Петербурга и не можете сами записать видео, можете записаться на бесплатный кастинг! Заполните форму и ждите звонка от нашего менеджера.
+</p>
+</div>
+    <input type="hidden" name="group" value="{{current_group}}">
+<div class="form-group">
+<select class="select_base white" name="nomination">
+<option value="0">Выбрать номинацию</option>
+{% for nom in Project.getNomination(current_group) %}
+<option value={{ nom.label }}>
+{{ nom.label }}
+</option>
+{% endfor %}
+</select>
+</div>
+<div class="form-group">
+<input type="text" class="form-control medium" value="{{ user ? user.name ~ user.surname : '' }}" 
+placeholder="Имя Фамилия/Коллектив| *" name="user_name" required>
+</div>
+<div class="form-group">
+<input type="text" class="form-control medium" value="{{ user ? user.phone : '' }}" 
+placeholder="Телефон +7 ХХХ ХХХХХХХ| *" name="user_phone" required>
+</div>
+<div class="form-group">
+<input type="text" class="form-control medium" value="{{ user ? user.email : '' }}"
+placeholder="email| *" name="user_email" required>
+</div>
+<div class="submit">
+<button class="arrow_button medium">
+Принять участие<i class="arrow_right"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -17,7 +17,13 @@
 </span>
 </div>
 <div>
+{% if current_group == school %}
 <a href="mailto:{% content 'contact/email' %}" target="_blank" class="link">{% content 'contact/email' %}</a>
+{% elseif current_group == student %}
+<a href="mailto:{% content 'contact/s-email' %}" target="_blank" class="link">{% content 'contact/s-email' %}</a>
+{% else %}
+<a href="mailto:{% content 'contact/email' %}" target="_blank" class="link">{% content 'contact/email' %}</a>
+{% endif %}
 </div>
 
 </div>

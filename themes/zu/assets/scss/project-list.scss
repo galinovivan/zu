@@ -15,6 +15,13 @@
   .project_header {
     height: 35px;
   }
+  .project_footer {
+    display: flex;
+    justify-content: space-between;
+    .project_likes_count {
+      width: 75px !important;
+    }
+  }
   .project_name {
     a {
       text-decoration: none;

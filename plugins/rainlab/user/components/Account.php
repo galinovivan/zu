@@ -466,4 +466,24 @@ class Account extends ComponentBase
 
         return Redirect::secure(Request::path());
     }
+
+    public function onCastingFormHandler()
+    {
+        $data = post();
+
+        $mailTo = $data['group'] == self::STUDENTS_GROUP ? 'students@zvezdaudachi.com' : 'zvezda@zvezdaudachi.com';
+
+        if (Mail::send('casting', [
+            'nomination' => $data['nomination'],
+            'user_name' => $data['user_name'],
+            'phone' => $data['user_phone'],
+            'email' => $data['user_email']
+        ], function($message) use ($mailTo) {
+            $message->to($mailTo, 'zu');
+        })) {
+
+        }
+
+        Flash::success('Ура! Регистрация прошла успешно! В ближайшее время с вами свяжется менеджер.');
+    }
 }

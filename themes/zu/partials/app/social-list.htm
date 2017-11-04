@@ -1,22 +1,24 @@
 {##}
 <ul class="social_list">
     <li>
-        <a href="#" target="_blank">
+        <a href="{{ current_group == school ? 'https://vk.com/zu_school' : 'https://vk.com/zu.students' }}" 
+        target="_blank">
             <i class="sprite_social sprite_social-icon_vk"></i>
         </a>
     </li>
-    <li>
+  <!--   <li>
         <a href="#" target="_blank">
             <i class="sprite_social sprite_social-icon_fb"></i>
         </a>
-    </li>
+    </li> -->
     <li>
-        <a href="#" target="_blank">
+    
+        <a href="{{ current_group == school ? 'https://www.instagram.com/my_zvezdaudachi/' : 'https://www.instagram.com/zu.students/?hl=ru' }}" target="_blank">
             <i class="sprite_social sprite_social-icon_insta"></i>
         </a>
-    </li>
+    </li> 
     <li>
-        <a href="#" target="_blank">
+        <a href="https://www.youtube.com/user/zvezdaudachi2012" target="_blank">
             <i class="sprite_social sprite_social-icon_youtude"></i>
         </a>
     </li>

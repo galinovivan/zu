@@ -1,6 +1,19 @@
 name: school
 items:
     -
+        title: Главная
+        nesting: ''
+        type: url
+        url: /
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
         title: Номинации
         nesting: '1'
         type: static-page
@@ -54,9 +67,35 @@ items:
             isExternal: '0'
     -
         title: Галерея
+        nesting: ''
         type: cms-page
+        url: ''
         code: ''
         reference: gallery-school
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Кастинги
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: casting
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Загрузить работу'
+        type: cms-page
+        code: ''
+        reference: profile
         viewBag:
             isHidden: '0'
             cssClass: ''
