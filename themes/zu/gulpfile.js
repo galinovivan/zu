@@ -13,10 +13,12 @@ const concat = require('gulp-concat');
 const path = {
     build: {
         css: 'assets/css',
+        css_mobile: 'assets/css/',
         image: 'assets/images'
     },
     src: {
         style: 'assets/scss/common.scss',
+        style_mobile: 'assets/scss/mobile/index.scss',
         image: 'assets/images/src/*.*'
     }
 };
@@ -49,6 +51,14 @@ gulp.task('style:prod', () => {
        .pipe(autoprefixer())
        .pipe(cssMin())
        .pipe(gulp.dest(path.build.css))
+});
+
+gulp.task('meow', () => {
+    gulp.src(path.src.style_mobile)
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(cssMin())
+        .pipe(gulp.dest(path.build.css_mobile))
 });
 
 

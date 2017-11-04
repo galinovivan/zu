@@ -1,5 +1,5 @@
 {##}
-<ul class="project_filter">
+<ul class="project_filter noDisplay">
 <li>
 <a href="{{ group == school ? '/school/gallery' : '/students/gallery' }}" class="default_filter">
 ВСЕ РАБОТЫ
@@ -14,3 +14,12 @@
 </li>
 {% endfor %}
 </ul>
+
+<select class="displayMobile galleryFilter" onchange="window.location.href=this.options[this.selectedIndex].value">
+    <option value="{{ group == school ? '/school/gallery' : '/students/gallery' }}">Все работы</option>
+    {% for nomination in Project.getNomination(group) %}
+    <option value="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?nomination={{ nomination.value }}
+&group={{ group }}&filter=true">{{ nomination.label|upper }}</option>
+
+    {% endfor %}
+</select>

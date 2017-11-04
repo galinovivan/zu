@@ -1,0 +1,113 @@
+.workGallery {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-top: 10px;
+        .project_item {
+            padding: 5px;
+            @media screen and (min-width: 769px) and (max-width: 1024px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .project_header {
+                @media screen and (min-width: 769px) and (max-width: 1024px) {
+                    display: flex;
+                    align-self: flex-start;
+                    margin-left: 30px;
+                }
+                .project_name {
+                    margin: 5px 0;
+                    a {
+                        color: $gray;
+                        font-family: ubuntu-light;
+                        font-size: 14px;
+                        text-decoration: none;
+
+                    }
+                }
+            }
+
+            .project_file_preview {
+                min-height: 120px;
+                min-width: 120px;
+                width: 400px;
+                height: 400px;
+                overflow: hidden;
+                @media screen and (max-width: 879px){
+                    width: 350px;
+                    height: 350px;
+                }
+                @media screen and (max-width: 745px){
+                    width: 300px;
+                    height: 300px;
+                }
+                @media screen and (max-width: 655px){
+                    width: 250px;
+                    height: 250px;
+                }
+                @media screen and (max-width: 550px){
+                    width: 200px;
+                    height: 200px;
+                }
+                @media screen and (max-width: 450px){
+                    width: 150px;
+                    height: 150px;
+                }
+                @media screen and (max-width: 320px) {
+                    width: 120px;
+                    height: 120px;
+                }
+                a {
+                    width: 150%;
+                    height: 150%;
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        display: block;
+                        height: 400px;
+                        width: 400px;
+                    }
+                }
+            }
+            .user_name {
+                margin: 5px 0;
+                @media screen and (min-width: 769px) and (max-width: 1024px) {
+                    display: flex;
+                    align-self: flex-start;
+                    margin-left: 30px;
+                }
+                span {
+                    font-family: pt-bold-italic;
+                    font-size: 14px;
+                    color: #747474;
+                }
+            }
+            .nomination {
+                letter-spacing: 2px;
+                color: #a7a7a7;
+                @media screen and (min-width: 769px) and (max-width: 1024px) {
+                    display: flex;
+                    align-self: flex-start;
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+}
+.galleryFilter {
+    border: none;
+    font-family: ubuntu-light;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    background: $lightBackground;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+}

@@ -1,0 +1,133 @@
+body.light_background {
+    .main_logo {
+        &.blue {
+            position: absolute;
+        }
+        &.red {
+            position: absolute;
+        }
+    }
+    .full_tiles {
+        .row {
+            .col.tile {
+                .image {
+                    img {
+                        display: block;
+                        object-fit: cover;
+                        height: 300px !important;
+
+                    }
+                }
+                .description {
+                    //background: rgba(255,255,255,.6);
+                    //height: 100%;
+                    p {
+                        display: none;
+                        padding: 20px;
+                    }
+                }
+            }
+            .col.tile.openTile {
+                .image {
+                    //position: relative;
+                }
+                .description {
+                    //position: absolute;
+                    //top: 0;
+                    //left: 0;
+                    //z-index: 9999;
+                    h4 {
+                        //position: relative !important;
+                        //bottom: auto !important;
+                        //top: 0;
+                    }
+                    p {
+                        //display: none;
+                    }
+                }
+            }
+        }
+        .row:first-child {
+            .col.tile {
+
+                &:first-child {
+
+                    display: none;
+                }
+                &:nth-child(2) {
+                    width: 100%;
+                    height: 50vh;
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    .image {
+                        height: 100%;
+                        overflow: hidden;
+
+                        .description.big {
+                            h4 {
+                                position: absolute;
+                                bottom: -6px;
+                                left: 0;
+                                width: 100%;
+                                padding: 15px;
+                                background: $baseOverlayColor;
+                                color: $white;
+                                text-transform: uppercase;
+                            }
+                        }
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+        .col.tile {
+            flex: 0 0 50%;
+            max-width: 50%;
+            height: 50vh;
+            overflow: hidden;
+            .description {
+                h4 {
+                    position: absolute;
+                    bottom: -6px;
+                    left: 0;
+                    width: 100%;
+                    padding: 15px;
+                    background: $baseOverlayColor;
+                    color: $white;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+    }
+}
+
+.pageJudge {
+    .main_logo {
+        position: absolute !important;
+    }
+    .floating_title {
+        top: 100px;
+        left: 50px;
+        font-size: 1rem;
+        color: $backgroundBlue;
+        h3 {
+            font-size: 1.1rem;
+        }
+    }
+    &.studentsJudge {
+        .floating_title {
+            color: $baseOverlayStudents;
+        }
+    }
+    .tile {
+        .description {
+            h4 {
+                background: $baseOverlayStudents !important;
+            }
+        }
+    }
+}
