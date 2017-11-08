@@ -1,11 +1,22 @@
 {##}
 <div class="user_widget widget">
-<a class="action_button" data-toggle="tooltip" data-placement="top" title="Войти в личный кабинет">
+    {% if user %}
+<a class="action_button" data-toggle="tooltip" data-placement="top"
+   title="Войти в личный кабинет">
 <i class="sprite_icons sprite_icons-profile_icon"></i>
 </a>
+    {% else %}
+    <a class="action_button" data-toggle="tooltip" data-placement="top"
+       title="Войти в личный кабинет">
+        <i class="sprite_icons sprite_icons-profile_icon"></i>
+    </a>
+    {% endif %}
 {% if user %}
 <div class="swipe_info">
-<button data-request="onLogout" class="arrow_button">Выйти</button>
+    <div class="user_action">
+<a href="/profile">Личный кабинет</a>
+<a data-request="onLogout" data-request-redirect="/">Выйти</a>
+    </div>
 </div>
 {% else %}
 <div class="swipe_info">

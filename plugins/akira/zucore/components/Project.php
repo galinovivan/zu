@@ -1,5 +1,6 @@
 <?php namespace Akira\Zucore\Components;
 
+use Backend\Models\User;
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Input;
 use Akira\Zucore\Models\Project as ProjectModel;
@@ -7,19 +8,26 @@ use Exception;
 use Flash;
 use Validator;
 use ValidationException;
+use RainLab\User\Components\Account;
+use RainLab\User\Models\User as UserModel;
 
 class Project extends ComponentBase
 {
     private $allowFileExtension = [
-        'doc',
         'docx',
         'mp3',
         'mp4',
         'jpg',
         'png',
         'jpeg',
-        'gif'
+        'gif',
+        'mpeg',
+        '3gpp'
     ];
+
+    const YOUTUBE_URI = 'youtube.com';
+    const ALTERNATIVE_YOUTUBE_URI = 'youtu.be';
+
     public function componentDetails()
     {
         return [
@@ -33,20 +41,7 @@ class Project extends ComponentBase
         return [];
     }
 
-    public function projects()
-    {
-
-    }
-
-    public function projectsByNomination($nomination)
-    {
-
-    }
-
-    public function getById($id)
-    {
-
-    }
+   
 
 
 
@@ -80,29 +75,33 @@ class Project extends ComponentBase
                 'name' => 'required|between:1, 255',
                 'nomination' => 'required',
             ];
-
+            if (isset($data['group'])) {
+                $data['group'] = (int) $data['group'];
+            }
             $validation = Validator::make($data, $rules);
 
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
-
-            if (!Input::hasFile('project_file')) {
+           
+            if (!Input::hasFile('project_file') && $data['project_uri'] == '') {
                 throw new Exception('Пожалуйста загрузите вашу работу');
             }
 
             $file = Input::file('project_file');
-            if (!$this->checkFileExtension($file)) {
+            if ($data['project_uri'] == '' && !$this->checkFileExtension($file)) {
                 throw new Exception('Неверный формат файла');
             }
 
-
+            if ($data['project_uri'] !== '') {
+                $data['project_uri'] = $this->getValidVideoIdFromLink($data['project_uri']);
+            }
             $project = ProjectModel::create($data);
+            if (Input::hasFile('project_file')) {
             $project->project_file = $file;
             $project->save();
-
+            }
             Flash::success('Ваш проект успешно добавлен!');
-
         } catch (Exception $e) {
             Flash::error($e->getMessage());
         }
@@ -112,6 +111,48 @@ class Project extends ComponentBase
     }
 
 
+    public function getSchoolProject()
+    {
+        if (isset ($_GET['filter']) && $_GET['filter'] == 'true') {
+            return $this->filterProject();
+        }
+       return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
+            ->orderBy('created_at', 'desc')->paginate(12);
+    }
+
+    public function getStudentsProject()
+    {
+        if (isset ($_GET['filter']) && $_GET['filter'] == 'true') {
+            return $this->filterProject();
+        }
+        return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
+            ->orderBy('created_at', 'desc')->paginate(12);
+    }
+
+    public function filterProject()
+    {
+        $group = $_GET['group'];
+        $filter = $_GET['filter'];
+        $nomination = $_GET['nomination'];
+        $order = isset($_GET['order']) ? $_GET['order'] : 'desc';
+        return ProjectModel::where('group', $group)->where('moderation', 1)
+        ->where('nomination', $nomination)->orderBy('created_at', $order)->paginate(12)
+        ->appends([
+            'group' => $group,
+            'nomination' => $nomination,
+            'order' => $order,
+            'filter' => $filter
+        ]);
+    }
+
+    /**
+     * @param $filePath
+     * @return string
+     */
+    public function getFileType($filePath)
+    {
+        return filetype($filePath);
+    }
     /**
      * @param $file
      * @return bool
@@ -127,7 +168,7 @@ class Project extends ComponentBase
     /**
      * @return mixed
      */
-    private function getAllowFileExtension()
+    public function getAllowFileExtension()
     {
         return $this->allowFileExtension;
     }
@@ -153,6 +194,7 @@ class Project extends ComponentBase
           'vocal' => 'Вокал',
           'music' => 'Музыка',
           'art' => 'ИЗО/ДПИ',
+          'litres' => 'Литература',
           'photo' => 'Фотография',
           'theart' => 'Театр',
           'video' => 'Видеотворчество',
@@ -163,9 +205,9 @@ class Project extends ComponentBase
     /**
      * @return array
      */
-    public function getNomination()
+    public function getNomination($group)
     {
-        return [
+        $schoolNom = [
             [
                 'label' => 'Танец',
                 'value' => 'dance'
@@ -181,6 +223,10 @@ class Project extends ComponentBase
             [
                 'label' => 'ИЗО/ДПИ',
                 'value' => 'art'
+            ],
+            [
+            	'label' => 'Литература',
+            	'value' => 'litres'
             ],
             [
                 'label' => 'Фотография',
@@ -199,10 +245,90 @@ class Project extends ComponentBase
                 'value' => 'original'
             ],
             [
-                'label' => 'Дошкольники',
+                'label' => 'Дошколята',
                 'value' => 'child'
             ]
         ];
+
+        $studentNom = [
+            [
+                'label' => 'Танец',
+                'value' => 'dance'
+            ],
+            [
+                'label' => 'Вокал',
+                'value' => 'vocal'
+            ],
+            [
+                'label' => 'Музыка',
+                'value' => 'music'
+            ],
+            [
+                'label' => 'ИЗО/ДПИ',
+                'value' => 'art'
+            ],
+            [
+            	'label' => 'Литература',
+            	'value' => 'litres'
+            ],
+            [
+                'label' => 'Фотография',
+                'value' => 'photo'
+            ],
+            [
+                'label' => 'Театр',
+                'value' => 'theart'
+            ],
+            [
+                'label' => 'Видеотворчество',
+                'value' => 'video'
+            ],
+            [
+                'label' => 'Оригинальный жанр',
+                'value' => 'original'
+            ]
+        ];
+
+        return $group == Account::SCHOOL_GROUP ? $schoolNom : $studentNom;
+    }
+
+        
+    private function getValidVideoIdFromLink($uri)
+    {
+        if (stripos($uri, self::YOUTUBE_URI) !== false || stripos($uri, self::ALTERNATIVE_YOUTUBE_URI)) {
+            return $this->getYoutubeVideoLink($uri);
+        } else {
+            throw new Exception('Неверный формат ссылки');
+        }
+    }
+
+    private function getYoutubeVideoLink($uri)
+    {
+        $regex = '/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^& \n<]+)(?:[^ \n<]+)?/';
+        preg_match($regex, $uri, $id);
+        if (count($id) > 0) {
+            return 'https://www.' . SELF::YOUTUBE_URI . '/embed/' . $id[1];
+        } else {
+            throw new Exception('Неверный формат ссылки');
+        }
+    }
+
+    public function cityStat()
+    {
+        $arr = [];
+        $users = UserModel::all()->toArray();
+        foreach ($users as $user) {
+            $city = strtolower($user['city']);
+
+            if (array_key_exists($city, $arr)) {
+                $oldCount = $arr[$city];
+                $arr[$city] = $oldCount + 1;
+            } else {
+                $arr[$city] = 1;
+            }
+        }
+        dd($arr);
+
     }
 
 

@@ -1,0 +1,25 @@
+title = "Работы"
+url = "/students/gallery"
+layout = "static-llight"
+is_hidden = 0
+[Project]
+==
+
+
+<div class="container workGallery">
+<div class="row">
+    <div class="col-md-12">
+    {% partial 'project/filter' group=student %}
+    </div>
+</div>
+    <div class="row mr_top_50">
+        {% for project in Project.getStudentsProject() %}
+        <div class="col-md-4">
+            {% partial 'project/st-project-item' project=project %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {{ Project.getStudentsProject().render|raw }}
+    </div>
+</div>

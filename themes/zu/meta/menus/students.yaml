@@ -1,6 +1,19 @@
 name: students
 items:
     -
+        title: Главная
+        nesting: ''
+        type: url
+        url: /
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
         title: Жюри
         nesting: '0'
         type: static-page
@@ -30,8 +43,10 @@ items:
         title: Номинации
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: students-nomination
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -41,9 +56,46 @@ items:
         title: 'О конкурсе'
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: students-about
+        cmsPage: ''
         replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Галерея
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: gallery_students
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Кастинги
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: s-casting
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Загрузить работу'
+        type: cms-page
+        code: ''
+        reference: profile
         viewBag:
             isHidden: '0'
             cssClass: ''

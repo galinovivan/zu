@@ -19,10 +19,13 @@ code = "school"
     {% partial 'app/head' %}
 </head>
 <body class="light_background {{ user.group == school ? school : students }}">
+{% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
-{% partial 'app/logo-red' %}
+{% partial 'app/doc/subscribe' %}
+{% partial 'app/doc/policy' %}
+{% partial 'app/logo-base'  className="small blue" %}
 {% partial 'app/cds-logo' %}
-{% partial 'app/floating-title' %}
+
 <main class="main clearfix black_text school_color_schema">
     <div class="sidebar_container">
         {% partial 'app/sidebar' className="school" %}
@@ -41,6 +44,7 @@ code = "school"
 <script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
 <script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}
 </body>

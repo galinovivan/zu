@@ -92,7 +92,7 @@ class Account extends ComponentBase
 
        if ($this->user() != false || $this->user() != null || $this->user() != '') {
             $groups = $this->user()->groups[0];
-        $this->page['current_group'] = $groups->pivot->user_group_id;
+            $this->page['current_group'] = $groups->pivot->user_group_id;
         /** end patch */
     }
         /** end patch */
@@ -108,6 +108,13 @@ class Account extends ComponentBase
         }
 
         return Auth::getUser();
+    }
+
+    public function getAge()
+    {
+        $user = $this->user();
+        $age = Date::now() - $user->date_of_bithday;
+        return $age;
     }
 
     /**
@@ -214,7 +221,7 @@ class Account extends ComponentBase
 
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
-                throw new ValidationException($validation);
+                throw new ValidationException('Неккоректно заполнены поля');
             }
 
             /*
@@ -242,7 +249,7 @@ class Account extends ComponentBase
             if ($userActivation) {
                 $this->sendActivationEmail($user);
 
-                Flash::success(Lang::get('rainlab.user::lang.account.activation_email_sent'));
+                Flash::success('Ваша учетная запись успешно активировалась');
             }
 
             /*
@@ -267,7 +274,7 @@ class Account extends ComponentBase
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
-        
+
     }
 
     /**
@@ -458,5 +465,25 @@ class Account extends ComponentBase
         }
 
         return Redirect::secure(Request::path());
+    }
+
+    public function onCastingFormHandler()
+    {
+        $data = post();
+
+        $mailTo = $data['group'] == self::STUDENTS_GROUP ? 'students@zvezdaudachi.com' : 'zvezda@zvezdaudachi.com';
+
+        if (Mail::send('casting', [
+            'nomination' => $data['nomination'],
+            'user_name' => $data['user_name'],
+            'phone' => $data['user_phone'],
+            'email' => $data['user_email']
+        ], function($message) use ($mailTo) {
+            $message->to($mailTo, 'zu');
+        })) {
+
+        }
+
+        Flash::success('Ура! Регистрация прошла успешно! В ближайшее время с вами свяжется менеджер.');
     }
 }

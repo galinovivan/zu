@@ -1,5 +1,4 @@
-import $ from 'jquery';
-(function() {
+(function( $ ) {
     const widget = $('.widget');
     const button = widget.find('.action_button');
     const hideInfo = widget.find('.swipe_info');
@@ -7,5 +6,5 @@ import $ from 'jquery';
     button.click(function(e) {
         $(this).siblings('.swipe_info').toggleClass('open');
     })
-})();
+})(jQuery);
 

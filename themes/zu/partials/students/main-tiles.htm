@@ -1,23 +1,47 @@
+[viewBag]
+==
 <div class="tiles_container">
     <div class="contaner-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <a class="tile main_tile">
+            <div class="col-md-6 news_con  studentsNewsCon">
+                {% set posts = blogPosts.posts %}
+                {% if posts|length > 0 %}
+                <a href="/students/news" class="tile main_tile">
                     <div class="tile_title">
-                        <!--<h3>НОВОСТИ</h3>-->
+                        <h3>НОВОСТИ</h3>
                     </div>
                     <div class="tile_description">
-                                <!--<span>-->
-                                    <!--ДОБАВЛЕНЫ-->
-<!--НОВЫЕ-->
-<!--НОМИНАЦИИ-->
-<!--ДЛЯ-->
-<!--школьников-->
-                                <!--</span>-->
+                        <div class="carousel slide" id="newsCarousel" data-interval="7000" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for post in posts %}
+                                {% set i = loop.index0 %}
+                                {% if i < 3 %}
+                                <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
+                                    <span>{{ post.title }}</span>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% if post|length > 0 %}
+                            <ol class="carousel-indicators steps_toggle">
+                                {% for post in posts %}
+                                {% set j = loop.index0 %}
+                                {% if j < 3 %}
+                                <li class="{{ j == 0 ? 'active' : '' }}" data-target="#newsCarousel"
+                                    data-slide-to="{{j}}">
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
+                {% else %}
+                <a class="tile main_tile"></a>
+                {% endif %}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 block_con studentsBlockCon">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -27,18 +51,14 @@
                                         <h4>О ПРОЕКТЕ</h4>
                                     </div>
                                     <div class="tile_description">
-                                                <span>конкурс
-звезда удачи
-это шанс
-ощутить
-себя ...</span>
+                                                <span>Узнай о нас больше</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-md-6">
                                 <a class="tile small_tile students_timeline_tile">
                                     <div class="tile_title">
-                                        <h4>СРОКИ</h4>
+                                        <h4></h4>
                                     </div>
                                     <div class="tile_description">
 
@@ -50,16 +70,12 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
-                                <a class="tile small_tile students_gallery_tile">
+                                <a class="tile small_tile students_gallery_tile" href="/students/gallery">
                                     <div class="tile_title">
                                         <h4>ГАЛЕРЕЯ</h4>
                                     </div>
                                     <div class="tile_description">
-                                                <span>количество
-загруженных
-работ
-на этой
-неделе ...</span>
+                                                <span>Посмотреть работы</span>
                                     </div>
                                 </a>
                             </div>
@@ -69,11 +85,7 @@
                                         <h4>ПАРТНЁРЫ</h4>
                                     </div>
                                     <div class="tile_description">
-                                                <span>учредитель
-и организатор
-конкурса
-ГК «ЦДС»
-сообщает ...</span>
+                                                <span>Благодаря которым конкурс ежегодно растёт</span>
                                     </div>
                                 </a>
                             </div>

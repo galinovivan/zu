@@ -1,7 +1,7 @@
 @import "reset";
 
 // пересобрать 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../libs/bootstrap/scss/bootstrap";
 
 @import "variable";
 @import "mixins";
@@ -16,13 +16,16 @@
 @import "grid";
 @import "base";
 @import "dialog";
+@import "text-reader";
 
+@import "carousel";
 @import "flash";
 @import 'tooltip';
 @import 'steps';
 @import "animation";
 @import 'logo';
-
+@import "preloader";
+@import "paginate";
 @import 'nav';
 @import 'sidebar';
 @import "widgets";
@@ -33,7 +36,9 @@
 @import 'social-list';
 @import 'tiles';
 @import "judge";
-
+@import "casting";
+@import "news";
+@import 'modal';
 @import 'welcome';
 @import 'header';
 @import "page";

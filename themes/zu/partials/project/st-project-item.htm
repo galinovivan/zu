@@ -1,0 +1,34 @@
+{##}
+<div class="project_item">
+    <div class="project_header">
+        <div class="project_name">
+         <a href="/students/gallery/{{project.id}}">
+            <span>{{ project.name|capitalize }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="project_file_preview">
+        <a href="/students/gallery/{{project.id}}">
+         {% if project.project_uri %}
+        {% partial 'project/iframe-file' height="250" width="250" %}
+        {% else %}
+    {% partial 'project/file-preview' %}
+    {% endif %}
+        </a>
+
+    </div>
+    <div class="user_name">
+    	{% if project.contributers %}
+    	<span>{{ project.contributers }}</span>
+    	{% else %}
+        <span>{{ project.user.name|capitalize }} {{ project.user.surname|capitalize }}</span>
+    	{% endif %}
+    </div>
+    <div class="project_footer">
+    <div class="nomination">
+        <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
+    </div>
+    <div class="project_likes_count" id="{{project.id}}">
+    </div>
+    </div>
+</div>

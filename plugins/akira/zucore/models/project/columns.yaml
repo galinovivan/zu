@@ -23,6 +23,15 @@ columns:
     moderation:
         label: moderation
         type: number
-    project_file:
-        label: file
-        type: switch
+    contributers:
+        label: contributers
+        type: text
+    project_uri:
+        label: project_uri
+        type: text
+    like_count:
+        label: like_count
+        type: number
+    group:
+        label: group
+        type: number

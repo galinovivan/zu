@@ -1,0 +1,19 @@
+title = "Новости"
+url = "/school/news"
+layout = "static-light-school"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "school"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news-school"
+postPage = "news-school"
+==
+<div class="container">
+    <div class="row">
+        {% partial 'news/list' %}
+    </div>
+</div>

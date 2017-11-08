@@ -1,4 +1,8 @@
+[viewBag]
+==
 {##}
+
+
 <ul class="menu">
     <li class="menu_item">
         <a class="nav_close">
@@ -20,12 +24,23 @@
     <li class="bottom_items">
         <div class="contact">
             <span class="phone light_phone">{% content 'contact/phone' %}</span>
-            <a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">
-            {% content 'contact/email' %}
-            </a>
+             {% if current_group == school %}
+<a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">{% content 'contact/email' %}</a>
+{% elseif current_group == student %}
+<a href="mailto:{% content 'contact/s-email' %}" target="_blank" class="light_font email">{% content 'contact/s-email' %}</a>
+{% else %}
+<a href="mailto:{% content 'contact/email' %}" target="_blank" class="light_font email">{% content 'contact/email' %}</a>
+{% endif %}
         </div>
         <div class="social">
             {% partial 'app/social-list' %}
+        </div>
+        <div class="policy">
+            <a href="#policyModal" data-toggle="modal">Политика конфиденциальности</a><br />
+            <a href="#subscribeModal" data-toggle="modal">Согласие на обработку персональных данных </a>
+        </div>
+        <div class="copy mr_top_40">
+        <p style="color: #fff;">Проект разработан <br> <a href="http://kira-all.ru" target="_blank">Рекламным агентством Киры Аллейновой</a></p>
         </div>
     </li>
 </ul>

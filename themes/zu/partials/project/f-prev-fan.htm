@@ -1,0 +1,29 @@
+{##}
+{% set file = project.project_file %}
+{% if file.content_type == 'image/jpeg' %}
+<a href="{{ file.path }}" data-fancybox class="fanc">
+<img src="{{ file.path }}" class="img-responsive">
+</a>
+{% elseif file.content_type == 'image/png' %}
+<a href="{{ file.path }}" data-fancybox class="fanc">
+<img src="{{ file.path }}" class="img-responsive">
+</a>
+{% elseif file.content_type == 'audio/mp4' %}
+<audio src="{{ file.path }}"></audio>
+{% elseif file.content_type == 'video/mpeg' %}
+<video controls=""  name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% elseif file.content_type == 'video/mp4' %}
+<video controls=""  name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% elseif file.content_type == 'video/3gpp' %}
+<video controls=""  name="media">
+    <source src="{{ file.path }}" type="video/mp4">
+</video>
+{% elseif file.content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %}
+<div class="doc_prev single" data-src="{{file.path}}"></div>
+{% else %}
+<a href="{{ file.path }}">Скачать работу</a>
+{% endif  %}

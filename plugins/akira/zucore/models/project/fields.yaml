@@ -17,7 +17,8 @@ fields:
             theart: Театр
             video: Видеотворчество
             original: 'Оригинальный жанр'
-            child: 'Оригинальный жанр'
+            child: Дошколята
+            litres: Литература
         span: auto
         type: dropdown
     moderation:
@@ -46,3 +47,21 @@ fields:
         descriptionFrom: description
         span: auto
         type: relation
+    group:
+        label: Группа
+        oc.commentPosition: ''
+        options:
+            1: sclool
+            2: student
+        span: auto
+        type: dropdown
+    project_uri:
+        label: link
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    contributers:
+        label: Псевдоним
+        oc.commentPosition: ''
+        span: auto
+        type: text

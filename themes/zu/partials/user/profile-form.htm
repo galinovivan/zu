@@ -1,3 +1,4 @@
+{##}
 {{ form_open({ files: true, request: 'onUpdate', class: 'form_gray' }) }}
 <div class="container">
     <div class="row">
@@ -22,25 +23,27 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                    <input type="text" name="name" placeholder="Имя|" required value="{{ user.name }}">
+                    <input type="text" name="name" placeholder="Имя| *" required value="{{ user.name }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="surname" placeholder="Фамилия|" required value="{{ user.surname }}">
+                        <input type="text" name="surname" placeholder="Фамилия| *" required value="{{ user.surname }}">
                     </div>
                     <div class="form-group">
-                        <input type="date" name="date_of_bithday" placeholder="Дата рождения|"
-                               required value="{{ user.user.date_of_bithday|date('Y-m-d') }}">
+                        <!--<label for="userBr" class="gray form_label">Дата рождения|</label>-->
+                        <input type="date" name="date_of_bithday" placeholder="Дата рождения:"
+                               required value="{{ user.date_of_bithday|date('Y-m-d') }}" id="userBr" data-toggle="tooltip"
+                        data-placement="top" title="Ваша дата рождения *">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="city" placeholder="Город|" required value="{{ user.city }}">
+                        <input type="text" name="city" placeholder="Город| *" required value="{{ user.city }}">
                     </div>
                     <div class="form-group">
-                        <input type="phone" name="phone" placeholder="Телефон|" required value="{{ user.phone }}">
+                        <input type="phone" name="phone" placeholder="Телефон| *" required value="{{ user.phone }}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="school" placeholder="Учебное заведение|" required value="{{ user.school }}">
+                        <input type="text" name="school" placeholder="Учебное заведение| *" required value="{{ user.school }}">
                     </div>
                 </div>
                 <div class="col-md-4">

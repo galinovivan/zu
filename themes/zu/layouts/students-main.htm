@@ -11,6 +11,15 @@ forceSecure = 0
 
 [session]
 security = "all"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "students"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "gallery-school"
+postPage = "gallery-school"
 ==
 {##}
 <!doctype html>
@@ -19,7 +28,10 @@ security = "all"
     {% partial 'app/head' %}
 </head>
 <body>
+{% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
+{% partial 'app/doc/subscribe' %}
+{% partial 'app/doc/policy' %}
 {% partial 'app/logo' %}
 {% partial 'app/cds-logo' %}
 <main class="main students_main clearfix">
@@ -36,6 +48,7 @@ security = "all"
 <script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
 <script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}
 </body>

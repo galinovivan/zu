@@ -5,24 +5,22 @@ description = "base layout"
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=1280">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="{{ this.page.meta_description }}">
-    <title>{{ this.page.title }}</title>
-
-    <link rel="stylesheet" href="{{ 'assets/css/common.css'|theme }}">
-    {% styles %}
-    <script src="https://unpkg.com/vue"></script>
+    {% partial 'app/head' %}
 </head>
-<body>
+<body class="welcome_page">
+{% partial 'app/preloader' %}
 <header class="header">
 {% partial 'app/header' %}
+    <div class="mobileHeader displayMobile">
+        {% partial 'user/user-widget' user=user %}
+        {% partial 'app/contact-widget' %}
+    </div>
+
 </header>
 <main>
     {% page %}
 </main>
-<div class="bottom_widgets_container">
+<div class="bottom_widgets_container noDisplay">
     {% partial 'app/contact-widget' %}
     {% partial 'user/user-widget' user=user %}
 </div>
@@ -34,6 +32,7 @@ description = "base layout"
 <script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
 <script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}
 </body>

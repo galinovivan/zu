@@ -45,6 +45,10 @@ form {
     option {
       background: $transparent;
     }
+    &.white {
+      border: 1px solid $white;
+      color: $white;
+    }
   }
 }
 
@@ -62,7 +66,7 @@ select {
     background: $transparent;
   }
   .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   input {
     border: 1px solid $white;
@@ -89,8 +93,33 @@ select {
   }
   input[type="submit"],
   button {
-    margin-top: 40px;
+    //margin-top: 40px;
     @include formButton();
+    width: 195px;
+  }
+  input[type="checkbox"] {
+    width: $radioSize;
+    min-width: $radioSize;
+    height: $radioSize;
+    margin-right: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+      content: '';
+      width: $radioMarkerSize;
+      height: $radioMarkerSize;
+      @include transition();
+    }
+    &:checked {
+      &::after {
+        background: $white;
+      }
+    }
+  }
+  .small_label {
+    font-size: 0.9rem;
   }
 }
 
@@ -165,6 +194,21 @@ select {
       color: $gray;
     }
   }
+  .form-group {
+    position: relative;
+    a {
+      color: $gray;
+    }
+    .hide_field {
+      display: none;
+    }
+  }
+  .form_label {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-size: 0.9rem;
+  }
 }
 
 .material_form {
@@ -205,6 +249,15 @@ select:-webkit-autofill:focus {
   background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
 }
 
+.form-control:disabled, .form-control[readonly] {
+  background: $transparent;
+}
 
+select {
+  outline: none !important;
+  option {
+    outline: none !important;
+  }
+}
 
 

@@ -1,0 +1,20 @@
+.doc_prev {
+    background: $white;
+    width: 70%;
+    margin: auto;
+    padding: 20px 10px 0 10px;
+    .p {
+        span {
+            font-size: 10px !important;
+        }
+    }
+    &.single {
+        height: 450px !important;
+        overflow-y: scroll;
+        .p {
+            span {
+                font-size: 1.3rem !important;
+            }
+        }
+    }
+}

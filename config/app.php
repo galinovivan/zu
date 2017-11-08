@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'zvezdaudachi.com',
+    'url' => 'http://localhost',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'key' => 'Dc6aX9aqqpSz2qU7rUy4JS8RqZYJwf7j',
+    'key' => 'ogwFkvU2UUdheif6QkjXTkZIwVnCq4t4',
 
     'cipher' => 'AES-256-CBC',
 

@@ -1,0 +1,22 @@
+.modal {
+  .modal-content {
+    background: $baseOverlayColor;
+  }
+  .close {
+    color: $white;
+    cursor: pointer;
+  }
+  &.content_modal {
+    .modal-dialog {
+      .modal-content {
+        padding: 25px;
+        .modal-body {
+          padding: 0;
+        }
+      } 
+    }
+  }
+  .form {
+    margin-bottom: 50px;
+  }
+}

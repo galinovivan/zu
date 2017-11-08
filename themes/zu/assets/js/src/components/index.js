@@ -4,9 +4,10 @@
 import fragment from '../helpers/url';
 
 const url = fragment();
+console.log(url);
 
 switch (url) {
-    case '/welcome':
+    case '/':
         require('./welcome/welcome');
         break;
 }

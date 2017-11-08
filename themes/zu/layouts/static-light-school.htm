@@ -1,0 +1,53 @@
+description = "static-llightschool"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[staticMenu]
+code = "school"
+==
+<!doctype html>
+<html lang="en">
+<head>
+    {% partial 'app/head' %}
+</head>
+<body class="light_background">
+{% partial 'app/preloader' %}
+{% partial 'user/reg-modal' %}
+{% partial 'app/doc/subscribe' %}
+{% partial 'app/doc/policy' %}
+{% partial 'app/logo-base' className="blue" %}
+{% partial 'app/cds-logo' %}
+<main class="main clearfix black_text">
+    <div class="sidebar_container">
+        {% partial 'app/sidebar' className="school" %}
+    </div>
+
+    <div class="profile_page top_lg_marg">
+        <div class="container">
+            <div class="page_heading">
+                <h2>{{ this.page.title|upper }}</h2>
+            </div>
+        </div>
+        <div class="content">
+            {% page %}
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    {% partial 'app/flash' %}
+</footer>
+<script src="{{ 'assets/libs/jquery/dist/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
+<script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
+<script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+</body>

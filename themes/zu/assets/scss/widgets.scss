@@ -1,21 +1,24 @@
 .bottom_widgets_container {
     position: fixed;
     bottom: 105px;
-    left: $containerPadding;
+    left: 57px;
     @media screen and (max-height: 850px) {
-        bottom: 10px;
+        bottom: 0;
     }
 }
 
 .widget {
     display: flex;
     margin-bottom: 15px;
+    position: relative;
     .swipe_info {
         transform: scale(0);
         opacity: 0;
         margin-left: 55px;
         display: flex;
         z-index: 1000;
+        position: absolute;
+        left: 30px;
         @include transition(opacity .2s);
         &.open {
             transform: scale(1);
@@ -33,5 +36,70 @@
     }
     .action_button {
         cursor: pointer;
+    }
+    &.contact_widget,
+    &.user_widget {
+        .swipe_info {
+            position: absolute;
+            background: $hightOverlay;
+            padding: 5px;
+            top: 0;
+        }
+    }
+    &.contact_widget {
+        top: -10px;
+    }
+    &.user_widget {
+        .swipe_info {
+        }
+    }
+    &.user_widget {
+        .swipe_info {
+            bottom: -12px;
+        }
+    }
+}
+
+.students_color_schema {
+    .contact_widget.widget,
+    .user_widget.widget {
+        .swipe_info {
+            background: $hightStudentsOverlay;
+        }
+    }
+    .user_widget.widget {
+    }
+}
+
+.welcome_page {
+    .widget {
+        .swipe_info {
+            background: $transparent !important;
+            position: relative;
+            padding: 0;
+            bottom: auto;
+            left: auto;
+            right: auto;
+            top: auto;
+            form {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.swipe_info {
+    .user_action {
+        display: flex;
+        width: 250px;
+        padding: 10px;
+        a {
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        a, button {
+            cursor: pointer;
+            @include linkHover();
+        }
     }
 }

@@ -1,9 +1,10 @@
 .DS_Store
 node_modules/
-dist/
+libs/
 npm-debug.log
 yarn-error.log
-
+/themes/zu/assets/js/dist/bundle.js.map
+/themes/zu/assets/js/dist/main-tiles.htm
 # Editor directories and files
 .idea
 *.suo

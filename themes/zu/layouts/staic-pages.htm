@@ -18,8 +18,11 @@ security = "all"
     {% partial 'app/head' %}
 </head>
 <body class="light_background">
+{% partial 'app/preloader' %}
 {% partial 'user/reg-modal' %}
-{% partial 'app/logo-red' %}
+{% partial 'app/doc/subscribe' %}
+{% partial 'app/doc/policy' %}
+{% partial 'app/logo-base' className="red" %}
 {% partial 'app/cds-logo' %}
 <main class="main clearfix black_text">
     <div class="sidebar_container">
@@ -49,5 +52,6 @@ security = "all"
 <script src="{{ 'assets/libs/popper/dist/umd/popper.min.js'|theme }}"></script>
 <script src="{{ 'assets/libs/bootstrap/dist/js/bootstrap.min.js'|theme }}"></script>
 <script src="{{ 'assets/js/dist/bundle.js'|theme }}"></script>
+<script src="{{ 'assets/libs/fancybox-master/dist/jquery.fancybox.min.js'|theme }}"></script>
 {% framework extras %}
 {% scripts %}

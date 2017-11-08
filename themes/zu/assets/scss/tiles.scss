@@ -111,6 +111,11 @@
             * {
                 color: $white;
             }
+            @media screen and (max-width: 1400px) {
+                p {
+                    font-size: 0.8rem;
+                }
+            }
             &.big {
                 width: 200%;
                 right: -200%;
@@ -123,15 +128,44 @@
         .image {
             height: 50vh;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img {
                 height: auto;
                 width: 100%;
+                min-height: 50vh;
+            }
+            
+        }
+        .svg {
+            background: $grayTiles;
+            height: 50vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                max-width: 50%;
+                height: auto;
             }
         }
         &:hover {
             .description {
                 display: block;
             }
+        }
+    }
+    &.lot_tiles {
+        .tile {
+            .image {
+                img {
+                    width: 110%;
+                }
+            }
+        }
+        .description {
+            padding: 10px 20px;
         }
     }
 }

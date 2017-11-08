@@ -19,5 +19,5 @@ composer.lock
 # for netbeans
 nbproject
 
-
+/config
 /node_modules

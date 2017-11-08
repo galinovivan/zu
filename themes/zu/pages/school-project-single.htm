@@ -1,0 +1,15 @@
+title = "Галерея"
+url = "/school/gallery/:id"
+layout = "static-light-school"
+is_hidden = 0
+
+[Project]
+
+[SingleProject]
+alias = "{{:id}}"
+==
+<div class="container mr_top_80">
+    <div class="row">
+{% partial 'project/single' project=project %}
+    </div>
+</div>

@@ -1,6 +1,5 @@
-;;
-title = "welcome"
-url = "/welcome"
+title = "Звезда Удачи | Главная"
+url = "/"
 layout = "default"
 is_hidden = 0
 
@@ -10,6 +9,17 @@ forceSecure = 0
 
 [session]
 security = "all"
+==
+<?php
+function onStart() {
+    if (Auth::check()) {
+       $user = Auth::getUser();
+       $group = $user->groups[0]->pivot->user_group_id;
+       
+       return $group == RainLab\User\Components\Account::SCHOOL_GROUP ? Redirect::to('/school') : Redirect::to('/students');
+    }
+}
+?>
 ==
 {##}
 <div class="main_page page_column">

@@ -1,16 +1,23 @@
-<div class="full_tiles">
+<div class="page_heading">
+    <h2>{{this.page.title}}</h2>
+</div>
+
+<div class="full_tiles partnersContainer studentsPartners">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col tile">
-                <div class="image">
-                    <img src="{{ 'assets/images/partners_image.jpg'|theme }}" class="img-responsive">
-                </div>
-            </div>
+        <div class="row displayMobile">
             <div class="col tile">
                 <div class="image">
                     <img src="{{ 'assets/images/partners_cds.jpg'|theme }}" class="img-responsive">
                     <div class="description big">
                         {% content 'partners/cds' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image svg">
+                    <img src="{{ 'assets/images/src/jooble_cvp.svg'|theme }}">
+                    <div class="description big">
+                        {% content 'partners/jooble' %}
                     </div>
                 </div>
             </div>
@@ -38,8 +45,91 @@
                     </div>
                 </div>
             </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_red.png'|theme }}" class="img-responsive">
+                    <div class="description big">
+                        {% content 'partners/rm' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_man.jpg'|theme }}" class="img-responsive">
+                    <div class="description big">
+                        {% content 'partners/zemskoff' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_fablab.jpg'|theme }}" class="img-responsive">
+                    <div class="description big">
+                        {% content 'partners/fablab' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_zoo.jpg'|theme }}" class="img-responsive">
+                    <div class="description left big">
+                        {% content 'partners/teil' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_angel.jpg'|theme }}" class="img-responsive">
+                    <div class="description left big">
+                        {% content 'partners/artangels' %}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
+
+        <div class="row noDisplay">
+            <div class="col tile">
+                <div class="svg">
+                    <img src="{{ 'assets/images/src/jooble_cvp.svg'|theme }}">
+                    <div class="description big">
+                        {% content 'partners/jooble' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_cds.jpg'|theme }}" class="img-responsive">
+                    <div class="description big">
+                        {% content 'partners/cds' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="svg">
+                    <img src="{{ 'assets/images/0001.png'|theme }}" class="img-responsive">
+                    <div class="description big">
+                        {% content 'partners/avril' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_dc.jpg'|theme }}" class="img-responsive">
+                    <div class="description left big">
+                        {% content 'partners/idc' %}
+                    </div>
+                </div>
+            </div>
+            <div class="col tile">
+                <div class="image">
+                    <img src="{{ 'assets/images/partners_creep.jpg'|theme }}" class="img-responsive">
+                    <div class="description left big">
+                        {% content 'partners/creep' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row noDisplay">
             <div class="col tile">
                 <div class="image">
                     <img src="{{ 'assets/images/partners_red.png'|theme }}" class="img-responsive">
