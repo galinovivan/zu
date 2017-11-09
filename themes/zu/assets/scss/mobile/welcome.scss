@@ -96,6 +96,10 @@ body {
                   position: relative;
                   z-index: 22000;
                   margin: 35px 0;
+                  max-width: 300px;
+                  //display: flex;
+                //  justify-content: center;
+                  //flex-direction: row;
                   .radio_group {
                       label {
                           margin-bottom: 0;

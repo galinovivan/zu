@@ -63,6 +63,9 @@
         left: auto;
         right: 0;
         .sidebar {
+            .menu {
+                overflow: auto;
+            }
             &.students {
                 .nav_toggle {
                     span {
@@ -71,6 +74,7 @@
                 }
                 .menu {
                     background: $baseOverlayStudents;
+                    overflow: auto;
                 }
             }
             .widgets {
@@ -163,7 +167,7 @@
                 padding: 20px;
                 align-items: flex-start;
                 background-size: cover;
-                background-image: url("../images/school_main_bg.png");
+               // background-image: url("../images/school_main_bg.png");
                 background-repeat: no-repeat;
             }
         }
@@ -206,7 +210,7 @@
                     a {
                         height: 100%;
                         width: 100%;
-                        background: url("../images/school_about.png") no-repeat center;
+                        //background: url("../images/school_about.png") no-repeat center;
                         background-size: cover;
                         text-decoration: none;
                     }
@@ -214,5 +218,61 @@
             }
 
         }
+    }
+}
+
+.school_main {
+    .school_about_tile {
+        background: url('../images/school_about.png') no-repeat;
+        background-size: cover;
+}
+    .school_timeline_tile {
+        background: url('../images/school_timeline.jpg') no-repeat;
+        background-size: cover;
+    }
+    .school_gallery_tile {
+        background: url('../images/school_gallery.jpg') no-repeat;
+        background-size: cover;
+    }
+    .school_partners_tile {
+        background: url('../images/school_partners.jpg') no-repeat;
+        background-size: cover;
+
+    }
+    .main_tile {
+        background: url('../images/school_main_bg.png') no-repeat;
+        background-size: cover;
+    }
+    .small_tile {
+        @include tilesFillingHover($baseOverlayColor);
+        background-size: cover;
+    }
+}
+
+.students_main {
+    .main_tile {
+        background: url('../images/students_main_bg.jpg') no-repeat;
+    }
+    .students_timeline_tile {
+        background: url('../images/students_timeline.jpg') no-repeat;
+    }
+    .students_gallery_tile {
+        background: url('../images/students_gallery.jpg') no-repeat;
+    }
+    .students_about_tile {
+        background: url('../images/students_about.jpg') no-repeat;
+    }
+    .students_partners_tile {
+        background: url('../images/students_partners.jpg') no-repeat;
+    }
+    .small_tile {
+        @include tilesFillingHover($baseOverlayStudents);
+    }
+}
+
+
+.casting_page {
+    .casting_layout {
+        padding: 0 5%;
     }
 }

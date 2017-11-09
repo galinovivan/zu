@@ -1,0 +1,15 @@
+// файл с костылями (
+@media screen and (max-width: 400px) {
+    body #welcome .col-md-6 .new_user_info .step_user_two form {
+        margin: 15px 0;
+        .form-group {
+            margin-bottom: 10px;
+            &:last-of-type.radio_group {
+                span {
+                    font-size: 9px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+    }
+}
