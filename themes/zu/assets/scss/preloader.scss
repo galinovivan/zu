@@ -12,6 +12,9 @@
   .spinner {
     width: 100px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     img {
       max-width: 100%;
       height: auto;

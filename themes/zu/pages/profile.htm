@@ -29,7 +29,7 @@ redirect = "welcome"
 <div class="profile_project_list" id="profileProjectList">
     <div class="row">
 {% for project in user.projects %}
-    <div class="col-4">
+    <div class="col-xs-6 col-md-4">
 {% partial 'project/project-profile-list' project=project %}
     </div>
 {% endfor %}
