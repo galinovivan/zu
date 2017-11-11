@@ -9916,7 +9916,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         isNewUser() {
-            if (__WEBPACK_IMPORTED_MODULE_0__helpers_cookie__["a" /* default */].get('user_is_visited')) {
+            if (this.isMobile() || __WEBPACK_IMPORTED_MODULE_0__helpers_cookie__["a" /* default */].get('user_is_visited')) {
                 this.newUser = false;
             } else {
                 __WEBPACK_IMPORTED_MODULE_0__helpers_cookie__["a" /* default */].set('user_is_visited', 'true', { expires: true });
@@ -9925,6 +9925,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         isRegister() {
             console.log(__WEBPACK_IMPORTED_MODULE_1__helpers_storage__["a" /* default */].get('register'));
             return __WEBPACK_IMPORTED_MODULE_1__helpers_storage__["a" /* default */].get('register');
+        },
+        isMobile() {
+            return screen.width < 1025;
         }
     }
 }));
@@ -10031,7 +10034,13 @@ const Storage = {
 
 
 $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
+    if (!isMobile()) {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    function isMobile() {
+        return $(window).width() < 1025;
+    }
 });
 
 /***/ }),
@@ -10050,12 +10059,14 @@ $(document).ready(function () {
             menu.toggleClass('open');
             if (isMobile()) {
                 navToggle.hide();
+                $('body').toggleClass('overfl_hide');
             }
         });
         close.click(e => {
             menu.toggleClass('open');
             if (isMobile()) {
                 navToggle.show();
+                $('body').toggleClass('overfl_hide');
             }
         });
         /* anna */
@@ -10069,7 +10080,7 @@ $(document).ready(function () {
         const closeLabel = $('.closeLabel');
 
         closeLabel.click(function () {
-            $('.label').hide();
+            $('.labelCircle').slideToggle('fast');
         });
 
         const face = $('.tile');

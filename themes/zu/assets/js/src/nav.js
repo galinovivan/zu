@@ -10,12 +10,14 @@ $(document).ready(function() {
         menu.toggleClass('open');
         if (isMobile()) {
             navToggle.hide();
+            $('body').toggleClass('overfl_hide');
         }
     });
     close.click( (e) => {
         menu.toggleClass('open');
         if (isMobile()) {
             navToggle.show();
+            $('body').toggleClass('overfl_hide');
         }
     });
 /* anna */
@@ -29,7 +31,7 @@ $(document).ready(function() {
     const closeLabel = $('.closeLabel');
 
     closeLabel.click(function () {
-        $('.label').hide();
+        $('.labelCircle').slideToggle('fast');
     });
 
     const face = $('.tile');

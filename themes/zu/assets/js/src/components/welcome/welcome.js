@@ -26,7 +26,7 @@ export default new Vue({
             }
         },
         isNewUser() {
-           if (Cookie.get('user_is_visited')) {
+           if (this.isMobile() || Cookie.get('user_is_visited')) {
                this.newUser = false;
            } else {
                Cookie.set('user_is_visited', 'true', { expires: true });
@@ -35,6 +35,9 @@ export default new Vue({
         isRegister() {
             console.log(Storage.get('register'));
             return Storage.get('register');
+        },
+        isMobile() {
+            return screen.width < 1025;
         }
     }
 });

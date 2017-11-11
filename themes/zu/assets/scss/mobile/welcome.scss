@@ -86,12 +86,16 @@ body {
               width: 100vw;
               height: 140vh;
               position: fixed;
-              top: auto;
-              left: auto;
+              top: 0;
+              left: 0;
               padding-top: 23vh;
               display: flex;
               flex-direction: column;
               align-items: center;
+              & + .steps_toggle {
+                left: 0 !important;
+                position: fixed;
+              }
               form {
                   position: relative;
                   z-index: 22000;
@@ -131,10 +135,11 @@ body {
           background: $baseColor;
           height: 50px;
           width: 100vw;
+         
 
           position: absolute;
           bottom: 0;
-          left: auto;
+          left: -30px;
           right: auto;
           margin: 0;
 
@@ -150,7 +155,10 @@ body {
             flex: 0 0 50%;
             max-width: 50%;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
+            &:last-of-type {
+              justify-content: flex-end;
+            }
             .arrow_button {
               @include formButton();
                 width: 115px;
@@ -175,6 +183,7 @@ body {
 body.welcome_page {
   display: flex;
   flex-direction: column;
+  max-height: 100vh;
   header {
     width: 100%;
     padding: 20px;
