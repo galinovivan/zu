@@ -21,6 +21,10 @@
 </video>
 {% elseif file.content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %}
 <div class="doc_prev" data-src="{{file.path}}"></div>
-{% else %}
-
+{% elseif file.content_type == 'audio/mpeg3' %}
+<audio src="{{ file.path }}" controls></audio>
+{% elseif file.content_type == 'audio/x-mpeg-3' %}
+<audio src="{{ file.path }}" controls></audio>
+{% elseif file.content_type == 'audio/mpeg' %}
+<audio src="{{ file.path }}" controls></audio>
 {% endif  %}

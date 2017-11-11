@@ -22,7 +22,8 @@ class Project extends ComponentBase
         'jpeg',
         'gif',
         'mpeg',
-        '3gpp'
+        '3gpp',
+        'mpga'
     ];
 
     const YOUTUBE_URI = 'youtube.com';
