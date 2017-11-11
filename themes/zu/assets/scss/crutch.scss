@@ -13,3 +13,22 @@
         }
     }
 }
+
+@media screen and (max-width: 340px) {
+    #welcome {
+        .new_user_info {
+            .action_buttons {
+                .arrow_button {
+                    width: 95% !important;
+                    font-size: 0.7rem !important;
+                    i {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .steps_toggle {
+            height: 35px !important;
+        }
+    }
+}

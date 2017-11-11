@@ -2,6 +2,10 @@
     background-color: $lightBackground;
 }
 
+
+body {
+    height: auto !important;
+}
 .main_logo {
     padding: 0 20px;
     display: flex;
@@ -62,9 +66,16 @@
     .sidebar_container {
         left: auto;
         right: 0;
+        z-index: 1000;
+        position: absolute;
         .sidebar {
             .menu {
-                overflow: auto;
+                overflow-y: auto;
+                z-index: 1000;
+                position: relative;
+                &.open {
+                    display: block !important;
+                }
             }
             &.students {
                 .nav_toggle {
@@ -244,7 +255,7 @@
         background-size: cover;
     }
     .small_tile {
-        @include tilesFillingHover($baseOverlayColor);
+        // @include tilesFillingHover($baseOverlayColor);
         background-size: cover;
     }
 }
@@ -266,7 +277,7 @@
         background: url('../images/students_partners.jpg') no-repeat;
     }
     .small_tile {
-        @include tilesFillingHover($baseOverlayStudents);
+      
     }
 }
 
@@ -275,4 +286,8 @@
     .casting_layout {
         padding: 0 5%;
     }
+}
+
+.overfl_hide {
+    overflow-y: hidden;
 }
