@@ -125,6 +125,11 @@
                 left: -100%;
             }
         }
+        &:hover {
+            .description {
+                display: block;
+            }
+        }
         .image {
             height: 50vh;
             overflow: hidden;
@@ -150,11 +155,7 @@
                 height: auto;
             }
         }
-        &:hover {
-            .description {
-                display: block;
-            }
-        }
+        
     }
     &.lot_tiles {
         .tile {
