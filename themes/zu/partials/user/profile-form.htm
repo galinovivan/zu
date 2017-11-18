@@ -30,9 +30,15 @@
                     </div>
                     <div class="form-group">
                         <!--<label for="userBr" class="gray form_label">Дата рождения|</label>-->
+                        {% if user.date_of_bithday %}
                         <input type="date" name="date_of_bithday" placeholder="Дата рождения:"
                                required value="{{ user.date_of_bithday|date('Y-m-d') }}" id="userBr" data-toggle="tooltip"
                         data-placement="top" title="Ваша дата рождения *">
+                        {% else %}
+                        <input type="date" name="date_of_bithday" placeholder="Дата рождения:"
+                               required value="" data-toggle="tooltip"
+                               data-placement="top" title="Ваша дата рождения *">
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4">
