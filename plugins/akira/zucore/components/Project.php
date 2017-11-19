@@ -55,8 +55,9 @@ class Project extends ComponentBase
         if (isset($_GET['filter'])) {
             $this->page['filter'] = true;
             $this->page['nom_filter'] = $_GET['nomination'];
-            $this->page['age_filter'] = isset($_GET['age']) ? $_GET['age'] : false;
+
         }
+        $this->page['age_filter'] = isset($_GET['age']) ? $_GET['age'] : false;
     }
 
    
@@ -218,18 +219,18 @@ class Project extends ComponentBase
 
     }
 
-    public function remasteredProject()
-    {
-        $projects = ProjectModel::where('group', 1)->get();
-
-        foreach($projects as $project) {
-            $age = $this->getUserAge($project);
-            if ($age > 0) {
-                $project->age_group = $this->getAgeGroup($age);
-                $project->save();
-            }
-        }
-    }
+//    public function remasteredProject()
+//    {
+//        $projects = ProjectModel::where('group', 1)->get();
+//
+//        foreach($projects as $project) {
+//            $age = $this->getUserAge($project);
+//            if ($age > 0) {
+//                $project->age_group = $this->getAgeGroup($age);
+//                $project->save();
+//            }
+//        }
+//    }
 
 
     private function getAgeGroup($age)
