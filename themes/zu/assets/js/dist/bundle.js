@@ -9837,6 +9837,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__custom_helpers__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__project_filter__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vk_vk__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vk_like_stat__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vk_like_stat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__vk_like_stat__);
+
+
 
 
 
@@ -22634,10 +22638,11 @@ const SessionStorage = {
  * Created by 91178 on 28.10.2017.
  */
 
+//import { getLikeCount, setFrameCountHandler } from './vk_helpers';
 
 VK.init({
-    apiId: 6237768,
-    onlyWidgets: true
+    apiId: 6237768
+    //onlyWidgets: true
 });
 
 window.onload = () => {
@@ -22660,6 +22665,31 @@ function likeInit(el) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (likeInit);
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports) {
+
+const VK_URL = 'http://api.vk.com';
+const param = {
+  type: 'sitepage',
+  owner_id: 6237768,
+  page_id: 24
+};
+//  fetch(`${VK_URL}/Likes/likes.getList`, {
+//     method: 'POST',
+//     headers: {
+//          'Content-Type': 'application/json'
+//      },
+//     body: param
+// }).then(response => {
+//     console.log(response.json())
+//  });
+
+// fetch(`${VK_URL}/Likes/likes.getList?type=sitepage&owner_id=6237768page_id=24`)
+// .then(response => {
+//    console.log(response)
+// });
 
 /***/ })
 /******/ ]);

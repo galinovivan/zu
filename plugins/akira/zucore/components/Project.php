@@ -10,6 +10,7 @@ use Validator;
 use ValidationException;
 use RainLab\User\Components\Account;
 use RainLab\User\Models\User as UserModel;
+use Illuminate\Support\Facades\DB;
 
 class Project extends ComponentBase
 {
@@ -28,6 +29,12 @@ class Project extends ComponentBase
 
     const YOUTUBE_URI = 'youtube.com';
     const ALTERNATIVE_YOUTUBE_URI = 'youtu.be';
+
+    const AGE_GROUP = [
+        'yang' => 1,
+        'middle' => 2,
+        'hight' => 3
+    ];
 
     public function componentDetails()
     {
@@ -98,6 +105,14 @@ class Project extends ComponentBase
                 $data['project_uri'] = $this->getValidVideoIdFromLink($data['project_uri']);
             }
             $project = ProjectModel::create($data);
+
+            //save age group kostil(
+            if ($data['group'] == Account::SCHOOL_GROUP) {
+                $age = $this->getUserAge($project);
+                $project->age_group = $this->getAgeGroup($age);
+
+            }
+
             if (Input::hasFile('project_file')) {
             $project->project_file = $file;
             $project->save();
@@ -136,20 +151,95 @@ class Project extends ComponentBase
         $filter = $_GET['filter'];
         $nomination = $_GET['nomination'];
         $order = isset($_GET['order']) ? $_GET['order'] : 'desc';
-        return ProjectModel::where('group', $group)->where('moderation', 1)
-        ->where('nomination', $nomination)->orderBy('created_at', $order)->paginate(12)
+        
+        $projects = ProjectModel::where('group', $group)->where('moderation', 1)
+        ->where('nomination', $nomination);
+
+        
+
+         $projects = $projects->orderBy('akira_zucore_projects.created_at', $order)->paginate(12)
         ->appends([
             'group' => $group,
             'nomination' => $nomination,
             'order' => $order,
             'filter' => $filter
         ]);
+
+        // if ($ageFilter) {
+        //     $projects = $this->filterByAge($projects, $ageFilter);
+        // }
+        return $projects;
+
+
     }
 
-    /**
-     * @param $filePath
-     * @return string
-     */
+    public function remasteredProject()
+    {
+        $projects = ProjectModel::where('group', 1)->get();
+
+        foreach($projects as $project) {
+            $age = $this->getUserAge($project);
+            if ($age > 0) {
+                $project->age_group = $this->getAgeGroup($age);
+                $project->save();
+            }
+        }
+    }
+
+
+    private function getAgeGroup($age)
+    {
+        $group = 0;
+        if ($age >= 6 && $age <= 9) {
+            $group = 1;
+        } elseif ($age >= 10 && $age <= 13) {
+            $group = 2;
+        } elseif ($age >= 14 && $age <= 17) {
+            $group = 3;
+        }
+
+        return $group;
+    }
+
+
+     public function filterByAge($projects, $filter)
+     {
+        
+         //$projects = $projects->leftJoin('users', 'users.id', '=', 'akira_zucore_projects.user_id');
+         switch($filter) {
+            case self::AGE_GROUP['yang']:
+               $projects = $projects->filter(function($value, $key) {
+                    $age = $this->getUserAge($value);
+                    return $age >= 6 && $age <= 9;
+                });
+                break;
+            case self::AGE_GROUP['middle']:
+                $projects = $projects->filter(function($value, $key) {
+                    $age = $this->getUserAge($value);
+                    return $age >= 10 && $age <= 13;
+                });
+                break;
+            case self::AGE_GROUP['hight']:
+                $projects = $projects->filter(function($value, $key) {
+                    $age = $this->getUserAge($value);
+                    return $age >= 14 && $age <= 17;
+                });
+                break;            
+            default:
+                break;    
+         }
+         return $projects;
+     }
+
+     private function getUserAge(ProjectModel $project)
+     {
+        $userDate = new \DateTime($project->user->date_of_bithday);
+        $currDate = new \DateTime();
+        $age = $currDate->diff($userDate);
+        $age = $age->format('%y');
+        return $age;
+
+     }
     public function getFileType($filePath)
     {
         return filetype($filePath);

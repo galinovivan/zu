@@ -6,8 +6,5 @@ is_hidden = 0
 
 [Project]
 ==
-{% set stats = Project.cityStat %}
 
-{% for stat in stats %}
-{{ stat.city }}
-{% endfor %}
+{{ Project.remasteredProject() }}
