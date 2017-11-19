@@ -3,12 +3,12 @@
 <li>
 <a href="{{ group == school ? '/school/gallery' : '/students/gallery' }}" class="default_filter">
 ВСЕ РАБОТЫ
-<a>
+</a>
 </li>
 {% for nomination in Project.getNomination(group) %}
 <li>
 <a href="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?nomination={{ nomination.value }}
-&group={{ group }}&filter=true" data-filter="{{ nomination.value }}">
+&group={{ group }}&filter=true&{{ age_filter ? 'age=' ~ age_filter : '' }}" data-filter="{{ nomination.value }}">
 {{ nomination.label|upper }}
 </a>
 </li>

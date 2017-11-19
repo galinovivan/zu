@@ -5,9 +5,13 @@ is_hidden = 0
 
 [Project]
 ==
+
 <div class="container workGallery">
 <div class="row">
     <div class="col-md-12">
+        <div class="age_filter">
+            {% partial 'project/age-filter' %}
+        </div>
     {% partial 'project/filter' group=school %}
     </div>
 </div>

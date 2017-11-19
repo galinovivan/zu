@@ -1,0 +1,14 @@
+<ul class="project_filter age_filter noDisplay">
+    <li>
+        <a href="/school/gallery">ВСЕ УЧАСТНИКИ</a>
+    </li>
+    {% for item in Project.getAgeGroupList %}
+    <li>
+        {% if filter %}
+        <a href="{{ '/school/gallery?filter=true&nomination=' ~ nom_filter ~ '&group=' ~ group  ~ '&age=' ~ item.value}}">{{ item.label|upper }}</a>
+        {% else %}
+        <a href="{{ '/school/gallery?age=' ~ item.value }}">{{ item.label|upper }}</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

@@ -49,9 +49,37 @@ class Project extends ComponentBase
         return [];
     }
 
+    public function onRun()
+    {
+        $this->page['curr_uri'] = $_SERVER['REQUEST_URI'];
+        if (isset($_GET['filter'])) {
+            $this->page['filter'] = true;
+            $this->page['nom_filter'] = $_GET['nomination'];
+            $this->page['age_filter'] = isset($_GET['age']) ? $_GET['age'] : false;
+        }
+    }
+
    
 
 
+
+    public function getAgeGroupList()
+    {
+        return [
+          [
+              'label' => 'Начальная школа',
+              'value' => 1
+          ],
+            [
+                'label' => 'Средняя школа',
+                'value' => 2
+            ],
+            [
+                'label' => 'Старшая школа',
+                'value' => 3
+            ]
+        ];
+    }
 
     /**
      * @param $key
@@ -132,8 +160,18 @@ class Project extends ComponentBase
         if (isset ($_GET['filter']) && $_GET['filter'] == 'true') {
             return $this->filterProject();
         }
-       return $projects =  ProjectModel::where('group', 1)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->paginate(12);
+        $filterAge = isset($_GET['age']) ? $_GET['age'] : false;
+
+
+
+        $projects =  ProjectModel::where('group', 1)->where('moderation', 1);
+
+        if ($filterAge) {
+            $projects = $projects->where('age_group', (int) $filterAge);
+        }
+        return $projects->orderBy('created_at', 'desc')->paginate(12)->appends([
+            'age' => $filterAge
+        ]);
     }
 
     public function getStudentsProject()
@@ -141,12 +179,16 @@ class Project extends ComponentBase
         if (isset ($_GET['filter']) && $_GET['filter'] == 'true') {
             return $this->filterProject();
         }
-        return $projects =  ProjectModel::where('group', 2)->where('moderation', 1)
-            ->orderBy('created_at', 'desc')->paginate(12);
+
+
+
+        $projects =  ProjectModel::where('group', 2)->where('moderation', 1);
+        return $projects->orderBy('created_at', 'desc')->paginate(12);
     }
 
     public function filterProject()
     {
+        $filterAge = isset($_GET['age']) ? $_GET['age'] : false;
         $group = $_GET['group'];
         $filter = $_GET['filter'];
         $nomination = $_GET['nomination'];
@@ -155,14 +197,17 @@ class Project extends ComponentBase
         $projects = ProjectModel::where('group', $group)->where('moderation', 1)
         ->where('nomination', $nomination);
 
-        
+        if ($filterAge) {
+            $projects = $projects->where('age_group', (int) $filterAge);
+        }
 
          $projects = $projects->orderBy('akira_zucore_projects.created_at', $order)->paginate(12)
         ->appends([
             'group' => $group,
             'nomination' => $nomination,
             'order' => $order,
-            'filter' => $filter
+            'filter' => $filter,
+            'age' => $filterAge
         ]);
 
         // if ($ageFilter) {
@@ -202,34 +247,7 @@ class Project extends ComponentBase
     }
 
 
-     public function filterByAge($projects, $filter)
-     {
-        
-         //$projects = $projects->leftJoin('users', 'users.id', '=', 'akira_zucore_projects.user_id');
-         switch($filter) {
-            case self::AGE_GROUP['yang']:
-               $projects = $projects->filter(function($value, $key) {
-                    $age = $this->getUserAge($value);
-                    return $age >= 6 && $age <= 9;
-                });
-                break;
-            case self::AGE_GROUP['middle']:
-                $projects = $projects->filter(function($value, $key) {
-                    $age = $this->getUserAge($value);
-                    return $age >= 10 && $age <= 13;
-                });
-                break;
-            case self::AGE_GROUP['hight']:
-                $projects = $projects->filter(function($value, $key) {
-                    $age = $this->getUserAge($value);
-                    return $age >= 14 && $age <= 17;
-                });
-                break;            
-            default:
-                break;    
-         }
-         return $projects;
-     }
+
 
      private function getUserAge(ProjectModel $project)
      {

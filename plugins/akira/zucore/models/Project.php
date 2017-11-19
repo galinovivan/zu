@@ -26,7 +26,8 @@ class Project extends Model
         'project_uri',
         'name',
         'like_count',
-        'group'
+        'group',
+        'age_group'
     ];
 
     public $attachOne = ['project_file' => ['System\Models\File']];
