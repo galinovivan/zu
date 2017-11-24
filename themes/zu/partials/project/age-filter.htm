@@ -5,7 +5,7 @@
     {% for item in Project.getAgeGroupList %}
     <li>
         {% if filter %}
-        <a href="{{ '/school/gallery?filter=true&nomination=' ~ nom_filter ~ '&group=' ~ group  ~ '&age=' ~ item.value}}">{{ item.label|upper }}</a>
+        <a href="{{ '/school/gallery?filter=true&nomination=' ~ nom_filter ~ '&group=1' ~ '&age=' ~ item.value}}">{{ item.label|upper }}</a>
         {% else %}
         <a href="{{ '/school/gallery?age=' ~ item.value }}">{{ item.label|upper }}</a>
         {% endif %}

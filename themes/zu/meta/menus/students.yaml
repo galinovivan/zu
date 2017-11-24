@@ -79,23 +79,14 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: Кастинги
+        title: 'Загрузить работу'
         nesting: ''
         type: cms-page
         url: ''
         code: ''
-        reference: s-casting
+        reference: profile
         cmsPage: ''
         replace: ''
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-    -
-        title: 'Загрузить работу'
-        type: cms-page
-        code: ''
-        reference: profile
         viewBag:
             isHidden: '0'
             cssClass: ''
