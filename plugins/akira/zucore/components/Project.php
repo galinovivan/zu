@@ -12,6 +12,7 @@ use RainLab\User\Components\Account;
 use RainLab\User\Models\User as UserModel;
 use Illuminate\Support\Facades\DB;
 
+
 class Project extends ComponentBase
 {
     private $allowFileExtension = [
@@ -221,15 +222,7 @@ class Project extends ComponentBase
 
 //    public function remasteredProject()
 //    {
-//        $projects = ProjectModel::where('group', 1)->get();
-//
-//        foreach($projects as $project) {
-//            $age = $this->getUserAge($project);
-//            if ($age > 0) {
-//                $project->age_group = $this->getAgeGroup($age);
-//                $project->save();
-//            }
-//        }
+//        DbServiceScript::rebaseCountField(1);
 //    }
 
 
@@ -440,6 +433,24 @@ class Project extends ComponentBase
         dd($arr);
 
     }
+
+    public function onUpdateLikeCount()
+    {
+        $data = post();
+        $resp = $data['response'];
+        foreach ($resp as $r) {
+            $id = $r['id'];
+            $count = $r['count'];
+            $project = ProjectModel::findOrFail($id);
+            if ((int) $project->project_like_count != (int) $count) {
+                $project->like_count = (int) $count;
+                $project->save();
+            };
+        };
+        return true;
+    }
+
+    
 
 
 }

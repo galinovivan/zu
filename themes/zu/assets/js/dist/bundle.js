@@ -9837,10 +9837,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__custom_helpers__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__project_filter__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vk_vk__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vk_like_stat__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vk_like_stat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__vk_like_stat__);
-
-
 
 
 
@@ -22633,25 +22629,31 @@ const SessionStorage = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__like__ = __webpack_require__(190);
-/**
- * Created by 91178 on 28.10.2017.
- */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vk_helpers__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__like__ = __webpack_require__(191);
+
+
 
 //import { getLikeCount, setFrameCountHandler } from './vk_helpers';
 
 VK.init({
     apiId: 6237768
-    //onlyWidgets: true
+    // onlyWidgets: true
 });
 
 window.onload = () => {
     const likeElems = $('.project_likes_count');
     if (likeElems) {
         likeElems.each(function () {
-            Object(__WEBPACK_IMPORTED_MODULE_0__like__["a" /* default */])($(this));
+            Object(__WEBPACK_IMPORTED_MODULE_1__like__["a" /* default */])($(this));
         });
     }
+    VK.Observer.subscribe('widgets.like.liked', count => {
+        Object(__WEBPACK_IMPORTED_MODULE_0__vk_helpers__["a" /* default */])();
+    });
+    VK.Observer.subscribe('widgets.like.unliked', count => {
+        Object(__WEBPACK_IMPORTED_MODULE_0__vk_helpers__["a" /* default */])();
+    });
 };
 
 /***/ }),
@@ -22659,37 +22661,105 @@ window.onload = () => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+
+const getLikeCount = itemId => {
+    return new Promise((resolve, reject) => {
+        VK.api('likes.getList', {
+            "type": "sitepage",
+            "owner_id": 6237768,
+            "item_id": itemId
+        }, data => {
+            resolve(data);
+        });
+    });
+};
+/* unused harmony export getLikeCount */
+
+
+const setLikesData = () => {
+    const likeContainer = $('.project_likes_count');
+    let ids = [];
+    likeContainer.each(function (key, value) {
+        const id = $(this).attr('id');
+        ids.push(id);
+    });
+    console.log(ids);
+    getFullLikesList(ids).then(dataSet => {
+        $.request('onUpdateLikeCount', {
+            data: dataSet
+            // success: function(data) {
+            //     console.log(data);
+            // }
+        });
+    });
+};
+
+function ayncRequestToVkLike(container) {
+    return new Promise((resolve, reject) => {
+        let index = 0;
+        let resultData = [];
+        let tmt = setInterval(() => {
+            if (index > container.length) {
+                clearInterval(tmt);
+            }
+            let el = $(container[index]);
+            let id = el.attr('id');
+            console.log(id);
+            getLikeCount(id).then(data => {
+                console.log(data);
+                index++;
+                resultData.push({
+                    'id': id,
+                    'count': data.response.count
+                });
+                if (index == container.length) {
+                    resolve(resultData);
+                }
+            });
+        }, 350);
+    });
+}
+
+const getFullLikesList = ids => {
+    return new Promise((resolve, reject) => {
+        let queryStr = `var result = [];`;
+        for (let i = 0; i < ids.length; i++) {
+            queryStr += `var likes${i} = API.likes.getList({
+                    "type": "sitepage",
+                    "owner_id": 6237768,
+                    "item_id": ${ids[i]}});
+                     result.push({
+                "id": ${ids[i]},
+                "count": likes${i}
+            });`;
+        };
+        queryStr += `return result;`;
+        console.log(queryStr);
+        VK.api('execute', {
+            "code": queryStr
+        }, data => resolve(data));
+    });
+};
+const setFrameCountHandler = frameObject => {};
+/* unused harmony export setFrameCountHandler */
+
+
+/* harmony default export */ __webpack_exports__["a"] = (setLikesData);
+
+/***/ }),
+/* 191 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+
 function likeInit(el) {
     const id = el.attr('id');
     VK.Widgets.Like(id, { type: 'mini', width: 85, height: 18 }, id);
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (likeInit);
-
-/***/ }),
-/* 191 */
-/***/ (function(module, exports) {
-
-const VK_URL = 'http://api.vk.com';
-const param = {
-  type: 'sitepage',
-  owner_id: 6237768,
-  page_id: 24
-};
-//  fetch(`${VK_URL}/Likes/likes.getList`, {
-//     method: 'POST',
-//     headers: {
-//          'Content-Type': 'application/json'
-//      },
-//     body: param
-// }).then(response => {
-//     console.log(response.json())
-//  });
-
-// fetch(`${VK_URL}/Likes/likes.getList?type=sitepage&owner_id=6237768page_id=24`)
-// .then(response => {
-//    console.log(response)
-// });
 
 /***/ })
 /******/ ]);
