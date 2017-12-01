@@ -65,3 +65,12 @@ fields:
         oc.commentPosition: ''
         span: auto
         type: text
+    age_group:
+        label: 'Возрастная группа'
+        oc.commentPosition: ''
+        options:
+            1: yang
+            2: middle
+            3: hight
+        span: auto
+        type: dropdown

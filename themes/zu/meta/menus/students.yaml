@@ -78,16 +78,3 @@ items:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
-    -
-        title: 'Загрузить работу'
-        nesting: ''
-        type: cms-page
-        url: ''
-        code: ''
-        reference: profile
-        cmsPage: ''
-        replace: ''
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
