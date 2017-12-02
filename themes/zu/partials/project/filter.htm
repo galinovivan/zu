@@ -8,7 +8,7 @@
 {% for nomination in Project.getNomination(group) %}
 <li>
 <a href="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?nomination={{ nomination.value }}
-&group={{ group }}&filter=true&{{ age_filter ? 'age=' ~ age_filter : '' }}" data-filter="{{ nomination.value }}">
+&group={{ group }}&filter=true&{{ age_filter ? 'age=' ~ age_filter : '' }}&order_method={{ order_method ? order_method : 'created_at' }}" data-filter="{{ nomination.value }}">
 {{ nomination.label|upper }}
 </a>
 </li>
