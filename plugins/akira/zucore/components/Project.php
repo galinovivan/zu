@@ -214,6 +214,7 @@ class Project extends ComponentBase
             'age' => $filterAge,
             'order_method' => $orderMethod
         ]);
+        dd($projects);
 
         // if ($ageFilter) {
         //     $projects = $this->filterByAge($projects, $ageFilter);
@@ -223,10 +224,17 @@ class Project extends ComponentBase
 
     }
 
-//    public function remasteredProject()
-//    {
-//        DbServiceScript::rebaseCountField(1);
-//    }
+   public function remasteredProject()
+   {
+       $projects = ProjectModel::where('moderation', 0)->get();
+       foreach ($projects as $pr) {
+           if ($pr->moderation === 0) {
+               $pr->moderation = 1;
+               $pr->save();
+           }
+       }
+
+   }
 
 
     private function getAgeGroup($age)
