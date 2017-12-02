@@ -1,0 +1,15 @@
+.sort {
+    select {
+        border: none;
+        font-family: $baseFont;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-decoration: underline;
+        background: $lightBackground;
+        color: $gray;
+        font-weight: 700;
+        span {
+            color: $gray;
+        }
+    }
+}
