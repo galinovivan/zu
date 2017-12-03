@@ -1,0 +1,12 @@
+<div class="sort">
+    <select name="" id="" onchange="window.location.href=this.options[this.selectedIndex].value">
+        <option value="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?filter=true&group={{group}}&{{ age_filter ? 'age=' ~ age_filter : '' }}&order_method=created_at&nomination={{ nom_filter ? nom_filter : false }}" {{ order_method == 'created_at' ? 'selected' : '' }}>
+            <a>По дате загрузки</a>
+        </option>
+        <option value="{{ group == school ? '/school/gallery/' : '/students/gallery/' }}?nomination={{ nom_filter ? nom_filter : false }}
+&group={{ group }}&filter=true&{{ age_filter ? 'age=' ~ age_filter : '' }}&order_method=like_count"
+        {{ order_method == 'like_count' ? 'selected' : '' }}>
+            <a>По популярности</a>
+        </option>
+    </select>
+</div>

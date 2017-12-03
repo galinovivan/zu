@@ -18,6 +18,8 @@
 
 @import "text-reader";
 @import "preloader";
+
+@import 'sort';
 @media screen and (min-width: 1025px) {
 @import "carousel";
 @import "flash";

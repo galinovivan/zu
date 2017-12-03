@@ -9,6 +9,11 @@ is_hidden = 0
 <div class="container workGallery">
 <div class="row">
     <div class="col-md-12">
+            <div class="sort_container">
+                    {% partial 'project/sort' group=school %}
+                    </div>
+    </div>
+    <div class="col-md-12">
         <div class="age_filter">
             {% partial 'project/age-filter' %}
         </div>

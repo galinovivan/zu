@@ -56,7 +56,7 @@ class Project extends ComponentBase
         if (isset($_GET['filter'])) {
             $this->page['filter'] = true;
             $this->page['nom_filter'] = $_GET['nomination'];
-
+            $this->page['order_method'] = $_GET['order_method'];
         }
         $this->page['age_filter'] = isset($_GET['age']) ? $_GET['age'] : false;
     }
@@ -195,21 +195,24 @@ class Project extends ComponentBase
         $filter = $_GET['filter'];
         $nomination = $_GET['nomination'];
         $order = isset($_GET['order']) ? $_GET['order'] : 'desc';
-        
-        $projects = ProjectModel::where('group', $group)->where('moderation', 1)
-        ->where('nomination', $nomination);
+        $orderMethod = isset($_GET['order_method']) ? $_GET['order_method'] : 'akira_zucore_projects.created_at';
+        $projects = ProjectModel::where('group', $group)->where('moderation', 1);
 
+        if ($nomination) {
+            $projects = $projects->where('nomination', $nomination);    
+        }
         if ($filterAge) {
             $projects = $projects->where('age_group', (int) $filterAge);
         }
 
-         $projects = $projects->orderBy('akira_zucore_projects.created_at', $order)->paginate(12)
+         $projects = $projects->orderBy($orderMethod, $order)->paginate(12)
         ->appends([
             'group' => $group,
             'nomination' => $nomination,
             'order' => $order,
             'filter' => $filter,
-            'age' => $filterAge
+            'age' => $filterAge,
+            'order_method' => $orderMethod
         ]);
 
         // if ($ageFilter) {
