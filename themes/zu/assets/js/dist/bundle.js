@@ -22684,7 +22684,7 @@ const setLikesData = () => {
         const id = $(this).attr('id');
         ids.push(id);
     });
-    console.log(ids);
+
     getFullLikesList(ids).then(dataSet => {
         $.request('onUpdateLikeCount', {
             data: dataSet
@@ -22735,7 +22735,6 @@ const getFullLikesList = ids => {
             });`;
         };
         queryStr += `return result;`;
-        console.log(queryStr);
         VK.api('execute', {
             "code": queryStr
         }, data => resolve(data));

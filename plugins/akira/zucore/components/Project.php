@@ -440,11 +440,13 @@ class Project extends ComponentBase
         $resp = $data['response'];
         foreach ($resp as $r) {
             $id = $r['id'];
-            $count = $r['count'];
+            if (isset($r['count']['count'])) {
+            $count = $r['count']['count'];    
             $project = ProjectModel::findOrFail($id);
-            if ((int) $project->project_like_count != (int) $count) {
-                $project->like_count = (int) $count;
-                $project->save();
+                if ((int) $project->like_count != (int) $count) {
+                    $project->like_count = (int) $count;
+                    $project->save();
+                };
             };
         };
         return true;
