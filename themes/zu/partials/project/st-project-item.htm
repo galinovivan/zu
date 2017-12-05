@@ -28,7 +28,8 @@
     <div class="nomination">
         <span>{{ Project.getNominationLabel(project.nomination)|upper }}</span>
     </div>
-    <div class="like_c"><div class="project_likes_count" id="{{project.id}}"></div>
+    <div class="project_like_count">
+        <span class="count">{{project.like_count}}</span>
     </div>
     </div>
 </div>

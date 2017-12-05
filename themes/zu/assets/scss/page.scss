@@ -17,3 +17,11 @@
         color: $gray;
     }
 }
+
+.project_like_count {
+    .count {
+        padding-left: 25px;
+        background: url('../images/like.png') no-repeat;
+        background-size: contain;
+    }
+}

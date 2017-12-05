@@ -32,7 +32,9 @@
         <div><span class="label">Учебное</span></div>
         <div><span class="label">Заведение:</span><strong>{{ project.user.school }}</strong></div>
         <div><span class="label">Педагог:</span><strong>{{ project.lead }}</strong></div>
-        <div><div class="project_likes_count" id="{{project.id}}"></div></div>
+        <div class="project_like_count">
+                <span class="count">{{project.like_count}}</span>
+            </div>
     </div>
     <a href="/school/gallery" class="arrow_button back_link medium gray">К другим работам <i class="arrow_right gray"></i></a>
 </div>

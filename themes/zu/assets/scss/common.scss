@@ -59,3 +59,12 @@
 
 // CASTILS
 @import 'crutch';
+
+
+.like_prot {
+    position: absolute;
+    z-index: 10000;
+    width: 100%;
+    height: 20px;
+    background: $transparent;
+}
