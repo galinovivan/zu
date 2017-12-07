@@ -74,3 +74,12 @@ fields:
             3: hight
         span: auto
         type: dropdown
+    like_count:
+        label: like
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    lead:
+        label: lead
+        span: auto
+        type: text
