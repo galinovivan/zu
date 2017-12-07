@@ -34,7 +34,8 @@ class Project extends ComponentBase
     const AGE_GROUP = [
         'yang' => 1,
         'middle' => 2,
-        'hight' => 3
+        'hight' => 3,
+        'pizd' => 4
     ];
 
     public function componentDetails()
@@ -79,6 +80,10 @@ class Project extends ComponentBase
             [
                 'label' => 'Старшая школа',
                 'value' => 3
+            ],
+            [
+                'label' => 'Дошкольники',
+                'value' => 4
             ]
         ];
     }
@@ -223,21 +228,30 @@ class Project extends ComponentBase
 
     }
 
-//    public function remasteredProject()
-//    {
-//        DbServiceScript::rebaseCountField(1);
-//    }
+   public function remasteredProject()
+   {
+        $projects = ProjectModel::where('group', 1)->where('moderation', 1)->get();
+        foreach ($projects as $project) {
+            $age = (int) $this->getUserAge($project);
+            if ($age != 0 && $age <= 6) {
+                $project->age_group = 4;
+                $project->save();
+            }
+        }   
+   }
 
 
     private function getAgeGroup($age)
     {
         $group = 0;
-        if ($age >= 6 && $age <= 9) {
+        if ($age >= 7 && $age <= 9) {
             $group = 1;
         } elseif ($age >= 10 && $age <= 13) {
             $group = 2;
         } elseif ($age >= 14 && $age <= 17) {
             $group = 3;
+        } elseif ($age >= 3 && $age <= 6) {
+            $group = 4;
         }
 
         return $group;
