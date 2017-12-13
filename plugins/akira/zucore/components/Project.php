@@ -230,14 +230,7 @@ class Project extends ComponentBase
 
    public function remasteredProject()
    {
-        $projects = ProjectModel::where('group', 1)->where('moderation', 1)->get();
-        foreach ($projects as $project) {
-            $age = (int) $this->getUserAge($project);
-            if ($age != 0 && $age <= 6) {
-                $project->age_group = 4;
-                $project->save();
-            }
-        }   
+      return $this->cityStat();     
    }
 
 
