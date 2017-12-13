@@ -1,6 +1,7 @@
 static-pages:
     school:
         school-nomination: {  }
+        school-winners: {  }
         school-about: {  }
         school-partners: {  }
         school-judge: {  }
@@ -9,3 +10,4 @@ static-pages:
         students-partners: {  }
         students-about: {  }
         students-nomination: {  }
+    students-winners: {  }
