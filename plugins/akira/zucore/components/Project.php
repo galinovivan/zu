@@ -429,9 +429,16 @@ class Project extends ComponentBase
     public function cityStat()
     {
         $arr = [];
-        $users = UserModel::all()->toArray();
+        $users = UserModel::all()->sortBy('city');
         foreach ($users as $user) {
-            $city = strtolower($user['city']);
+            $city = mb_strtolower($user['city']);
+            $city = str_replace('г.', '', $city);
+            $city = str_replace('обл.', '', $city);
+            //$city = str_replace('-', '', $city);
+            $city = str_replace(' ', '', $city);
+            $city = str_replace(',', '', $city);
+            $city = str_replace('.', '', $city);
+            
 
             if (array_key_exists($city, $arr)) {
                 $oldCount = $arr[$city];
@@ -440,7 +447,10 @@ class Project extends ComponentBase
                 $arr[$city] = 1;
             }
         }
-        dd($arr);
+        $newArr = $arr;
+        ksort($newArr, SORT_STRING);
+        dd($newArr);
+
 
     }
 
